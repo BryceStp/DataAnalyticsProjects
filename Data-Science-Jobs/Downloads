@@ -1,0 +1,673 @@
+"","Job.Title","Rating","Location","Headquarters","Founded","Type.of.ownership","Industry","Sector","MinSalary","MaxSalary","AvgSalary","MinRevenue","MaxRevenue","AvgRevenue","MinEmployeeCount","MaxEmployeeCount","AvgEmployeeCount"
+"1","Sr Data Scientist","3.1","New York, NY","New York, NY","1993","Nonprofit Organization","Insurance Carriers","Insurance",137000,171000,154000,NA,NA,NA,1001,5000,3001
+"2","Data Scientist","4.2","Chantilly, VA","Herndon, VA","1968","Company - Public","Research & Development","Business Services",137000,171000,154000,1000000000,2000000000,1500000000,5001,10000,7501
+"3","Data Scientist","3.8","Boston, MA","Boston, MA","1981","Private Practice / Firm","Consulting","Business Services",137000,171000,154000,100000000,500000000,300000000,1001,5000,3001
+"4","Data Scientist","3.5","Newton, MA","Bad Ragaz, Switzerland","2000","Company - Public","Electrical & Electronic Manufacturing","Manufacturing",137000,171000,154000,100000000,500000000,300000000,501,1000,751
+"5","Data Scientist","2.9","New York, NY","New York, NY","1998","Company - Private","Advertising & Marketing","Business Services",137000,171000,154000,NA,NA,NA,51,200,126
+"6","Data Scientist","4.2","Santa Barbara, CA","Santa Barbara, CA","2010","Company - Private","Computer Hardware & Software","Information Technology",137000,171000,154000,NA,NA,NA,51,200,126
+"7","Data Scientist / Machine Learning Expert","3.9","Cambridge, MA","Basel, Switzerland","1996","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",137000,171000,154000,10000000000,NA,10000000000,10000,NA,10000
+"8","Data Scientist","3.5","Bedford, MA","Bedford, MA","1990","Company - Public","Consumer Electronics & Appliances Stores","Retail",137000,171000,154000,1000000000,2000000000,1500000000,1001,5000,3001
+"9","Staff Data Scientist - Analytics","4.4","San Diego, CA","Mountain View, CA","1983","Company - Public","Computer Hardware & Software","Information Technology",137000,171000,154000,2000000000,5000000000,3500000000,5001,10000,7501
+"10","Data Scientist","3.6","Chicago, IL","Chicago, IL","2014","Company - Private","Enterprise Software & Network Solutions","Information Technology",137000,171000,154000,NA,NA,NA,51,200,126
+"11","Data Scientist","4.5","Herndon, VA","Mc Lean, VA","2012","Company - Private","Enterprise Software & Network Solutions","Information Technology",137000,171000,154000,100000000,500000000,300000000,501,1000,751
+"12","Data Scientist","4.7","Saint Louis, MO","Saint Louis, MO","2016","Company - Private","IT Services","Information Technology",137000,171000,154000,NA,NA,NA,51,200,126
+"13","Data Scientist - Statistics, Early Career","3.7","Richland, WA","Richland, WA","1965","Government","Energy","Oil, Gas, Energy & Utilities",137000,171000,154000,500000000000000000,1000000000,250000000500000000,1001,5000,3001
+"14","Data Modeler","3.1","Northbrook, IL","Northbrook, IL","1973","Company - Private","Chemical Manufacturing","Manufacturing",137000,171000,154000,1000000000,2000000000,1500000000,201,500,351
+"15","Data Scientist","3.4","Washington, DC","Princeton, NJ","1986","Company - Private","Consulting","Business Services",137000,171000,154000,100000000,500000000,300000000,1001,5000,3001
+"16","Experienced Data Scientist","4.4","Washington, DC","Mays Landing, NJ","1997","Company - Private","Federal Agencies","Government",137000,171000,154000,NA,NA,NA,1,50,26
+"17","Data Scientist - Contract","4.1","Remote","Washington, DC","2015","Company - Private","Internet","Information Technology",137000,171000,154000,NA,NA,NA,51,200,126
+"18","Data Scientist","3.5","Memphis, TN","Memphis, TN","1945","Company - Private","Chemical Manufacturing","Manufacturing",137000,171000,154000,500000000000000000,1000000000,250000000500000000,1001,5000,3001
+"19","Data Analyst II","4.2","Plano, TX","Tempe, AZ","1988","Company - Public","Enterprise Software & Network Solutions","Information Technology",137000,171000,154000,5000000000,10000000000,7500000000,5001,10000,7501
+"20","Medical Lab Scientist","3.5","West Grove, PA","Reading, PA","2017","Nonprofit Organization","Health Care Services & Hospitals","Health Care",137000,171000,154000,NA,NA,NA,5001,10000,7501
+"21","Data Scientist","3.2","New York, NY","San Francisco, CA","2015","Company - Private","Computer Hardware & Software","Information Technology",137000,171000,154000,NA,NA,NA,51,200,126
+"22","Data Scientist/Machine Learning","4.3","New York, NY","New York, NY","2011","Company - Private","Internet","Information Technology",137000,171000,154000,100000000,500000000,300000000,51,200,126
+"23","Human Factors Scientist","3.5","Phoenix, AZ","Menlo Park, CA","1967","Company - Public","Consulting","Business Services",137000,171000,154000,100000000,500000000,300000000,1001,5000,3001
+"24","Business Intelligence Analyst I- Data Insights","3.5","Appleton, WI","New York, NY","1860","Company - Private","Insurance Carriers","Insurance",137000,171000,154000,5000000000,10000000000,7500000000,5001,10000,7501
+"25","Data Scientist","3.4","Chicago, IL","Chicago, IL","1992","Company - Private","Advertising & Marketing","Business Services",137000,171000,154000,10000000,25000000,17500000,51,200,126
+"26","Data Scientist","4.7","Atlanta, GA","Atlanta, GA","2003","Company - Private","Computer Hardware & Software","Information Technology",137000,171000,154000,25000000,50000000,37500000,51,200,126
+"27","Data Scientist - Risk","4.2","Orlando, FL","Orlando, FL","1996","Company - Private","Investment Banking & Asset Management","Finance",137000,171000,154000,100000000,500000000,300000000,51,200,126
+"28","Data Scientist-Human Resources","3.8","Lexington, MA","Lexington, MA","1951","Nonprofit Organization","Aerospace & Defense","Aerospace & Defense",137000,171000,154000,NA,NA,NA,1001,5000,3001
+"29","Data Scientist","4.5","McLean, VA","Falls Church, VA","2005","Company - Private","Federal Agencies","Government",137000,171000,154000,25000000,50000000,37500000,51,200,126
+"30","Data Scientist","2.8","San Francisco, CA","San Francisco, CA","2015","Company - Private","Enterprise Software & Network Solutions","Information Technology",137000,171000,154000,NA,NA,NA,51,200,126
+"31","Data Scientist","3.8","Boston, MA","Boston, MA","1981","Private Practice / Firm","Consulting","Business Services",75000,131000,103000,100000000,500000000,300000000,1001,5000,3001
+"32","Data Scientist / Machine Learning Expert","3.9","Cambridge, MA","Basel, Switzerland","1996","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",75000,131000,103000,10000000000,NA,10000000000,10000,NA,10000
+"33","Data Scientist","5","Boston, MA","Boston, MA","2019","Company - Private","IT Services","Information Technology",75000,131000,103000,NA,NA,NA,1,50,26
+"34","Senior Research Statistician- Data Scientist","4.8","Sheboygan, WI","Sheboygan, WI","1925","Company - Private","Insurance Carriers","Insurance",75000,131000,103000,1000000000,2000000000,1500000000,1001,5000,3001
+"35","Data Engineer","3.6","United States","Seattle, WA","2008","Company - Private","Enterprise Software & Network Solutions","Information Technology",75000,131000,103000,50000000,100000000,75000000,201,500,351
+"36","Associate Data Scientist","3.3","Bothell, WA","Bellevue, WA","1999","Company - Private","Utilities","Oil, Gas, Energy & Utilities",75000,131000,103000,2000000000,5000000000,3500000000,1001,5000,3001
+"37","Business Intelligence Analyst","2.7","Lincoln, NE","Lincoln, NE","1978","Company - Private","Enterprise Software & Network Solutions","Information Technology",75000,131000,103000,50000000,100000000,75000000,1001,5000,3001
+"38","Data Scientist","2.7","Overland Park, KS","New York, NY","2000","Company - Private","Health Care Services & Hospitals","Health Care",75000,131000,103000,NA,NA,NA,501,1000,751
+"39","Data Scientist","2.2","Chantilly, VA","Chantilly, VA","2000","Company - Private","Enterprise Software & Network Solutions","Information Technology",75000,131000,103000,1000000,5000000,3000000,1,50,26
+"40","Senior Analyst/Data Scientist","3.4","Santa Monica, CA","Santa Monica, CA","1966","Company - Private","Internet","Information Technology",75000,131000,103000,100000000,500000000,300000000,501,1000,751
+"41","Data Analyst","3.1","Boston, MA","Boston, MA","1973","Company - Private","Investment Banking & Asset Management","Finance",75000,131000,103000,100000000,500000000,300000000,501,1000,751
+"42","Machine Learning Engineer","3.4","Portsmouth, NH","Boston, MA","1912","Company - Private","Insurance Carriers","Insurance",75000,131000,103000,10000000000,NA,10000000000,10000,NA,10000
+"43","Data Analyst I","2.6","Ewing, NJ","Ewing, NJ","1958","Company - Private","","",75000,131000,103000,100000000,500000000,300000000,1001,5000,3001
+"44","Scientist - Molecular Biology","5","South San Francisco, CA","South San Francisco, CA","2019","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",75000,131000,103000,NA,NA,NA,51,200,126
+"45","Data Scientist","4.2","Palo Alto, CA","Palo Alto, CA","2013","Company - Private","Enterprise Software & Network Solutions","Information Technology",75000,131000,103000,10000000,25000000,17500000,51,200,126
+"46","Computational Scientist, Machine Learning","4.1","Cambridge, MA","New York, NY","1849","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",75000,131000,103000,10000000000,NA,10000000000,10000,NA,10000
+"47","Senior Data Scientist","4.8","Boston, MA","Boston, MA","2012","Company - Private","Computer Hardware & Software","Information Technology",75000,131000,103000,NA,NA,NA,201,500,351
+"48","Data Scientist","3.3","Bellevue, WA","Bellevue, WA","2000","Company - Private","Investment Banking & Asset Management","Finance",75000,131000,103000,NA,NA,NA,501,1000,751
+"49","Data Scientist","3.7","San Francisco, CA","Singapore, Singapore","2016","Government","Federal Agencies","Government",75000,131000,103000,NA,NA,NA,1001,5000,3001
+"50","Data Scientist","4.3","Cambridge, MA","Cambridge, MA","1999","Company - Private","Enterprise Software & Network Solutions","Information Technology",75000,131000,103000,NA,NA,NA,201,500,351
+"51","Data Analyst","4.8","San Francisco, CA","San Francisco, CA","2014","Company - Private","Advertising & Marketing","Business Services",75000,131000,103000,10000000,25000000,17500000,1,50,26
+"52","Data Scientist","3.7","Cambridge, MA","OSAKA, Japan","1781","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",75000,131000,103000,10000000000,NA,10000000000,10000,NA,10000
+"53","Data Scientist","4","San Francisco, CA","Santa Clara, CA","2012","Company - Private","Enterprise Software & Network Solutions","Information Technology",75000,131000,103000,NA,NA,NA,501,1000,751
+"54","Jr. Data Engineer","4.8","Remote","Vienna, VA","2003","Company - Private","IT Services","Information Technology",75000,131000,103000,10000000,25000000,17500000,51,200,126
+"55","E-Commerce Data Analyst","3.5","New Orleans, LA","New Orleans, LA","1999","Company - Private","Enterprise Software & Network Solutions","Information Technology",75000,131000,103000,NA,NA,NA,51,200,126
+"56","Data Analytics Engineer","3.7","Akron, OH","Akron, OH","1926","Nonprofit Organization","Health Care Services & Hospitals","Health Care",75000,131000,103000,100000000,500000000,300000000,5001,10000,7501
+"57","Senior Data Scientist","3.5","Saint Louis, MO","Saint Louis, MO","2012","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",75000,131000,103000,1000000,5000000,3000000,201,500,351
+"58","Product Data Scientist - Ads Data Science","4.1","San Francisco, CA","San Francisco, CA","2006","Company - Public","Internet","Information Technology",75000,131000,103000,2000000000,5000000000,3500000000,1001,5000,3001
+"59","Data Scientist","3.2","San Francisco, CA","San Francisco, CA","2011","Company - Private","Express Delivery Services","Transportation & Logistics",75000,131000,103000,NA,NA,NA,1001,5000,3001
+"60","Data Scientist - Intermediate","4.5","Saint Louis, MO","Saint Louis, MO","1994","Company - Private","Staffing & Outsourcing","Business Services",75000,131000,103000,25000000,50000000,37500000,201,500,351
+"61","Data Analyst","3.8","Fort Wayne, IN","Zurich, Switzerland","1863","Company - Public","Insurance Agencies & Brokerages","Insurance",75000,131000,103000,10000000000,NA,10000000000,10000,NA,10000
+"62","Machine Learning Engineer","4.5","Woburn, MA","Woburn, MA","2010","Company - Private","Aerospace & Defense","Aerospace & Defense",75000,131000,103000,100000000,500000000,300000000,201,500,351
+"63","Data Scientist","3.5","Bedford, MA","Bedford, MA","1990","Company - Public","Consumer Electronics & Appliances Stores","Retail",79000,131000,105000,1000000000,2000000000,1500000000,1001,5000,3001
+"64","Data Scientist","4.2","Santa Barbara, CA","Santa Barbara, CA","2010","Company - Private","Computer Hardware & Software","Information Technology",79000,131000,105000,NA,NA,NA,51,200,126
+"65","Global Data Analyst","3.8","Carson, CA","Carson, CA","1986","Subsidiary or Business Segment","Consumer Products Manufacturing","Manufacturing",79000,131000,105000,100000000,500000000,300000000,201,500,351
+"66","Data Engineer","3.7","Coral Gables, FL","Coral Gables, FL","1995","Company - Private","Investment Banking & Asset Management","Finance",79000,131000,105000,100000000,500000000,300000000,1001,5000,3001
+"67","Data Scientist","3.7","New York, NY","New York, NY","2012","Company - Private","Internet","Information Technology",79000,131000,105000,NA,NA,NA,501,1000,751
+"68","Data Scientist","4","Santa Clara, CA","San Ramon, CA","2006","Company - Private","Enterprise Software & Network Solutions","Information Technology",79000,131000,105000,50000000,100000000,75000000,1001,5000,3001
+"69","Data & Machine Learning Scientist","3.3","Chicago, IL","Chicago, IL","2015","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",79000,131000,105000,NA,NA,NA,501,1000,751
+"70","Data Scientist - Machine Learning","2.5","Brisbane, CA","Brisbane, CA","","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",79000,131000,105000,NA,NA,NA,1,50,26
+"71","Data Engineer (Remote)","4.2","Winter Park, FL","Winter Park, FL","2006","Company - Public","Advertising & Marketing","Business Services",79000,131000,105000,25000000,50000000,37500000,51,200,126
+"72","Data Scientist, Applied Machine Learning - Bay Area","3.3","Redwood City, CA","Chicago, IL","2015","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",79000,131000,105000,NA,NA,NA,501,1000,751
+"73","Principal Data Scientist","4","San Francisco, CA","San Rafael, CA","1982","Company - Public","Computer Hardware & Software","Information Technology",79000,131000,105000,2000000000,5000000000,3500000000,5001,10000,7501
+"74","Business Data Analyst","3.7","Peoria, IL","Deerfield, IL","1925","Company - Public","Industrial Manufacturing","Manufacturing",79000,131000,105000,10000000000,NA,10000000000,10000,NA,10000
+"75","Purification Scientist","4.9","Ipswich, MA","Ipswich, MA","1974","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",79000,131000,105000,NA,NA,NA,201,500,351
+"76","Data Analyst","3.4","Carmel, IN","Carmel, IN","2001","Subsidiary or Business Segment","Insurance Agencies & Brokerages","Insurance",79000,131000,105000,100000000,500000000,300000000,1001,5000,3001
+"77","Data Engineer, Enterprise Analytics","3.1","New York, NY","New York, NY","1993","Nonprofit Organization","Insurance Carriers","Insurance",79000,131000,105000,NA,NA,NA,1001,5000,3001
+"78","Data Scientist","3.5","Washington, DC","Chevy Chase, MD","2019","Company - Private","Internet","Information Technology",79000,131000,105000,NA,NA,NA,1001,5000,3001
+"79","Data Scientist","2.9","New York, NY","Hartford, CT","1985","Company - Private","Insurance Carriers","Insurance",79000,131000,105000,NA,NA,NA,201,500,351
+"80","Data Scientist 3 (718)","3.3","Emeryville, CA","Emeryville, CA","2003","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",79000,131000,105000,100000000,500000000,300000000,201,500,351
+"81","Real World Science, Data Scientist","4","Gaithersburg, MD","Cambridge, United Kingdom","1913","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",79000,131000,105000,10000000000,NA,10000000000,10000,NA,10000
+"82","Data Scientist","3.6","Washington, DC","Rockville, MD","2001","Company - Private","IT Services","Information Technology",79000,131000,105000,25000000,50000000,37500000,51,200,126
+"83","Data Engineer","4.7","Saint Louis, MO","Minneapolis, MN","1996","Company - Private","Consulting","Business Services",79000,131000,105000,25000000,50000000,37500000,51,200,126
+"84","Data Scientist - Image and Video Analytics","4.9","Longmont, CO","Chicago, IL","2016","Company - Private","Staffing & Outsourcing","Business Services",79000,131000,105000,NA,NA,NA,1,50,26
+"85","Data Scientist","4.3","Austin, TX","Austin, TX","1999","Company - Private","Computer Hardware & Software","Information Technology",79000,131000,105000,25000000,50000000,37500000,51,200,126
+"86","Data Science Manager, Payment Acceptance - USA","4","San Francisco, CA","San Francisco, CA","2010","Company - Private","Internet","Information Technology",79000,131000,105000,NA,NA,NA,1001,5000,3001
+"87","Data Analyst","2.6","Yakima, WA","Yakima, WA","1971","Nonprofit Organization","Health Care Services & Hospitals","Health Care",79000,131000,105000,NA,NA,NA,501,1000,751
+"88","Data Scientist / Applied Mathematician","4.5","Santa Cruz, CA","Santa Cruz, CA","2003","Company - Private","Computer Hardware & Software","Information Technology",79000,131000,105000,10000000,25000000,17500000,51,200,126
+"89","Machine Learning Engineer","4.8","Boston, MA","Boston, MA","2012","Company - Private","Computer Hardware & Software","Information Technology",79000,131000,105000,NA,NA,NA,201,500,351
+"90","Data Scientist","3.9","United States","Mc Lean, VA","1911","Company - Private","Food & Beverage Manufacturing","Manufacturing",79000,131000,105000,10000000000,NA,10000000000,10000,NA,10000
+"91","Patient Safety- Associate Data Scientist","4","Gaithersburg, MD","Cambridge, United Kingdom","1913","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",79000,131000,105000,10000000000,NA,10000000000,10000,NA,10000
+"92","Machine Learning Engineer","4.4","Springfield, VA","Mc Lean, VA","1999","Company - Private","IT Services","Information Technology",79000,131000,105000,5000000,10000000,7500000,51,200,126
+"93","Senior Data Scientist","4.2","Alexandria, VA","Herndon, VA","1968","Company - Public","Research & Development","Business Services",79000,131000,105000,1000000000,2000000000,1500000000,5001,10000,7501
+"94","(Sr.) Data Scientist -","3.6","Utah","South Jordan, UT","1997","Company - Private","Banks & Credit Unions","Finance",79000,131000,105000,NA,NA,NA,201,500,351
+"95","Data Scientist","3.4","Washington, DC","Princeton, NJ","1986","Company - Private","Consulting","Business Services",99000,132000,115500,100000000,500000000,300000000,1001,5000,3001
+"96","Staff Data Scientist - Analytics","4.4","San Diego, CA","Mountain View, CA","1983","Company - Public","Computer Hardware & Software","Information Technology",99000,132000,115500,2000000000,5000000000,3500000000,5001,10000,7501
+"97","Data Analytics Engineer","3.5","Reston, VA","Reston, VA","2015","Company - Private","Enterprise Software & Network Solutions","Information Technology",99000,132000,115500,10000000,25000000,17500000,51,200,126
+"98","Data Scientist, Kinship - NYC/Portland","3.9","New York, NY","Mc Lean, VA","1911","Company - Private","Food & Beverage Manufacturing","Manufacturing",99000,132000,115500,10000000000,NA,10000000000,10000,NA,10000
+"99","Senior Data Scientist","3.8","Denver, CO","Denver, CO","2009","Company - Private","Advertising & Marketing","Business Services",99000,132000,115500,10000000,25000000,17500000,51,200,126
+"100","Applied Technology Researcher / Data Scientist","3.5","Washington, DC","Washington, DC","1959","Other Organization","Banks & Credit Unions","Finance",99000,132000,115500,10000000000,NA,10000000000,1001,5000,3001
+"101","Data Scientist","4.9","New Jersey","Holmdel, NJ","2013","Company - Private","Enterprise Software & Network Solutions","Information Technology",99000,132000,115500,NA,NA,NA,1,50,26
+"102","Machine Learning Engineer","4.4","Aurora, CO","Aurora, CO","2007","Company - Private","Aerospace & Defense","Aerospace & Defense",99000,132000,115500,NA,NA,NA,1,50,26
+"103","Health Data Scientist - Biomedical/Biostats","4.1","Santa Barbara, CA","San Mateo, CA","2012","Company - Private","Internet","Information Technology",99000,132000,115500,NA,NA,NA,51,200,126
+"104","Senior Data Scientist","4","San Francisco, CA","San Rafael, CA","1982","Company - Public","Computer Hardware & Software","Information Technology",99000,132000,115500,2000000000,5000000000,3500000000,5001,10000,7501
+"105","Staff Data Scientist","4.4","San Diego, CA","Mountain View, CA","1983","Company - Public","Computer Hardware & Software","Information Technology",99000,132000,115500,2000000000,5000000000,3500000000,5001,10000,7501
+"106","Data Scientist","3.8","Hill AFB, UT","Goleta, CA","1973","Company - Private","Aerospace & Defense","Aerospace & Defense",99000,132000,115500,50000000,100000000,75000000,501,1000,751
+"107","Sr Data Engineer (Sr BI Developer)","3.2","Chandler, AZ","Franklin, TN","1981","Company - Public","Health Care Services & Hospitals","Health Care",99000,132000,115500,NA,NA,NA,501,1000,751
+"108","Data Engineer","2.9","Indianapolis, IN","Indianapolis, IN","2011","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",99000,132000,115500,10000000,25000000,17500000,51,200,126
+"109","Lead Data Scientist","4.1","San Diego, CA","Palo Alto, CA","1939","Company - Public","Computer Hardware & Software","Information Technology",99000,132000,115500,NA,NA,NA,10000,NA,10000
+"110","Data Scientist","3.7","Chantilly, VA","Reston, VA","2013","Company - Public","Enterprise Software & Network Solutions","Information Technology",99000,132000,115500,5000000,10000000,7500000,10000,NA,10000
+"111","RFP Data Analyst","3.2","Nashville, TN","New York, NY","1967","Company - Public","Investment Banking & Asset Management","Finance",99000,132000,115500,2000000000,5000000000,3500000000,1001,5000,3001
+"112","Data Analyst","4.9","Timonium, MD","Lutherville Timonium, MD","2013","Subsidiary or Business Segment","Video Games","Media",99000,132000,115500,NA,NA,NA,51,200,126
+"113","Data Scientist (TS/SCI)","3.5","Herndon, VA","Westminster, CO","","Company - Public","Aerospace & Defense","Aerospace & Defense",99000,132000,115500,2000000000,5000000000,3500000000,5001,10000,7501
+"114","Data Engineer","5","Burlingame, CA","Burlingame, CA","2016","Company - Private","Computer Hardware & Software","Information Technology",99000,132000,115500,NA,NA,NA,1,50,26
+"115","Data Scientist","4","Reston, VA","Reston, VA","1996","Nonprofit Organization","Consulting","Business Services",99000,132000,115500,100000000,500000000,300000000,1001,5000,3001
+"116","Data Scientist","3.6","New York, NY","New York, NY","2016","Company - Private","Health Care Services & Hospitals","Health Care",99000,132000,115500,NA,NA,NA,1,50,26
+"117","Software Engineer - Data Science","4","Annapolis Junction, MD","Annapolis Junction, MD","2002","Company - Private","Computer Hardware & Software","Information Technology",99000,132000,115500,5000000,10000000,7500000,51,200,126
+"118","Data Analyst/Engineer","3.2","Nashville, TN","New York, NY","1967","Company - Public","Investment Banking & Asset Management","Finance",99000,132000,115500,2000000000,5000000000,3500000000,1001,5000,3001
+"119","NGS Scientist","5","South San Francisco, CA","South San Francisco, CA","2019","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",99000,132000,115500,NA,NA,NA,51,200,126
+"120","Data Engineer","4.8","Bethesda, MD","Bethesda, MD","2000","Company - Private","Health Care Services & Hospitals","Health Care",99000,132000,115500,50000000,100000000,75000000,201,500,351
+"121","Data Scientist","4.5","Dayton, OH","Beavercreek, OH","2006","Company - Private","Consulting","Business Services",99000,132000,115500,NA,NA,NA,51,200,126
+"122","Senior Data Engineer","4.7","San Francisco, CA","San Francisco, CA","2015","Company - Private","Internet","Information Technology",99000,132000,115500,NA,NA,NA,51,200,126
+"123","Senior Data Scientist","4.5","Herndon, VA","Mc Lean, VA","2012","Company - Private","Enterprise Software & Network Solutions","Information Technology",99000,132000,115500,100000000,500000000,300000000,501,1000,751
+"124","Data Engineer","4.2","Winter Park, FL","Winter Park, FL","2006","Company - Public","Advertising & Marketing","Business Services",99000,132000,115500,25000000,50000000,37500000,51,200,126
+"125","Business Intelligence Analyst","3.4","Schaumburg, IL","Schaumburg, IL","2006","Company - Private","Shipping","Transportation & Logistics",99000,132000,115500,NA,NA,NA,51,200,126
+"126","Sr. ML/Data Scientist - AI/NLP/Chatbot","3.8","Cupertino, CA","Sunnyvale, CA","1996","Company - Public","Telecommunications Services","Telecommunications",99000,132000,115500,2000000000,5000000000,3500000000,5001,10000,7501
+"127","Data Scientist","4.7","Saint Louis, MO","Saint Louis, MO","2016","Company - Private","IT Services","Information Technology",90000,109000,99500,NA,NA,NA,51,200,126
+"128","Data Scientist","3.6","Chicago, IL","Chicago, IL","2014","Company - Private","Enterprise Software & Network Solutions","Information Technology",90000,109000,99500,NA,NA,NA,51,200,126
+"129","Data Engineer","4.2","Winter Park, FL","Winter Park, FL","2006","Company - Public","Advertising & Marketing","Business Services",90000,109000,99500,25000000,50000000,37500000,51,200,126
+"130","Sr. ML/Data Scientist - AI/NLP/Chatbot","3.8","Cupertino, CA","Sunnyvale, CA","1996","Company - Public","Telecommunications Services","Telecommunications",90000,109000,99500,2000000000,5000000000,3500000000,5001,10000,7501
+"131","Data Scientist","5","San Francisco, CA","San Francisco, CA","2016","Company - Private","Enterprise Software & Network Solutions","Information Technology",90000,109000,99500,NA,NA,NA,1,50,26
+"132","Senior Data Engineer","4.9","Lehi, UT","Lehi, UT","2011","Company - Private","Lending","Finance",90000,109000,99500,50000000,100000000,75000000,201,500,351
+"133","Data Engineer","4.4","Culver City, CA","New York, NY","2003","Company - Private","Advertising & Marketing","Business Services",90000,109000,99500,25000000,50000000,37500000,51,200,126
+"134","Data Scientist","3.3","Lake Oswego, OR","Lake Oswego, OR","2012","Company - Private","Computer Hardware & Software","Information Technology",90000,109000,99500,100000000,500000000,300000000,1001,5000,3001
+"135","Machine Learning Engineer","3.2","Remote","San Francisco, CA","2015","Company - Private","Computer Hardware & Software","Information Technology",90000,109000,99500,NA,NA,NA,51,200,126
+"136","Machine Learning Engineer","3.2","Remote","San Francisco, CA","2015","Company - Private","Computer Hardware & Software","Information Technology",90000,109000,99500,NA,NA,NA,51,200,126
+"137","Senior Data Engineer","4.9","Lehi, UT","Lehi, UT","2011","Company - Private","Lending","Finance",90000,109000,99500,50000000,100000000,75000000,201,500,351
+"138","Data Scientist","4.2","San Mateo, CA","San Mateo, CA","2012","Company - Private","Lending","Finance",90000,109000,99500,NA,NA,NA,201,500,351
+"139","Data Analyst","4.5","San Francisco, CA","Saint Louis, MO","1994","Company - Private","Staffing & Outsourcing","Business Services",90000,109000,99500,25000000,50000000,37500000,201,500,351
+"140","Data Engineer","4.8","Palo Alto, CA","Palo Alto, CA","2012","Company - Private","Video Games","Media",90000,109000,99500,NA,NA,NA,201,500,351
+"141","Data Integration and Modeling Engineer","3.8","Holyoke, MA","Holyoke, MA","1997","Nonprofit Organization","Utilities","Oil, Gas, Energy & Utilities",90000,109000,99500,NA,NA,NA,501,1000,751
+"142","Tableau Data Engineer 20-0117","3.7","Chicago, IL","Chicago, IL","2001","Company - Private","Enterprise Software & Network Solutions","Information Technology",90000,109000,99500,NA,NA,NA,1001,5000,3001
+"143","Senior Data Scientist","3.3","San Francisco, CA","San Francisco, CA","2013","Company - Private","Electrical & Electronic Manufacturing","Manufacturing",90000,109000,99500,5000000,10000000,7500000,51,200,126
+"144","AI Data Scientist","3.3","McLean, VA","Bedford, MA","1958","Nonprofit Organization","Federal Agencies","Government",90000,109000,99500,1000000000,2000000000,1500000000,5001,10000,7501
+"145","Machine Learning Engineer","5","Herndon, VA","Dulles, VA","2013","Company - Private","Aerospace & Defense","Aerospace & Defense",90000,109000,99500,10000000,25000000,17500000,1,50,26
+"146","Research Scientist Patient Preferences (Remote)","3.8","Bethesda, MD","Bethesda, MD","2013","Subsidiary or Business Segment","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",90000,109000,99500,100000000,500000000,300000000,501,1000,751
+"147","Data Scientist","3.4","Woodbridge, NJ","Boston, MA","1982","Company - Private","Insurance Carriers","Insurance",90000,109000,99500,10000000,25000000,17500000,1001,5000,3001
+"148","Scientist - Biomarker and Flow Cytometry","2.4","San Diego, CA","San Diego, CA","2006","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",90000,109000,99500,50000000,100000000,75000000,501,1000,751
+"149","Data Scientist","2.9","Cambridge, MA","Cambridge, MA","2000","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",90000,109000,99500,10000000,25000000,17500000,51,200,126
+"150","Analytics Manager","4.4","Dearborn, MI","Detroit, MI","1967","Company - Private","Advertising & Marketing","Business Services",90000,109000,99500,NA,NA,NA,201,500,351
+"151","Data Scientist","2.9","Maryland Heights, MO","Stamford, CT","2016","Subsidiary or Business Segment","Cable, Internet & Telephone Providers","Telecommunications",90000,109000,99500,10000000000,NA,10000000000,10000,NA,10000
+"152","Staff Scientist- Upstream PD","2.7","Rockville, MD","Rockville, MD","1961","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",90000,109000,99500,50000000,100000000,75000000,201,500,351
+"153","Data Engineer","4.2","Carpinteria, CA","Carpinteria, CA","2002","Company - Private","Computer Hardware & Software","Information Technology",90000,109000,99500,NA,NA,NA,1001,5000,3001
+"154","Sr Scientist - Extractables & Leachables","3.5","Columbia, SC","Columbia, SC","1995","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",90000,109000,99500,100000000,500000000,300000000,201,500,351
+"155","ELISA RESEARCH SCIENTIST (CV5)","","Hauppauge, NY","","","","","",90000,109000,99500,NA,NA,NA,NA,NA,NA
+"156","Sr Data Scientist","4.2","Saint Louis, MO","Marcy-l'Etoile, France","1963","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",90000,109000,99500,2000000000,5000000000,3500000000,10000,NA,10000
+"157","Data Scientist","4.5","Herndon, VA","Mc Lean, VA","2012","Company - Private","Enterprise Software & Network Solutions","Information Technology",101000,165000,133000,100000000,500000000,300000000,501,1000,751
+"158","Experienced Data Scientist","4.4","Washington, DC","Mays Landing, NJ","1997","Company - Private","Federal Agencies","Government",101000,165000,133000,NA,NA,NA,1,50,26
+"159","Machine Learning Engineer","","Reston, VA","","","","","",101000,165000,133000,NA,NA,NA,NA,NA,NA
+"160","Data Scientist","3.5","Fort Meade, MD","Reston, VA","1969","Company - Public","Aerospace & Defense","Aerospace & Defense",101000,165000,133000,10000000000,NA,10000000000,10000,NA,10000
+"161","Data Scientist","4.5","San Francisco, CA","San Francisco, CA","2006","Company - Private","Computer Hardware & Software","Information Technology",101000,165000,133000,100000000,500000000,300000000,201,500,351
+"162","Say Business Data Analyst","4.1","Columbia, MO","Columbia, MO","1946","Company - Private","Insurance Carriers","Insurance",101000,165000,133000,1000000000,2000000000,1500000000,1001,5000,3001
+"163","Geospatial Data Scientist","3.5","Chantilly, VA","Westminster, CO","","Company - Public","Aerospace & Defense","Aerospace & Defense",101000,165000,133000,2000000000,5000000000,3500000000,5001,10000,7501
+"164","Data Analyst","2.7","Washington, DC","Washington, DC","1997","Nonprofit Organization","Telecommunications Services","Telecommunications",101000,165000,133000,25000000,50000000,37500000,501,1000,751
+"165","Computational Scientist","3.4","Vicksburg, MS","Fairfax, VA","1996","Subsidiary or Business Segment","IT Services","Information Technology",101000,165000,133000,10000000000,NA,10000000000,10000,NA,10000
+"166","Data Scientist","4.4","Chandler, AZ","Chandler, AZ","2015","Company - Private","Real Estate","Real Estate",101000,165000,133000,NA,NA,NA,201,500,351
+"167","Senior Data Analyst","4","San Francisco, CA","San Rafael, CA","1982","Company - Public","Computer Hardware & Software","Information Technology",101000,165000,133000,2000000000,5000000000,3500000000,5001,10000,7501
+"168","Senior Data Analyst","4.2","San Francisco, CA","Herndon, VA","1968","Company - Public","Research & Development","Business Services",101000,165000,133000,1000000000,2000000000,1500000000,5001,10000,7501
+"169","Data Engineer","3.5","Birmingham, AL","Aurora, Canada","1957","Company - Public","","",101000,165000,133000,10000000000,NA,10000000000,10000,NA,10000
+"170","Sr Data Analyst","2.3","Blue Bell, PA","Blue Bell, PA","2003","Other Organization","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",101000,165000,133000,100000000,500000000,300000000,1001,5000,3001
+"171","Data Scientist","3.4","Chicago, IL","Troy, MI","1946","Company - Public","Staffing & Outsourcing","Business Services",101000,165000,133000,5000000000,10000000000,7500000000,5001,10000,7501
+"172","Machine Learning Scientist - Bay Area, CA","3.3","Redwood City, CA","Chicago, IL","2015","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",101000,165000,133000,NA,NA,NA,501,1000,751
+"173","Data Scientist","4.7","Redwood City, CA","Redwood City, CA","2009","Company - Private","Enterprise Software & Network Solutions","Information Technology",101000,165000,133000,100000000,500000000,300000000,201,500,351
+"174","Senior Data Scientist - Algorithms","3.9","New York, NY","New York, NY","2014","Company - Private","Enterprise Software & Network Solutions","Information Technology",101000,165000,133000,NA,NA,NA,201,500,351
+"175","Data Analyst","3.3","San Diego, CA","San Diego, CA","1953","Subsidiary or Business Segment","Banks & Credit Unions","Finance",101000,165000,133000,1000000000,2000000000,1500000000,1001,5000,3001
+"176","Senior Data & Machine Learning Scientist","3.3","Chicago, IL","Chicago, IL","2015","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",101000,165000,133000,NA,NA,NA,501,1000,751
+"177","Data Engineer","4.4","Cincinnati, OH","Greenville, SC","1998","Company - Private","Venture Capital & Private Equity","Finance",101000,165000,133000,50000000,100000000,75000000,201,500,351
+"178","Data Scientist - Statistics, Early Career","3.7","Richland, WA","Richland, WA","1965","Government","Energy","Oil, Gas, Energy & Utilities",56000,97000,76500,500000000000000000,1000000000,250000000500000000,1001,5000,3001
+"179","Data Scientist","3.5","Memphis, TN","Memphis, TN","1945","Company - Private","Chemical Manufacturing","Manufacturing",56000,97000,76500,500000000000000000,1000000000,250000000500000000,1001,5000,3001
+"180","Machine Learning Engineer","3.6","Memphis, TN","Arlington, VA","1967","Nonprofit Organization","Federal Agencies","Government",56000,97000,76500,50000000,100000000,75000000,501,1000,751
+"181","Research Scientist - Patient-Centered Research (Remote)","3.8","Bethesda, MD","Bethesda, MD","2013","Subsidiary or Business Segment","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",56000,97000,76500,100000000,500000000,300000000,501,1000,751
+"182","Jr. Business Data Analyst (position added 6/12/2020)","4.7","Harrisburg, PA","Harrisburg, PA","1997","Company - Private","Advertising & Marketing","Business Services",56000,97000,76500,25000000,50000000,37500000,201,500,351
+"183","Sr. Data Scientist II","3.5","New York, NY","Hamilton, Bermuda","1948","Company - Public","Insurance Carriers","Insurance",56000,97000,76500,1000000000,2000000000,1500000000,1001,5000,3001
+"184","Data Scientist","3.3","Oak Ridge, TN","Lynchburg, VA","1850","Company - Public","Aerospace & Defense","Aerospace & Defense",56000,97000,76500,500000000000000000,1000000000,250000000500000000,5001,10000,7501
+"185","Senior Data Analyst","3.9","San Francisco, CA","San Francisco, CA","2008","Company - Public","Internet","Information Technology",56000,97000,76500,NA,NA,NA,51,200,126
+"186","Lead Data Scientist","3.7","Boston, MA","Springfield, MA","1851","Company - Private","Insurance Carriers","Insurance",56000,97000,76500,10000000000,NA,10000000000,5001,10000,7501
+"187","Production Engineer - Statistics/Data Analysis","3.9","San Carlos, CA","San Carlos, CA","2004","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",56000,97000,76500,100000000,500000000,300000000,501,1000,751
+"188","Statistical Scientist","4","South San Francisco, CA","South San Francisco, CA","1976","Subsidiary or Business Segment","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",56000,97000,76500,10000000000,NA,10000000000,10000,NA,10000
+"189","Computational Behavioral Scientist","4.2","Herndon, VA","Herndon, VA","2010","Company - Private","IT Services","Information Technology",56000,97000,76500,50000000,100000000,75000000,201,500,351
+"190","Principal Data Scientist - Machine Learning","3.6","Waltham, MA","Waltham, MA","1995","Subsidiary or Business Segment","Advertising & Marketing","Business Services",56000,97000,76500,NA,NA,NA,NA,NA,NA
+"191","Principal Machine Learning Scientist","4.7","San Francisco, CA","San Jose, CA","1999","Subsidiary or Business Segment","Computer Hardware & Software","Information Technology",56000,97000,76500,NA,NA,NA,501,1000,751
+"192","Data Engineer","4.1","Santa Clara, CA","Mountain View, CA","2011","Company - Private","IT Services","Information Technology",56000,97000,76500,NA,NA,NA,51,200,126
+"193","Principal Data Scientist","4","Gaithersburg, MD","Cambridge, United Kingdom","1913","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",56000,97000,76500,10000000000,NA,10000000000,10000,NA,10000
+"194","Data Scientist","5","San Francisco, CA","Jersey City, NJ","","Company - Public","","",56000,97000,76500,NA,NA,NA,NA,NA,NA
+"195","Senior Data Scientist - R&D Oncology","4","New York, NY","Cambridge, United Kingdom","1913","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",56000,97000,76500,10000000000,NA,10000000000,10000,NA,10000
+"196","Data Scientist","4.3","San Carlos, CA","Santa Cruz, CA","","Company - Private","","",56000,97000,76500,NA,NA,NA,51,200,126
+"197","Health Plan Data Analyst, Sr","3.8","Fort Worth, TX","Fort Worth, TX","1918","Nonprofit Organization","Health Care Services & Hospitals","Health Care",56000,97000,76500,100000000,500000000,300000000,5001,10000,7501
+"198","Principal Scientist/Associate Director, Quality Control and Analytical Technologies","3.8","Smithfield, RI","Cambridge, MA","2013","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",56000,97000,76500,100000000,500000000,300000000,201,500,351
+"199","Analytics - Business Assurance Data Analyst","4.6","Cedar Rapids, IA","Cedar Rapids, IA","1992","Company - Private","Lending","Finance",56000,97000,76500,100000000,500000000,300000000,501,1000,751
+"200","Data Scientist - Contract","4.1","Remote","Washington, DC","2015","Company - Private","Internet","Information Technology",79000,106000,92500,NA,NA,NA,51,200,126
+"201","Data Scientist","3.4","Chicago, IL","Chicago, IL","1992","Company - Private","Advertising & Marketing","Business Services",79000,106000,92500,10000000,25000000,17500000,51,200,126
+"202","Data Scientist","4.1","McLean, VA","McLean, VA","2008","Company - Private","Consulting","Business Services",79000,106000,92500,10000000,25000000,17500000,51,200,126
+"203","Machine Learning Engineer","3.7","Fort Belvoir, VA","Lorton, VA","1954","Company - Public","Aerospace & Defense","Aerospace & Defense",79000,106000,92500,100000000,500000000,300000000,501,1000,751
+"204","Data Engineer","4.4","San Francisco, CA","San Francisco, CA","2008","Company - Private","Computer Hardware & Software","Information Technology",79000,106000,92500,50000000,100000000,75000000,51,200,126
+"205","Senior Data Scientist – Image Analytics, Novartis AI Innovation Lab","3.9","Cambridge, MA","Basel, Switzerland","1996","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",79000,106000,92500,10000000000,NA,10000000000,10000,NA,10000
+"206","Data Engineer","3.6","Linthicum Heights, MD","Mc Lean, VA","2001","Company - Private","Research & Development","Business Services",79000,106000,92500,1000000000,2000000000,1500000000,1001,5000,3001
+"207","Data Science Instructor","4.5","Herndon, VA","Mc Lean, VA","2012","Company - Private","Enterprise Software & Network Solutions","Information Technology",79000,106000,92500,100000000,500000000,300000000,501,1000,751
+"208","Senior Business Intelligence Analyst","3.7","Maple Plain, MN","Maple Plain, MN","1999","Company - Public","Miscellaneous Manufacturing","Manufacturing",79000,106000,92500,100000000,500000000,300000000,1001,5000,3001
+"209","In-Line Inspection Data Analyst","2.9","Tulsa, OK","Kent, WA","1996","Company - Public","Oil & Gas Services","Oil, Gas, Energy & Utilities",79000,106000,92500,50000000,100000000,75000000,201,500,351
+"210","Data Scientist - TS/SCI FSP or CI Required","5","Annapolis Junction, MD","Woodbine, MD","2011","Company - Private","IT Services","Information Technology",79000,106000,92500,1000000,5000000,3000000,1,50,26
+"211","Data Scientist","3.4","Newton, MA","Denver, CO","1990","Subsidiary or Business Segment","Staffing & Outsourcing","Business Services",79000,106000,92500,100000000,500000000,300000000,201,500,351
+"212","Senior Data Scientist","3.5","Herndon, VA","Westminster, CO","","Company - Public","Aerospace & Defense","Aerospace & Defense",79000,106000,92500,2000000000,5000000000,3500000000,5001,10000,7501
+"213","Data Scientist - TS/SCI Required","5","Baltimore, MD","Woodbine, MD","2011","Company - Private","IT Services","Information Technology",79000,106000,92500,1000000,5000000,3000000,1,50,26
+"214","Data Science Software Engineer","4.8","Boston, MA","Boston, MA","2012","Company - Private","Computer Hardware & Software","Information Technology",79000,106000,92500,NA,NA,NA,201,500,351
+"215","ENGINEER - COMPUTER SCIENTIST - RESEARCH COMPUTER SCIENTIST - SIGNAL PROCESSING - SAN ANTONIO OR","3.9","Oklahoma City, OK","San Antonio, TX","1947","Nonprofit Organization","Research & Development","Business Services",79000,106000,92500,500000000000000000,1000000000,250000000500000000,1001,5000,3001
+"216","AI Ops Data Scientist","4","Gaithersburg, MD","Cambridge, United Kingdom","1913","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",79000,106000,92500,10000000000,NA,10000000000,10000,NA,10000
+"217","Intelligence Data Analyst, Senior","4.3","Fort Belvoir, VA","Reston, VA","2010","Company - Private","IT Services","Information Technology",79000,106000,92500,100000000,500000000,300000000,501,1000,751
+"218","Analytics Manager - Data Mart","3.5","Scotts Valley, CA","Scotts Valley, CA","1996","Nonprofit Organization","Health Care Services & Hospitals","Health Care",79000,106000,92500,500000000000000000,1000000000,250000000500000000,501,1000,751
+"219","Data Modeler (Analytical Systems)","3.7","Boston, MA","Springfield, MA","1851","Company - Private","Insurance Carriers","Insurance",79000,106000,92500,10000000000,NA,10000000000,5001,10000,7501
+"220","Senior Machine Learning Scientist - Bay Area, CA","3.3","Redwood City, CA","Chicago, IL","2015","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",79000,106000,92500,NA,NA,NA,501,1000,751
+"221","Report Writer-Data Analyst","3.1","Spartanburg, SC","Spartanburg, SC","1955","Company - Private","Lending","Finance",79000,106000,92500,NA,NA,NA,1001,5000,3001
+"222","Data Scientist/Machine Learning","4.3","New York, NY","New York, NY","2011","Company - Private","Internet","Information Technology",71000,123000,97000,100000000,500000000,300000000,51,200,126
+"223","Data Scientist - Risk","4.2","Orlando, FL","Orlando, FL","1996","Company - Private","Investment Banking & Asset Management","Finance",71000,123000,97000,100000000,500000000,300000000,51,200,126
+"224","Data Engineer","4.4","Cincinnati, OH","Greenville, SC","1998","Company - Private","Venture Capital & Private Equity","Finance",71000,123000,97000,50000000,100000000,75000000,201,500,351
+"225","Staff Data Scientist - Pricing","3.6","San Francisco, CA","San Francisco, CA","2014","Company - Private","Real Estate","Real Estate",71000,123000,97000,2000000000,5000000000,3500000000,501,1000,751
+"226","Data Scientist","4.5","Hartford, CT","Woodbridge, NJ","2008","Company - Private","IT Services","Information Technology",71000,123000,97000,5000000,10000000,7500000,51,200,126
+"227","Data Scientist","3","Chicago, IL","Chennai, India","1999","Company - Private","IT Services","Information Technology",71000,123000,97000,100000000,500000000,300000000,1001,5000,3001
+"228","Data Scientist","5","United States","Tel Aviv-Yafo, Israel","2018","Company - Private","Transportation Equipment Manufacturing","Manufacturing",71000,123000,97000,NA,NA,NA,51,200,126
+"229","Machine Learning Engineer","3.6","Beavercreek, OH","Arlington, VA","1967","Nonprofit Organization","Federal Agencies","Government",71000,123000,97000,50000000,100000000,75000000,501,1000,751
+"230","Equity Data Insights Analyst - Quantitative Analyst","3.6","Baltimore, MD","Baltimore, MD","1937","Company - Public","Investment Banking & Asset Management","Finance",71000,123000,97000,2000000000,5000000000,3500000000,5001,10000,7501
+"231","Data Scientist","","Norfolk, VA","Manalapan, NJ","","Company - Private","IT Services","Information Technology",71000,123000,97000,5000000,10000000,7500000,1,50,26
+"232","Research Scientist - Patient-Centered Research (Remote)","3.8","Bethesda, MD","Bethesda, MD","2013","Subsidiary or Business Segment","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",71000,123000,97000,100000000,500000000,300000000,501,1000,751
+"233","Data Scientist","3.3","Oak Ridge, TN","Lynchburg, VA","1850","Company - Public","Aerospace & Defense","Aerospace & Defense",71000,123000,97000,500000000000000000,1000000000,250000000500000000,5001,10000,7501
+"234","Operations Data Analyst","3.8","Charlotte, NC","Charlotte, NC","2017","Company - Public","Insurance Carriers","Insurance",71000,123000,97000,NA,NA,NA,1001,5000,3001
+"235","Sr. Data Scientist II","3.5","New York, NY","Hamilton, Bermuda","1948","Company - Public","Insurance Carriers","Insurance",71000,123000,97000,1000000000,2000000000,1500000000,1001,5000,3001
+"236","Data Scientist","3.3","Champaign, IL","Saxonburg, PA","1971","Company - Public","Telecommunications Manufacturing","Telecommunications",71000,123000,97000,1000000000,2000000000,1500000000,10000,NA,10000
+"237","Data Scientist","4.6","San Francisco, CA","Bristol, PA","","Company - Private","Computer Hardware & Software","Information Technology",71000,123000,97000,NA,NA,NA,1,50,26
+"238","Data Scientist","3.8","Texas","San Jose, CA","1998","Company - Public","Internet","Information Technology",71000,123000,97000,10000000000,NA,10000000000,10000,NA,10000
+"239","Senior Data Analyst","3.9","San Francisco, CA","San Francisco, CA","2008","Company - Public","Internet","Information Technology",71000,123000,97000,NA,NA,NA,51,200,126
+"240","Data Scientist","3.9","Plano, TX","Bangalore, India","","Company - Private","Consulting","Business Services",71000,123000,97000,NA,NA,NA,1,50,26
+"241","Data Scientist","4.7","Atlanta, GA","Atlanta, GA","2003","Company - Private","Computer Hardware & Software","Information Technology",90000,124000,107000,25000000,50000000,37500000,51,200,126
+"242","Senior Research Statistician- Data Scientist","4.8","Sheboygan, WI","Sheboygan, WI","1925","Company - Private","Insurance Carriers","Insurance",90000,124000,107000,1000000000,2000000000,1500000000,1001,5000,3001
+"243","Software Data Engineer","3.1","New York, NY","New York, NY","2000","Company - Private","Computer Hardware & Software","Information Technology",90000,124000,107000,50000000,100000000,75000000,201,500,351
+"244","Data Scientist","3.6","Palo Alto, CA","Mountain View, CA","2006","Company - Private","Enterprise Software & Network Solutions","Information Technology",90000,124000,107000,10000000,25000000,17500000,201,500,351
+"245","Real World Evidence (RWE) Scientist","5","Hoboken, NJ","Hoboken, NJ","2009","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",90000,124000,107000,NA,NA,NA,1,50,26
+"246","Data Scientist","3.7","Cambridge, MA","Paris, France","1973","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",90000,124000,107000,10000000000,NA,10000000000,10000,NA,10000
+"247","Data Scientist","3.7","Lebanon, IN","Greenwich, CT","2011","Company - Public","Transportation Management","Transportation & Logistics",90000,124000,107000,10000000000,NA,10000000000,10000,NA,10000
+"248","Data Scientist","3.9","Oakland, CA","Santa Ana, CA","2000","Company - Private","Insurance Carriers","Insurance",90000,124000,107000,10000000,25000000,17500000,51,200,126
+"249","Data Scientist","4.3","San Francisco, CA","Houston, TX","","Company - Private","","",90000,124000,107000,NA,NA,NA,1,50,26
+"250","Computer Scientist 1","4.2","Melbourne, FL","Tucson, AZ","1983","Company - Private","Aerospace & Defense","Aerospace & Defense",90000,124000,107000,50000000,100000000,75000000,201,500,351
+"251","Lead Data Scientist","3.7","Boston, MA","Springfield, MA","1851","Company - Private","Insurance Carriers","Insurance",90000,124000,107000,10000000000,NA,10000000000,5001,10000,7501
+"252","Data Scientist","4","Birmingham, AL","Birmingham, AL","","Company - Private","","",90000,124000,107000,NA,NA,NA,1,50,26
+"253","Data Scientist","3.3","Cleveland, OH","Cleveland, OH","1917","Company - Public","Industrial Manufacturing","Manufacturing",90000,124000,107000,10000000000,NA,10000000000,10000,NA,10000
+"254","Data Scientist","4.1","New York, NY","Washington, DC","1935","Company - Private","Consulting","Business Services",90000,124000,107000,NA,NA,NA,1001,5000,3001
+"255","Data Scientist","3.3","New York, NY","New York, NY","2007","Company - Private","News Outlet","Media",90000,124000,107000,50000000,100000000,75000000,201,500,351
+"256","Data Scientist","3.9","San Francisco, CA","Pleasanton, CA","2009","Company - Private","IT Services","Information Technology",90000,124000,107000,NA,NA,NA,201,500,351
+"257","Environmental Data Science","3.1","Norwell, MA","Columbus, OH","1929","Nonprofit Organization","Research & Development","Business Services",90000,124000,107000,5000000000,10000000000,7500000000,10000,NA,10000
+"258","Computational Behavioral Scientist","4.2","Herndon, VA","Herndon, VA","2010","Company - Private","IT Services","Information Technology",90000,124000,107000,50000000,100000000,75000000,201,500,351
+"259","Data Scientist","5","New York, NY","","","Unknown","","",90000,124000,107000,NA,NA,NA,NA,NA,NA
+"260","Staff BI and Data Engineer","2.9","San Jose, CA","New York, NY","1998","Company - Private","Advertising & Marketing","Business Services",90000,124000,107000,NA,NA,NA,51,200,126
+"261","Principal Machine Learning Scientist","4.7","San Francisco, CA","San Jose, CA","1999","Subsidiary or Business Segment","Computer Hardware & Software","Information Technology",90000,124000,107000,NA,NA,NA,501,1000,751
+"262","Principal Data Scientist - Machine Learning","3.6","Waltham, MA","Waltham, MA","1995","Subsidiary or Business Segment","Advertising & Marketing","Business Services",90000,124000,107000,NA,NA,NA,NA,NA,NA
+"263","Data Scientist-Human Resources","3.8","Lexington, MA","Lexington, MA","1951","Nonprofit Organization","Aerospace & Defense","Aerospace & Defense",91000,150000,120500,NA,NA,NA,1001,5000,3001
+"264","Associate Data Scientist","3.3","Bothell, WA","Bellevue, WA","1999","Company - Private","Utilities","Oil, Gas, Energy & Utilities",91000,150000,120500,2000000000,5000000000,3500000000,1001,5000,3001
+"265","Data Scientist - Statistics, Mid-Career","3.7","Richland, WA","Richland, WA","1965","Government","Energy","Oil, Gas, Energy & Utilities",91000,150000,120500,500000000000000000,1000000000,250000000500000000,1001,5000,3001
+"266","Director of Data Science","3.8","Boston, MA","Boston, MA","1981","Private Practice / Firm","Consulting","Business Services",91000,150000,120500,100000000,500000000,300000000,1001,5000,3001
+"267","Data Scientist","3.2","Rockville, MD","Rockville, MD","1820","Nonprofit Organization","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",91000,150000,120500,100000000,500000000,300000000,1001,5000,3001
+"268","Data Scientist","4.6","Piscataway, NJ","Piscataway, NJ","2010","Company - Private","IT Services","Information Technology",91000,150000,120500,10000000,25000000,17500000,201,500,351
+"269","Data Scientist","3.5","San Jose, CA","San Jose, CA","1995","Company - Public","Internet","Information Technology",91000,150000,120500,10000000000,NA,10000000000,10000,NA,10000
+"270","Data Engineer, Digital & Comp Pathology","5","New York, NY","New York, NY","2018","Company - Private","Enterprise Software & Network Solutions","Information Technology",91000,150000,120500,NA,NA,NA,1,50,26
+"271","Data Engineer","4.1","Santa Clara, CA","Mountain View, CA","2011","Company - Private","IT Services","Information Technology",91000,150000,120500,NA,NA,NA,51,200,126
+"272","Manager / Lead, Data Science & Analytics","4.1","Danvers, MA","Danvers, MA","1981","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",91000,150000,120500,100000000,500000000,300000000,1001,5000,3001
+"273","Data Scientist","3.5","New York, NY","Philadelphia, PA","1963","Company - Public","","",91000,150000,120500,10000000000,NA,10000000000,10000,NA,10000
+"274","Data Scientist","3.2","Vienna, VA","Fairfax, VA","2011","Company - Private","IT Services","Information Technology",91000,150000,120500,10000000,25000000,17500000,51,200,126
+"275","Data Scientist","5","San Francisco, CA","Jersey City, NJ","","Company - Public","","",91000,150000,120500,NA,NA,NA,NA,NA,NA
+"276","Data Scientist","4.7","Livermore, CA","Livermore, CA","1952","Government","Federal Agencies","Government",91000,150000,120500,1000000000,2000000000,1500000000,1001,5000,3001
+"277","Diversity and Inclusion Data Analyst","3.8","Pittsburgh, PA","Pittsburgh, PA","1932","Company - Private","Banks & Credit Unions","Finance",91000,150000,120500,1000000000,2000000000,1500000000,201,500,351
+"278","Data Scientist","3.6","Herndon, VA","Dallas, TX","1947","Company - Public","Architectural & Engineering Services","Business Services",91000,150000,120500,10000000000,NA,10000000000,10000,NA,10000
+"279","Data Scientist","4.8","Boston, MA","Boston, MA","2012","Company - Private","Computer Hardware & Software","Information Technology",91000,150000,120500,NA,NA,NA,201,500,351
+"280","Data Scientist","3.3","Northbrook, IL","Northbrook, IL","1894","Company - Private","Consulting","Business Services",91000,150000,120500,2000000000,5000000000,3500000000,10000,NA,10000
+"281","Data Scientist","3.7","Irvine, CA","Toronto, Canada","2005","Company - Public","Real Estate","Real Estate",91000,150000,120500,100000000,500000000,300000000,1001,5000,3001
+"282","Data Scientist","5","Irvine, CA","Irvine, CA","2018","Company - Private","Staffing & Outsourcing","Business Services",91000,150000,120500,25000000,50000000,37500000,51,200,126
+"283","Data Scientist","","San Francisco, CA","Hillsborough, NJ","","Company - Private","","",91000,150000,120500,NA,NA,NA,NA,NA,NA
+"284","Senior Analyst/Data Scientist","3.4","Santa Monica, CA","Santa Monica, CA","1966","Company - Private","Internet","Information Technology",141000,225000,183000,100000000,500000000,300000000,501,1000,751
+"285","Data Scientist","5","Boston, MA","Boston, MA","2019","Company - Private","IT Services","Information Technology",141000,225000,183000,NA,NA,NA,1,50,26
+"286","Data Scientist","","San Francisco, CA","Hillsborough, NJ","","Company - Private","","",141000,225000,183000,NA,NA,NA,NA,NA,NA
+"287","Senior Data Scientist - R&D Oncology","4","New York, NY","Cambridge, United Kingdom","1913","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",141000,225000,183000,10000000000,NA,10000000000,10000,NA,10000
+"288","Data Scientist","4.2","Oshkosh, WI","Oshkosh, WI","1917","Company - Public","Transportation Equipment Manufacturing","Manufacturing",141000,225000,183000,5000000000,10000000000,7500000000,10000,NA,10000
+"289","Data Scientist","4.3","San Carlos, CA","Santa Cruz, CA","","Company - Private","","",141000,225000,183000,NA,NA,NA,51,200,126
+"290","Data Scientist","3.4","Menlo Park, CA","Pittsburgh, PA","1960","Company - Private","Architectural & Engineering Services","Business Services",141000,225000,183000,10000000,25000000,17500000,51,200,126
+"291","Data Scientist","","San Francisco, CA","Fremont, CA","","Company - Private","","",141000,225000,183000,NA,NA,NA,51,200,126
+"292","Data Scientist","4.4","Dallas, TX","Hillsborough, NJ","2006","Company - Private","Staffing & Outsourcing","Business Services",141000,225000,183000,5000000,10000000,7500000,201,500,351
+"293","Data Scientist Machine Learning","3.5","Arlington, VA","Reston, VA","1969","Company - Public","Aerospace & Defense","Aerospace & Defense",141000,225000,183000,10000000000,NA,10000000000,10000,NA,10000
+"294","Data Scientist","3.7","San Francisco, CA","New York, NY","1993","Company - Public","Video Games","Media",141000,225000,183000,1000000000,2000000000,1500000000,1001,5000,3001
+"295","Data Scientist","3.7","Monroe, WI","Monroe, WI","","Company - Private","Food & Beverage Stores","Retail",141000,225000,183000,100000000,500000000,300000000,501,1000,751
+"296","Data Scientist","4.1","Sacramento, CA","Goteborg, Sweden","","Hospital","Health Care Services & Hospitals","Health Care",141000,225000,183000,NA,NA,NA,10000,NA,10000
+"297","Data Scientist","3.4","New York, NY","New York, NY","2017","Company - Private","Other Retail Stores","Retail",141000,225000,183000,NA,NA,NA,1,50,26
+"298","Data Analyst","4.5","Reston, VA","Washington, DC","2017","Company - Private","IT Services","Information Technology",141000,225000,183000,NA,NA,NA,1,50,26
+"299","Data Scientist","3.5","New York, NY","Lake Buena Vista, FL","1990","Company - Private","Hotels, Motels, & Resorts","Travel & Tourism",141000,225000,183000,NA,NA,NA,1001,5000,3001
+"300","Data Scientist","3.6","Hampton, VA","Schaffhausen, Switzerland","2007","Company - Public","Electrical & Electronic Manufacturing","Manufacturing",141000,225000,183000,10000000000,NA,10000000000,10000,NA,10000
+"301","Data Scientist","3.2","Richmond, VA","Richmond, VA","1788","Government","State & Regional Agencies","Government",141000,225000,183000,10000000000,NA,10000000000,10000,NA,10000
+"302","Data Scientist","3.7","New York, NY","Newark, CA","2000","Company - Private","Computer Hardware & Software","Information Technology",141000,225000,183000,25000000,50000000,37500000,501,1000,751
+"303","Data Scientist","4","Monterey, CA","Greensboro, NC","1992","Company - Private","Other Retail Stores","Retail",141000,225000,183000,100000000,500000000,300000000,501,1000,751
+"304","Data Scientist","3.2","Chicago, IL","San Francisco, CA","2015","Company - Private","Computer Hardware & Software","Information Technology",145000,225000,185000,NA,NA,NA,51,200,126
+"305","Data Scientist","4.5","McLean, VA","Falls Church, VA","2005","Company - Private","Federal Agencies","Government",145000,225000,185000,25000000,50000000,37500000,51,200,126
+"306","Chief Scientist","3.4","Remote","San Francisco, CA","2013","Company - Private","Enterprise Software & Network Solutions","Information Technology",145000,225000,185000,NA,NA,NA,51,200,126
+"307","Data Scientist","3.9","Woodlawn, MD","Rockville, MD","2004","Company - Private","IT Services","Information Technology",145000,225000,185000,10000000,25000000,17500000,201,500,351
+"308","Data Scientist","3.2","United States","Scottsdale, AZ","","Company - Private","IT Services","Information Technology",145000,225000,185000,1000000,5000000,3000000,1,50,26
+"309","Data Scientist","5","New York, NY","Irving, TX","","Company - Public","","",145000,225000,185000,NA,NA,NA,NA,NA,NA
+"310","Data Scientist","3.4","Reston, VA","Beltsville, MD","2003","Company - Private","Aerospace & Defense","Aerospace & Defense",145000,225000,185000,500000000000000000,1000000000,250000000500000000,5001,10000,7501
+"311","Data Scientist","4.4","New York, NY","Houston, TX","2015","Company - Private","IT Services","Information Technology",145000,225000,185000,NA,NA,NA,51,200,126
+"312","Health Plan Data Analyst, Sr","3.8","Fort Worth, TX","Fort Worth, TX","1918","Nonprofit Organization","Health Care Services & Hospitals","Health Care",145000,225000,185000,100000000,500000000,300000000,5001,10000,7501
+"313","Principal Scientist/Associate Director, Quality Control and Analytical Technologies","3.8","Smithfield, RI","Cambridge, MA","2013","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",145000,225000,185000,100000000,500000000,300000000,201,500,351
+"314","Data Scientist","3.5","Atlanta, GA","Toronto, Canada","1992","Company - Public","Financial Transaction Processing","Finance",145000,225000,185000,100000000,500000000,300000000,201,500,351
+"315","Senior Data Scientist","3.8","San Francisco, CA","San Francisco, CA","2011","Company - Private","Insurance Carriers","Insurance",145000,225000,185000,NA,NA,NA,201,500,351
+"316","Data Scientist","3.9","Ann Arbor, MI","Paris, France","2005","Company - Public","Internet","Information Technology",145000,225000,185000,2000000000,5000000000,3500000000,1001,5000,3001
+"317","Data Scientist","3.4","Pittsburgh, PA","Pittsburgh, PA","","Company - Private","","",145000,225000,185000,1000000,5000000,3000000,51,200,126
+"318","Data Scientist","3.8","New York, NY","Naperville, IL","2000","Company - Private","Staffing & Outsourcing","Business Services",145000,225000,185000,25000000,50000000,37500000,51,200,126
+"319","Analytics - Business Assurance Data Analyst","4.6","Cedar Rapids, IA","Cedar Rapids, IA","1992","Company - Private","Lending","Finance",145000,225000,185000,100000000,500000000,300000000,501,1000,751
+"320","Data Scientist","","New York, NY","Princeton, NJ","","Company - Private","Consulting","Business Services",145000,225000,185000,1000000,5000000,3000000,1,50,26
+"321","Data Scientist","4.6","Concord, CA","Memphis, TN","","Company - Private","Consulting","Business Services",145000,225000,185000,5000000,10000000,7500000,51,200,126
+"322","Development Scientist, Voltaren","3.9","Richmond, VA","Brentford, United Kingdom","1830","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",145000,225000,185000,10000000000,NA,10000000000,10000,NA,10000
+"323","Data Scientist","","Cincinnati, OH","Cincinnati, OH","","Company - Private","","",145000,225000,185000,NA,NA,NA,1,50,26
+"324","Data Scientist","3.7","San Francisco, CA","Singapore, Singapore","2016","Government","Federal Agencies","Government",79000,147000,113000,NA,NA,NA,1001,5000,3001
+"325","Data Scientist","3.3","Bellevue, WA","Bellevue, WA","2000","Company - Private","Investment Banking & Asset Management","Finance",79000,147000,113000,NA,NA,NA,501,1000,751
+"326","Data Engineer","4.4","San Francisco, CA","San Francisco, CA","2008","Company - Private","Computer Hardware & Software","Information Technology",79000,147000,113000,50000000,100000000,75000000,51,200,126
+"327","Data Scientist","3.7","Oakland, CA","Somerset, NJ","1997","Company - Private","IT Services","Information Technology",79000,147000,113000,25000000,50000000,37500000,1001,5000,3001
+"328","Data Scientist","3.3","San Francisco, CA","London, United Kingdom","1995","Company - Private","Staffing & Outsourcing","Business Services",79000,147000,113000,25000000,50000000,37500000,201,500,351
+"329","Data Scientist","3.4","Boston, MA","Raleigh, NC","1984","Company - Private","Computer Hardware & Software","Information Technology",79000,147000,113000,5000000,10000000,7500000,51,200,126
+"330","Data Scientist","","Reston, VA","Leesburg, VA","","Company - Private","IT Services","Information Technology",79000,147000,113000,NA,NA,NA,51,200,126
+"331","Machine Learning Engineer","3.7","Fort Belvoir, VA","Lorton, VA","1954","Company - Public","Aerospace & Defense","Aerospace & Defense",79000,147000,113000,100000000,500000000,300000000,501,1000,751
+"332","Principal Data & Analytics Platform Engineer","3.7","Durham, NC","Durham, NC","1933","Company - Private","Insurance Carriers","Insurance",79000,147000,113000,5000000000,10000000000,7500000000,1001,5000,3001
+"333","Machine Learning Engineer/Scientist","4.8","New York, NY","New York, NY","2000","Company - Private","Investment Banking & Asset Management","Finance",79000,147000,113000,NA,NA,NA,501,1000,751
+"334","Data Scientist","5","McLean, VA","Annapolis Junction, MD","2003","Company - Private","Computer Hardware & Software","Information Technology",79000,147000,113000,10000000,25000000,17500000,1,50,26
+"335","Senior Data Scientist – Image Analytics, Novartis AI Innovation Lab","3.9","Cambridge, MA","Basel, Switzerland","1996","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",79000,147000,113000,10000000000,NA,10000000000,10000,NA,10000
+"336","Data Scientist","3.4","Chicago, IL","Chicago, IL","","Company - Private","","",79000,147000,113000,NA,NA,NA,501,1000,751
+"337","Data Scientist","3.3","Kent, OH","Kent, OH","1880","Self-employed","Timber Operations","Agriculture & Forestry",79000,147000,113000,1000000000,2000000000,1500000000,10000,NA,10000
+"338","Data Scientist","4.6","Reston, VA","Chantilly, VA","1999","Company - Private","Aerospace & Defense","Aerospace & Defense",79000,147000,113000,100000000,500000000,300000000,501,1000,751
+"339","Data Scientist","","San Francisco, CA","Westlake Village, CA","","Company - Private","","",79000,147000,113000,NA,NA,NA,1,50,26
+"340","Machine Learning Engineer","2.6","Pittsburgh, PA","Pittsburgh, PA","1984","College / University","Colleges & Universities","Education",79000,147000,113000,NA,NA,NA,501,1000,751
+"341","Data Analyst - Unilever Prestige","3.8","Carson, CA","Carson, CA","1986","Subsidiary or Business Segment","Consumer Products Manufacturing","Manufacturing",79000,147000,113000,100000000,500000000,300000000,201,500,351
+"342","Data Scientist","4.8","New York, NY","North Brunswick, NJ","2011","Company - Private","IT Services","Information Technology",79000,147000,113000,NA,NA,NA,1,50,26
+"343","VP, Data Science","3.9","New York, NY","New York, NY","2012","Company - Private","Research & Development","Business Services",79000,147000,113000,NA,NA,NA,51,200,126
+"344","Data Scientist","4","Santa Clara, CA","Santa Clara, CA","2012","Company - Private","Enterprise Software & Network Solutions","Information Technology",122000,146000,134000,NA,NA,NA,501,1000,751
+"345","Data Scientist","4.2","Palo Alto, CA","Palo Alto, CA","2013","Company - Private","Enterprise Software & Network Solutions","Information Technology",122000,146000,134000,10000000,25000000,17500000,51,200,126
+"346","Senior Business Intelligence Analyst","3.7","Maple Plain, MN","Maple Plain, MN","1999","Company - Public","Miscellaneous Manufacturing","Manufacturing",122000,146000,134000,100000000,500000000,300000000,1001,5000,3001
+"347","Data Scientist","3","Cincinnati, OH","Lincoln, NE","1887","Company - Private","Insurance Agencies & Brokerages","Insurance",122000,146000,134000,2000000000,5000000000,3500000000,1001,5000,3001
+"348","Data Engineer - Kafka","3.5","San Jose, CA","San Jose, CA","1970","Company - Public","Computer Hardware & Software","Information Technology",122000,146000,134000,10000000000,NA,10000000000,10000,NA,10000
+"349","Data Scientist","2.9","Santa Clara, CA","Benicia, CA","","Company - Private","","",122000,146000,134000,1000000,5000000,3000000,1,50,26
+"350","Data Scientist","5","New York, NY","New York, NY","2014","Company - Private","Staffing & Outsourcing","Business Services",122000,146000,134000,NA,NA,NA,1,50,26
+"351","Data Scientist","4.7","Chantilly, VA","Annapolis Junction, MD","2002","Subsidiary or Business Segment","Computer Hardware & Software","Information Technology",122000,146000,134000,100000000,500000000,300000000,201,500,351
+"352","Data Scientist","","Palo Alto, CA","","","","","",122000,146000,134000,NA,NA,NA,NA,NA,NA
+"353","Decision Scientist","4.5","Laurel, MD","Laurel, MD","1942","Nonprofit Organization","Aerospace & Defense","Aerospace & Defense",122000,146000,134000,1000000000,2000000000,1500000000,5001,10000,7501
+"354","Data Scientist","4.9","Cambridge, MA","Cambridge, MA","2010","Company - Private","Enterprise Software & Network Solutions","Information Technology",122000,146000,134000,NA,NA,NA,1,50,26
+"355","Data Science All Star Program - Data Engineer Track","4.6","Columbia, MD","Columbia, MD","2002","Company - Private","Consulting","Business Services",122000,146000,134000,NA,NA,NA,51,200,126
+"356","Data Scientist - TS/SCI FSP or CI Required","5","Annapolis Junction, MD","Woodbine, MD","2011","Company - Private","IT Services","Information Technology",122000,146000,134000,1000000,5000000,3000000,1,50,26
+"357","Data Analyst","3.9","Falls Church, VA","Vienna, VA","2012","Company - Public","Consulting","Business Services",122000,146000,134000,1000000,5000000,3000000,51,200,126
+"358","Data Scientist","","San Francisco, CA","","","","","",122000,146000,134000,NA,NA,NA,NA,NA,NA
+"359","Data Scientist","","San Francisco, CA","","","","","",122000,146000,134000,NA,NA,NA,NA,NA,NA
+"360","Data Scientist","","San Francisco, CA","","","","","",122000,146000,134000,NA,NA,NA,NA,NA,NA
+"361","Data Scientist","","San Francisco, CA","","","","","",122000,146000,134000,NA,NA,NA,NA,NA,NA
+"362","Data Scientist","","San Francisco, CA","","","","","",122000,146000,134000,NA,NA,NA,NA,NA,NA
+"363","Data Scientist","","San Francisco, CA","","","","","",122000,146000,134000,NA,NA,NA,NA,NA,NA
+"364","Senior Data Scientist","3.5","Herndon, VA","Westminster, CO","","Company - Public","Aerospace & Defense","Aerospace & Defense",122000,146000,134000,2000000000,5000000000,3500000000,5001,10000,7501
+"365","Data Scientist","4.3","Cambridge, MA","Cambridge, MA","1999","Company - Private","Enterprise Software & Network Solutions","Information Technology",112000,116000,114000,NA,NA,NA,201,500,351
+"366","Data Scientist","3.7","Cambridge, MA","OSAKA, Japan","1781","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",112000,116000,114000,10000000000,NA,10000000000,10000,NA,10000
+"367","Data Scientist","3.5","Herndon, VA","Westminster, CO","","Company - Public","Aerospace & Defense","Aerospace & Defense",112000,116000,114000,2000000000,5000000000,3500000000,5001,10000,7501
+"368","ENGINEER - COMPUTER SCIENTIST - RESEARCH COMPUTER SCIENTIST - SIGNAL PROCESSING - SAN ANTONIO OR","3.9","Oklahoma City, OK","San Antonio, TX","1947","Nonprofit Organization","Research & Development","Business Services",112000,116000,114000,500000000000000000,1000000000,250000000500000000,1001,5000,3001
+"369","Data Scientist","4.7","Thousand Oaks, CA","Danville, CA","2008","Company - Private","Consulting","Business Services",112000,116000,114000,NA,NA,NA,51,200,126
+"370","Data Science Software Engineer","4.8","Boston, MA","Boston, MA","2012","Company - Private","Computer Hardware & Software","Information Technology",112000,116000,114000,NA,NA,NA,201,500,351
+"371","AI Ops Data Scientist","4","Gaithersburg, MD","Cambridge, United Kingdom","1913","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",112000,116000,114000,10000000000,NA,10000000000,10000,NA,10000
+"372","Data Scientist","4.4","Edison, NJ","Wilmington, MA","","Company - Private","","",112000,116000,114000,NA,NA,NA,51,200,126
+"373","Data Scientist","3.2","Adelphi, MD","Chantilly, VA","2018","Company - Public","Aerospace & Defense","Aerospace & Defense",112000,116000,114000,NA,NA,NA,10000,NA,10000
+"374","Data Scientist","4.5","Washington, DC","New York, 061","1980","Company - Private","Staffing & Outsourcing","Business Services",112000,116000,114000,NA,NA,NA,1,50,26
+"375","Scientist - Machine Learning","3.5","Seattle, WA","Seattle, WA","2003","Nonprofit Organization","Research & Development","Business Services",112000,116000,114000,100000000,500000000,300000000,201,500,351
+"376","Data Scientist","4.4","Plano, TX","Reading, MA","1989","Company - Private","Staffing & Outsourcing","Business Services",112000,116000,114000,100000000,500000000,300000000,1001,5000,3001
+"377","Data Scientist","3.1","Sunnyvale, CA","Pleasanton, CA","2001","Company - Private","Staffing & Outsourcing","Business Services",112000,116000,114000,1000000,5000000,3000000,1,50,26
+"378","Sr. Data Scientist","3.5","Denver, CO","Denver, CO","2011","Company - Private","Travel Agencies","Travel & Tourism",112000,116000,114000,NA,NA,NA,201,500,351
+"379","Data Scientist","3.8","Thousand Oaks, CA","Folsom, CA","1999","Company - Private","IT Services","Information Technology",112000,116000,114000,50000000,100000000,75000000,1001,5000,3001
+"380","Data Scientist","3.7","McLean, VA","Raleigh, NC","1908","Subsidiary or Business Segment","Energy","Oil, Gas, Energy & Utilities",112000,116000,114000,NA,NA,NA,5001,10000,7501
+"381","Analytics Manager - Data Mart","3.5","Scotts Valley, CA","Scotts Valley, CA","1996","Nonprofit Organization","Health Care Services & Hospitals","Health Care",112000,116000,114000,500000000000000000,1000000000,250000000500000000,501,1000,751
+"382","Data Modeler (Analytical Systems)","3.7","Boston, MA","Springfield, MA","1851","Company - Private","Insurance Carriers","Insurance",112000,116000,114000,10000000000,NA,10000000000,5001,10000,7501
+"383","Applied AI Scientist / Engineer","5","Boston, MA","Austin, TX","2003","Contract","Computer Hardware & Software","Information Technology",112000,116000,114000,NA,NA,NA,1,50,26
+"384","Data Engineer (Analytics, SQL, Python, AWS)","4","Hartford, CT","Hartford, CT","1853","Company - Public","Insurance Carriers","Insurance",112000,116000,114000,10000000000,NA,10000000000,10000,NA,10000
+"385","Senior Data Analyst - Finance & Platform Analytics","3.6","San Francisco, CA","San Francisco, CA","2011","Subsidiary or Business Segment","Internet","Information Technology",112000,116000,114000,NA,NA,NA,1001,5000,3001
+"386","Senior Data Scientist","4.8","Boston, MA","Boston, MA","2012","Company - Private","Computer Hardware & Software","Information Technology",110000,163000,136500,NA,NA,NA,201,500,351
+"387","Market Research Data Scientist","3.8","Denver, CO","Denver, CO","2009","Company - Private","Advertising & Marketing","Business Services",110000,163000,136500,10000000,25000000,17500000,51,200,126
+"388","IT Partner Digital Health Technology and Data Science","3.6","Cambridge, MA","Cambridge, MA","1978","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",110000,163000,136500,10000000000,NA,10000000000,5001,10000,7501
+"389","Data Scientist","","San Francisco, CA","","","","","",110000,163000,136500,NA,NA,NA,NA,NA,NA
+"390","Data Scientist","","San Francisco, CA","","","","","",110000,163000,136500,NA,NA,NA,NA,NA,NA
+"391","Senior Machine Learning Scientist - Bay Area, CA","3.3","Redwood City, CA","Chicago, IL","2015","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",110000,163000,136500,NA,NA,NA,501,1000,751
+"392","Software Engineer (Data Scientist, C,C++,Linux,Unix) - SISW - MG","4.1","Fremont, CA","Wilsonville, OR","1981","Company - Public","Computer Hardware & Software","Information Technology",110000,163000,136500,1000000000,2000000000,1500000000,5001,10000,7501
+"393","Senior Clinical Data Scientist Programmer","3.6","Hamilton, NJ","Princeton, NJ","","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",110000,163000,136500,100000000,500000000,300000000,1001,5000,3001
+"394","Data Engineer","4.5","Falls Church, VA","Falls Church, VA","2005","Company - Private","Federal Agencies","Government",110000,163000,136500,25000000,50000000,37500000,51,200,126
+"395","Computer Vision / Deep Learning Scientist","3.3","Chicago, IL","Chicago, IL","2015","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",110000,163000,136500,NA,NA,NA,501,1000,751
+"396","Data Solutions Engineer - Data Modeler","3.4","Indianapolis, IN","Boston, MA","1912","Company - Private","Insurance Carriers","Insurance",110000,163000,136500,10000000000,NA,10000000000,10000,NA,10000
+"397","Data Scientist","4.3","Washington, DC","Folsom, CA","1996","Company - Private","IT Services","Information Technology",110000,163000,136500,100000000,500000000,300000000,501,1000,751
+"398","Data Scientist (TS/SCI w/ Poly)","3.5","Herndon, VA","Westminster, CO","","Company - Public","Aerospace & Defense","Aerospace & Defense",110000,163000,136500,2000000000,5000000000,3500000000,5001,10000,7501
+"399","Weapons and Sensors Engineer/Scientist","4","Huntsville, AL","Huntsville, AL","1974","Company - Private","Aerospace & Defense","Aerospace & Defense",110000,163000,136500,100000000,500000000,300000000,1001,5000,3001
+"400","Applied Computer Scientist","4.5","Woburn, MA","Woburn, MA","2010","Company - Private","Aerospace & Defense","Aerospace & Defense",110000,163000,136500,100000000,500000000,300000000,201,500,351
+"401","Senior Data Analyst","4.5","Herndon, VA","Mc Lean, VA","2012","Company - Private","Enterprise Software & Network Solutions","Information Technology",110000,163000,136500,100000000,500000000,300000000,501,1000,751
+"402","Cloud Data Engineer (Azure)","3.9","Merrifield, VA","Vienna, VA","1933","Other Organization","Banks & Credit Unions","Finance",110000,163000,136500,NA,NA,NA,10000,NA,10000
+"403","Lead Certified Clinical Laboratory Scientist - Saturday - Tuesday, 8:00pm - 6:30am shift","4","Madison, WI","Madison, WI","1995","Company - Public","Health Care Services & Hospitals","Health Care",110000,163000,136500,100000000,500000000,300000000,1001,5000,3001
+"404","Sr. Data Analyst","3.6","Philadelphia, PA","Phila, PA","1994","Company - Private","Health Care Services & Hospitals","Health Care",110000,163000,136500,500000000000000000,1000000000,250000000500000000,201,500,351
+"405","Senior Scientist - Toxicologist - Product Integrity (Stewardship)","3.3","Winston-Salem, NC","Winston-Salem, NC","1875","Company - Private","Consumer Products Manufacturing","Manufacturing",110000,163000,136500,10000000000,NA,10000000000,5001,10000,7501
+"406","Senior Machine Learning Engineer","5","Raleigh, NC","Indianapolis, IN","2016","Company - Private","Enterprise Software & Network Solutions","Information Technology",110000,163000,136500,NA,NA,NA,51,200,126
+"407","Product Data Scientist - Ads Data Science","4.1","San Francisco, CA","San Francisco, CA","2006","Company - Public","Internet","Information Technology",124000,198000,161000,2000000000,5000000000,3500000000,1001,5000,3001
+"408","Data Scientist","3.2","San Francisco, CA","San Francisco, CA","2011","Company - Private","Express Delivery Services","Transportation & Logistics",124000,198000,161000,NA,NA,NA,1001,5000,3001
+"409","Data Scientist","4.9","Columbia, MD","Columbia, MD","2010","Company - Private","Enterprise Software & Network Solutions","Information Technology",124000,198000,161000,10000000,25000000,17500000,51,200,126
+"410","Data Scientist","","San Mateo, CA","Half Moon Bay, CA","","Unknown","","",124000,198000,161000,NA,NA,NA,NA,NA,NA
+"411","Data Scientist","3.3","Boston, MA","Boston, MA","2018","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",124000,198000,161000,NA,NA,NA,201,500,351
+"412","Data Scientist","","Burbank, CA","Los Angeles, CA","2005","Company - Private","IT Services","Information Technology",124000,198000,161000,NA,NA,NA,1,50,26
+"413","Data Scientist","5","Sunnyvale, CA","London, United Kingdom","","Company - Private","Enterprise Software & Network Solutions","Information Technology",124000,198000,161000,NA,NA,NA,1,50,26
+"414","Data Scientist","3.4","San Ramon, CA","Hilliard, OH","","Company - Private","Advertising & Marketing","Business Services",124000,198000,161000,1000000,5000000,3000000,1,50,26
+"415","Data Scientist","4.1","Washington, DC","Hanover, MD","","Company - Private","Consulting","Business Services",124000,198000,161000,1000000,5000000,3000000,1,50,26
+"416","Data Scientist","5","Springfield, VA","Arlington, VA","2014","Company - Private","Aerospace & Defense","Aerospace & Defense",124000,198000,161000,10000000,25000000,17500000,51,200,126
+"417","Data Scientist","4.2","Phoenix, AZ","Irvine, CA","1999","Subsidiary or Business Segment","Staffing & Outsourcing","Business Services",124000,198000,161000,100000000,500000000,300000000,201,500,351
+"418","Data Scientist","3.7","Oxnard, CA","Mc Lean, VA","1914","Company - Public","Consulting","Business Services",124000,198000,161000,5000000000,10000000000,7500000000,10000,NA,10000
+"419","Data Scientist","3.8","Kansas City, MO","Kansas City, MO","1898","Company - Private","Architectural & Engineering Services","Business Services",124000,198000,161000,1000000000,2000000000,1500000000,5001,10000,7501
+"420","Data Scientist","4.8","Jersey City, NJ","Bengaluru, India","2010","Company - Private","IT Services","Information Technology",124000,198000,161000,1000000,5000000,3000000,201,500,351
+"421","Data Scientist","3.5","Manchester, NH","Menlo Park, CA","1948","Company - Public","Staffing & Outsourcing","Business Services",124000,198000,161000,2000000000,5000000000,3500000000,10000,NA,10000
+"422","Analytics - Business Assurance Data Analyst","4.6","Cedar Rapids, IA","Cedar Rapids, IA","1992","Company - Private","Lending","Finance",124000,198000,161000,100000000,500000000,300000000,501,1000,751
+"423","Data Scientist","4.5","Winters, TX","Alpharetta, GA","","Company - Private","Accounting","Accounting & Legal",124000,198000,161000,NA,NA,NA,1,50,26
+"424","Data Scientist","3.9","Ann Arbor, MI","Paris, France","2005","Company - Public","Internet","Information Technology",124000,198000,161000,2000000000,5000000000,3500000000,1001,5000,3001
+"425","Data Scientist","3.4","Brooklyn, NY","","","Company - Private","","",124000,198000,161000,NA,NA,NA,NA,NA,NA
+"426","Data Scientist","","New York, NY","Princeton, NJ","","Company - Private","Consulting","Business Services",124000,198000,161000,1000000,5000000,3000000,1,50,26
+"427","Data Scientist","4.1","McLean, VA","McLean, VA","2008","Company - Private","Consulting","Business Services",124000,198000,161000,10000000,25000000,17500000,51,200,126
+"428","Data Scientist","3.7","New York, NY","New York, NY","2012","Company - Private","Internet","Information Technology",79000,133000,106000,NA,NA,NA,501,1000,751
+"429","Senior Data Scientist","3.5","Saint Louis, MO","Saint Louis, MO","2012","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",79000,133000,106000,1000000,5000000,3000000,201,500,351
+"430","Data Scientist","4.6","Concord, CA","Memphis, TN","","Company - Private","Consulting","Business Services",79000,133000,106000,5000000,10000000,7500000,51,200,126
+"431","Data Scientist","","Fort Belvoir, VA","Washington, DC","","Company - Public","","",79000,133000,106000,NA,NA,NA,NA,NA,NA
+"432","Data Scientist","","Cincinnati, OH","Cincinnati, OH","","Company - Private","","",79000,133000,106000,NA,NA,NA,1,50,26
+"433","Data Engineer","4.4","San Francisco, CA","San Francisco, CA","2008","Company - Private","Computer Hardware & Software","Information Technology",79000,133000,106000,50000000,100000000,75000000,51,200,126
+"434","Data Scientist","3.6","Germantown, MD","Germantown, MD","","Company - Private","IT Services","Information Technology",79000,133000,106000,NA,NA,NA,51,200,126
+"435","Data Scientist","3.1","Omaha, NE","Omaha, NE","1956","Company - Public","Logistics & Supply Chain","Transportation & Logistics",79000,133000,106000,2000000000,5000000000,3500000000,10000,NA,10000
+"436","Data Scientist","5","McLean, VA","Reston, VA","","Company - Private","","",79000,133000,106000,1000000,5000000,3000000,1,50,26
+"437","Data Scientist - Machine Learning","5","Open Fork, VA","Clifton Park, NY","2018","Company - Private","Staffing & Outsourcing","Business Services",79000,133000,106000,NA,NA,NA,1,50,26
+"438","Data Scientist","","Reston, VA","Leesburg, VA","","Company - Private","IT Services","Information Technology",79000,133000,106000,NA,NA,NA,51,200,126
+"439","Data Scientist","","United States","Livonia, MI","","Company - Private","","",79000,133000,106000,NA,NA,NA,1,50,26
+"440","Data Scientist","3.5","San Carlos, CA","San Carlos, CA","2014","Company - Private","Farm Support Services","Agriculture & Forestry",79000,133000,106000,NA,NA,NA,201,500,351
+"441","Data Scientist","","Boston, MA","Boston, MA","","Private Practice / Firm","Health Care Services & Hospitals","Health Care",79000,133000,106000,NA,NA,NA,1,50,26
+"442","Data Scientist","5","Ashburn, VA","Ashburn, VA","","Company - Public","","",79000,133000,106000,NA,NA,NA,1,50,26
+"443","Data Scientist","2.7","Lombard, IL","Nashville, TN","2007","Company - Public","IT Services","Information Technology",79000,133000,106000,NA,NA,NA,10000,NA,10000
+"444","Data Scientist","4.1","Hampton, VA","Alexandria, VA","1977","Company - Private","Research & Development","Business Services",79000,133000,106000,100000000,500000000,300000000,1001,5000,3001
+"445","Data Scientist","2.1","San Francisco, CA","Los Angeles, CA","2019","Company - Private","Telecommunications Services","Telecommunications",79000,133000,106000,NA,NA,NA,NA,NA,NA
+"446","Machine Learning Engineer/Scientist","4.8","New York, NY","New York, NY","2000","Company - Private","Investment Banking & Asset Management","Finance",79000,133000,106000,NA,NA,NA,501,1000,751
+"447","Data Scientist - Intermediate","4.5","Saint Louis, MO","Saint Louis, MO","1994","Company - Private","Staffing & Outsourcing","Business Services",69000,116000,92500,25000000,50000000,37500000,201,500,351
+"448","Principal Data Scientist","4","San Francisco, CA","San Rafael, CA","1982","Company - Public","Computer Hardware & Software","Information Technology",69000,116000,92500,2000000000,5000000000,3500000000,5001,10000,7501
+"449","Data Scientist","3.3","Edison, NJ","Edison, NJ","","Nonprofit Organization","Health Care Services & Hospitals","Health Care",69000,116000,92500,5000000000,10000000000,7500000000,10000,NA,10000
+"450","Senior Data Scientist – Image Analytics, Novartis AI Innovation Lab","3.9","Cambridge, MA","Basel, Switzerland","1996","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",69000,116000,92500,10000000000,NA,10000000000,10000,NA,10000
+"451","Data Scientist","3.2","Alpharetta, GA","Somerset, NJ","2007","Company - Private","Staffing & Outsourcing","Business Services",69000,116000,92500,100000000,500000000,300000000,1001,5000,3001
+"452","Data Scientist","3.2","Boulder, CO","Ventura, CA","2009","Company - Public","Internet","Information Technology",69000,116000,92500,NA,NA,NA,1001,5000,3001
+"453","Data Scientist- Industrial Discrete Sector Industry","3.7","Atlanta, GA","Armonk, NY","1911","Company - Public","IT Services","Information Technology",69000,116000,92500,10000000000,NA,10000000000,10000,NA,10000
+"454","Data Scientist","4.4","Falls Church, VA","Fairfax, VA","2007","Company - Private","Consulting","Business Services",69000,116000,92500,25000000,50000000,37500000,51,200,126
+"455","Data Scientist","3.1","Mountain View, CA","San Jose, CA","2009","Company - Private","IT Services","Information Technology",69000,116000,92500,1000000,5000000,3000000,1,50,26
+"456","Data Scientist","3.3","Kent, OH","Kent, OH","1880","Self-employed","Timber Operations","Agriculture & Forestry",69000,116000,92500,1000000000,2000000000,1500000000,10000,NA,10000
+"457","Data Scientist","3.5","Trumbull, CT","Trumbull, CT","2006","Company - Private","Insurance Carriers","Insurance",69000,116000,92500,50000000,100000000,75000000,501,1000,751
+"458","Data Scientist","","San Francisco, CA","Westlake Village, CA","","Company - Private","","",69000,116000,92500,NA,NA,NA,1,50,26
+"459","Machine Learning Engineer","2.6","Pittsburgh, PA","Pittsburgh, PA","1984","College / University","Colleges & Universities","Education",69000,116000,92500,NA,NA,NA,501,1000,751
+"460","Data Scientist","","Sterling, VA","","","","","",69000,116000,92500,NA,NA,NA,NA,NA,NA
+"461","Data Scientist","2.7","New York, NY","New York, NY","1968","Company - Public","Advertising & Marketing","Business Services",69000,116000,92500,100000000,500000000,300000000,1001,5000,3001
+"462","Data Scientist","3.5","Alpharetta, GA","Minneapolis, MN","2009","Company - Private","Consulting","Business Services",69000,116000,92500,NA,NA,NA,501,1000,751
+"463","Data Scientist","3.2","Philadelphia, PA","Chadds Ford, PA","","Company - Private","Staffing & Outsourcing","Business Services",69000,116000,92500,5000000,10000000,7500000,1,50,26
+"464","Data Analyst - Unilever Prestige","3.8","Carson, CA","Carson, CA","1986","Subsidiary or Business Segment","Consumer Products Manufacturing","Manufacturing",69000,116000,92500,100000000,500000000,300000000,201,500,351
+"465","Data Scientist","4.2","Foster City, CA","Edison, NJ","","Company - Private","IT Services","Information Technology",69000,116000,92500,NA,NA,NA,51,200,126
+"466","Data Scientist","4.8","New York, NY","North Brunswick, NJ","2011","Company - Private","IT Services","Information Technology",69000,116000,92500,NA,NA,NA,1,50,26
+"467","Data Scientist","4.2","Frederick, MD","Chicago, IL","1989","Company - Private","Staffing & Outsourcing","Business Services",69000,116000,92500,10000000,25000000,17500000,51,200,126
+"468","Data & Machine Learning Scientist","3.3","Chicago, IL","Chicago, IL","2015","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",31000,56000,43500,NA,NA,NA,501,1000,751
+"469","Data Scientist","4","Santa Clara, CA","San Ramon, CA","2006","Company - Private","Enterprise Software & Network Solutions","Information Technology",31000,56000,43500,50000000,100000000,75000000,1001,5000,3001
+"470","VP, Data Science","3.9","New York, NY","New York, NY","2012","Company - Private","Research & Development","Business Services",31000,56000,43500,NA,NA,NA,51,200,126
+"471","Senior Business Intelligence Analyst","3.7","Maple Plain, MN","Maple Plain, MN","1999","Company - Public","Miscellaneous Manufacturing","Manufacturing",31000,56000,43500,100000000,500000000,300000000,1001,5000,3001
+"472","Data Scientist","3.9","Colorado Springs, CO","Los Angeles, CA","2004","Company - Private","Aerospace & Defense","Aerospace & Defense",31000,56000,43500,50000000,100000000,75000000,501,1000,751
+"473","Data Engineer - Kafka","3.5","San Jose, CA","San Jose, CA","1970","Company - Public","Computer Hardware & Software","Information Technology",31000,56000,43500,10000000000,NA,10000000000,10000,NA,10000
+"474","Data Scientist","4","United States","Stamford, CT","2012","Company - Private","Investment Banking & Asset Management","Finance",31000,56000,43500,NA,NA,NA,1,50,26
+"475","Data Scientist","3","Cincinnati, OH","Lincoln, NE","1887","Company - Private","Insurance Agencies & Brokerages","Insurance",31000,56000,43500,2000000000,5000000000,3500000000,1001,5000,3001
+"476","Data Scientist","3.7","Atlanta, GA","Atlanta, GA","2000","Company - Public","Financial Transaction Processing","Finance",31000,56000,43500,2000000000,5000000000,3500000000,5001,10000,7501
+"477","Data Scientist","4.5","Washington, DC","New York, NY","","Company - Private","","",31000,56000,43500,NA,NA,NA,1,50,26
+"478","Data Scientist","2.8","Arlington, VA","Arlington, VA","1987","Nonprofit Organization","Social Assistance","Non-Profit",31000,56000,43500,25000000,50000000,37500000,51,200,126
+"479","Data Scientist","4.1","Santa Clara, CA","Santa Clara, CA","","Company - Private","","",31000,56000,43500,10000000,25000000,17500000,201,500,351
+"480","In-Line Inspection Data Analyst","2.9","Tulsa, OK","Kent, WA","1996","Company - Public","Oil & Gas Services","Oil, Gas, Energy & Utilities",31000,56000,43500,50000000,100000000,75000000,201,500,351
+"481","Data Scientist","4.7","Chantilly, VA","Annapolis Junction, MD","2002","Subsidiary or Business Segment","Computer Hardware & Software","Information Technology",31000,56000,43500,100000000,500000000,300000000,201,500,351
+"482","Data Scientist","3.4","Southfield, MI","Saint Paul, MN","1998","Company - Private","Construction","Construction, Repair & Maintenance",31000,56000,43500,100000000,500000000,300000000,1001,5000,3001
+"483","Data Scientist","3.9","San Francisco, CA","Glen Allen, VA","1995","Subsidiary or Business Segment","Staffing & Outsourcing","Business Services",31000,56000,43500,2000000000,5000000000,3500000000,1001,5000,3001
+"484","Data Scientist","2.9","United States","Reston, VA","1985","Company - Private","IT Services","Information Technology",31000,56000,43500,100000000,500000000,300000000,201,500,351
+"485","Decision Scientist","4.5","Laurel, MD","Laurel, MD","1942","Nonprofit Organization","Aerospace & Defense","Aerospace & Defense",31000,56000,43500,1000000000,2000000000,1500000000,5001,10000,7501
+"486","Data Scientist","4.9","Cambridge, MA","Cambridge, MA","2010","Company - Private","Enterprise Software & Network Solutions","Information Technology",31000,56000,43500,NA,NA,NA,1,50,26
+"487","Data Scientist - TS/SCI FSP or CI Required","5","Annapolis Junction, MD","Woodbine, MD","2011","Company - Private","IT Services","Information Technology",31000,56000,43500,1000000,5000000,3000000,1,50,26
+"488","Data Scientist, Applied Machine Learning - Bay Area","3.3","Redwood City, CA","Chicago, IL","2015","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",95000,119000,107000,NA,NA,NA,501,1000,751
+"489","Data Scientist","3.5","Washington, DC","Chevy Chase, MD","2019","Company - Private","Internet","Information Technology",95000,119000,107000,NA,NA,NA,1001,5000,3001
+"490","Data Scientist","3.5","San Clemente, CA","Aliso Viejo, CA","2010","Company - Private","Health Care Services & Hospitals","Health Care",95000,119000,107000,1000000,5000000,3000000,1,50,26
+"491","Data Scientist","4","New York, NY","Plainsboro, NJ","","Company - Private","Accounting","Accounting & Legal",95000,119000,107000,NA,NA,NA,1,50,26
+"492","Data Analyst","3.9","Falls Church, VA","Vienna, VA","2012","Company - Public","Consulting","Business Services",95000,119000,107000,1000000,5000000,3000000,51,200,126
+"493","Data Scientist","3.4","Newton, MA","Denver, CO","1990","Subsidiary or Business Segment","Staffing & Outsourcing","Business Services",95000,119000,107000,100000000,500000000,300000000,201,500,351
+"494","Data Scientist","3.5","San Francisco, CA","San Francisco, CA","1969","Company - Public","Department, Clothing, & Shoe Stores","Retail",95000,119000,107000,10000000000,NA,10000000000,10000,NA,10000
+"495","Data Scientist","4.7","Washington, DC","Fairmont, WV","","Company - Private","","",95000,119000,107000,1000000,5000000,3000000,1,50,26
+"496","Data Scientist","","San Francisco, CA","","","","","",95000,119000,107000,NA,NA,NA,NA,NA,NA
+"497","Data Scientist","","San Francisco, CA","","","","","",95000,119000,107000,NA,NA,NA,NA,NA,NA
+"498","Data Scientist","","San Francisco, CA","","","","","",95000,119000,107000,NA,NA,NA,NA,NA,NA
+"499","Data Scientist","","San Francisco, CA","","","","","",95000,119000,107000,NA,NA,NA,NA,NA,NA
+"500","Data Scientist","","San Francisco, CA","","","","","",95000,119000,107000,NA,NA,NA,NA,NA,NA
+"501","Data Scientist","","San Francisco, CA","","","","","",95000,119000,107000,NA,NA,NA,NA,NA,NA
+"502","Data Scientist","4.6","The Woodlands, TX","Houston, TX","1988","Company - Private","Staffing & Outsourcing","Business Services",95000,119000,107000,10000000,25000000,17500000,1,50,26
+"503","Data Scientist","4","Seattle, WA","Jersey City, NJ","1999","Company - Private","Computer Hardware & Software","Information Technology",95000,119000,107000,10000000,25000000,17500000,51,200,126
+"504","Data Scientist","4","Chicago, IL","Cherry Hill, NJ","","Company - Private","Staffing & Outsourcing","Business Services",95000,119000,107000,1000000,5000000,3000000,1,50,26
+"505","Data Scientist","","Chantilly, VA","","","Unknown","","",95000,119000,107000,NA,NA,NA,1,50,26
+"506","Data Scientist","4.7","Chicago, IL","Itasca, IL","1994","Company - Private","Staffing & Outsourcing","Business Services",95000,119000,107000,10000000,25000000,17500000,51,200,126
+"507","Data Scientist","3.5","San Francisco, CA","San Francisco, CA","1998","Company - Private","Consulting","Business Services",95000,119000,107000,25000000,50000000,37500000,51,200,126
+"508","Data Scientist - TS/SCI Required","5","Baltimore, MD","Woodbine, MD","2011","Company - Private","IT Services","Information Technology",95000,119000,107000,1000000,5000000,3000000,1,50,26
+"509","Senior Principal Data Scientist (Python/R)","4.1","Pleasanton, CA","Basel, Switzerland","1896","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",212000,331000,271500,10000000000,NA,10000000000,10000,NA,10000
+"510","Real World Science, Data Scientist","4","Wilmington, DE","Cambridge, United Kingdom","1913","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",212000,331000,271500,10000000000,NA,10000000000,10000,NA,10000
+"511","Data Scientist","3.6","United States","Los Angeles, CA","2002","Company - Public","Staffing & Outsourcing","Business Services",212000,331000,271500,NA,NA,NA,201,500,351
+"512","Data Scientist(s)/Machine Learning Engineer","5","New York, NY","Coconut Creek, FL","1987","Company - Private","Staffing & Outsourcing","Business Services",212000,331000,271500,NA,NA,NA,1,50,26
+"513","Senior Data Scientist","3.5","Herndon, VA","Westminster, CO","","Company - Public","Aerospace & Defense","Aerospace & Defense",212000,331000,271500,2000000000,5000000000,3500000000,5001,10000,7501
+"514","Data Scientist","4.7","Seattle, WA","Lombard, IL","","Company - Private","Publishing","Media",212000,331000,271500,NA,NA,NA,NA,NA,NA
+"515","Data Scientist","3.5","Herndon, VA","Westminster, CO","","Company - Public","Aerospace & Defense","Aerospace & Defense",212000,331000,271500,2000000000,5000000000,3500000000,5001,10000,7501
+"516","Data Scientist","3.6","Fort Sam Houston, TX","Honolulu, HI","","Government","","",212000,331000,271500,NA,NA,NA,501,1000,751
+"517","ENGINEER - COMPUTER SCIENTIST - RESEARCH COMPUTER SCIENTIST - SIGNAL PROCESSING - SAN ANTONIO OR","3.9","Oklahoma City, OK","San Antonio, TX","1947","Nonprofit Organization","Research & Development","Business Services",212000,331000,271500,500000000000000000,1000000000,250000000500000000,1001,5000,3001
+"518","Data Scientist","2.7","Lexington Park, MD","Chantilly, VA","2010","Company - Public","Aerospace & Defense","Aerospace & Defense",212000,331000,271500,NA,NA,NA,51,200,126
+"519","Data Science Software Engineer","4.8","Boston, MA","Boston, MA","2012","Company - Private","Computer Hardware & Software","Information Technology",212000,331000,271500,NA,NA,NA,201,500,351
+"520","Scientist / Group Lead, Cancer Biology","","Cambridge, MA","","","","","",212000,331000,271500,NA,NA,NA,NA,NA,NA
+"521","Data Scientist","4","Washington, DC","Columbus, OH","","Company - Private","Health, Beauty, & Fitness","Consumer Services",212000,331000,271500,5000000,10000000,7500000,51,200,126
+"522","Data Scientist","3.8","Washington, DC","Arlington, VA","2010","Company - Public","IT Services","Information Technology",212000,331000,271500,10000000,25000000,17500000,51,200,126
+"523","Manager, Field Application Scientist, Southeast","4.2","Raleigh, NC","Pleasanton, CA","2012","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",212000,331000,271500,NA,NA,NA,501,1000,751
+"524","COMPUTER SCIENTIST - ENGINEER - RESEARCH COMPUTER SCIENTIST - SIGNAL PROCESSING","3.9","Dayton, OH","San Antonio, TX","1947","Nonprofit Organization","Research & Development","Business Services",212000,331000,271500,500000000000000000,1000000000,250000000500000000,1001,5000,3001
+"525","Data Scientist","","New York, NY","New York, NY","","Company - Private","","",212000,331000,271500,NA,NA,NA,NA,NA,NA
+"526","Data Scientist","4.5","Washington, DC","New York, 061","1980","Company - Private","Staffing & Outsourcing","Business Services",212000,331000,271500,NA,NA,NA,1,50,26
+"527","Scientist - Machine Learning","3.5","Seattle, WA","Seattle, WA","2003","Nonprofit Organization","Research & Development","Business Services",212000,331000,271500,100000000,500000000,300000000,201,500,351
+"528","Data Scientist","2.7","New York, NY","Carle Place, NY","1976","Company - Public","Wholesale","Business Services",212000,331000,271500,1000000000,2000000000,1500000000,1001,5000,3001
+"529","Data Scientist","3.5","Washington, DC","Alexandria, VA","2012","Company - Private","Consulting","Business Services",212000,331000,271500,25000000,50000000,37500000,51,200,126
+"530","Data Scientist - Image and Video Analytics","4.9","Longmont, CO","Chicago, IL","2016","Company - Private","Staffing & Outsourcing","Business Services",66000,112000,89000,NA,NA,NA,1,50,26
+"531","Data Scientist","3.6","Washington, DC","Rockville, MD","2001","Company - Private","IT Services","Information Technology",66000,112000,89000,25000000,50000000,37500000,51,200,126
+"532","Data Scientist","5","Washington, DC","Germantown, MD","","Company - Private","","",66000,112000,89000,NA,NA,NA,1,50,26
+"533","Data Scientist","3.1","Sunnyvale, CA","Pleasanton, CA","2001","Company - Private","Staffing & Outsourcing","Business Services",66000,112000,89000,1000000,5000000,3000000,1,50,26
+"534","Senior Data Engineer","3.9","San Francisco, CA","San Francisco, CA","2009","Company - Private","Internet","Information Technology",66000,112000,89000,NA,NA,NA,501,1000,751
+"535","Data Scientist","3.4","Patuxent, Anne Arundel, MD","Orlando, FL","1986","Company - Private","IT Services","Information Technology",66000,112000,89000,25000000,50000000,37500000,51,200,126
+"536","Machine Learning Scientist / Engineer","4.1","Santa Clara, CA","Cupertino, CA","1976","Company - Public","Computer Hardware & Software","Information Technology",66000,112000,89000,10000000000,NA,10000000000,10000,NA,10000
+"537","Data Scientist","4.1","Fairfax, VA","Tampa, FL","1966","Company - Public","Staffing & Outsourcing","Business Services",66000,112000,89000,1000000000,2000000000,1500000000,10000,NA,10000
+"538","Sr. Data Scientist","3.5","Denver, CO","Denver, CO","2011","Company - Private","Travel Agencies","Travel & Tourism",66000,112000,89000,NA,NA,NA,201,500,351
+"539","Intelligence Data Analyst, Senior","4.3","Fort Belvoir, VA","Reston, VA","2010","Company - Private","IT Services","Information Technology",66000,112000,89000,100000000,500000000,300000000,501,1000,751
+"540","Data Science Analyst","4.4","Chicago, IL","Chicago, IL","2012","Company - Private","Lending","Finance",66000,112000,89000,100000000,500000000,300000000,201,500,351
+"541","Data Scientist","3.8","Thousand Oaks, CA","Folsom, CA","1999","Company - Private","IT Services","Information Technology",66000,112000,89000,50000000,100000000,75000000,1001,5000,3001
+"542","Data Scientist","3.7","McLean, VA","Raleigh, NC","1908","Subsidiary or Business Segment","Energy","Oil, Gas, Energy & Utilities",66000,112000,89000,NA,NA,NA,5001,10000,7501
+"543","COMPUTER SCIENTIST - ENGINEER - RESEARCH COMPUTER SCIENTIST - TRANSPORTATION TECHNOLOGY","3.9","San Antonio, TX","San Antonio, TX","1947","Nonprofit Organization","Research & Development","Business Services",66000,112000,89000,500000000000000000,1000000000,250000000500000000,1001,5000,3001
+"544","Data Scientist","3.9","Silver Spring, MD","Reston, VA","2006","Company - Private","IT Services","Information Technology",66000,112000,89000,25000000,50000000,37500000,501,1000,751
+"545","Data Modeler (Analytical Systems)","3.7","Boston, MA","Springfield, MA","1851","Company - Private","Insurance Carriers","Insurance",66000,112000,89000,10000000000,NA,10000000000,5001,10000,7501
+"546","Data Scientist","2.9","Washington, DC","Reston, VA","","Contract","IT Services","Information Technology",66000,112000,89000,25000000,50000000,37500000,501,1000,751
+"547","Data Scientist","4.6","New York, NY","Totowa, NJ","2012","Company - Private","IT Services","Information Technology",66000,112000,89000,NA,NA,NA,51,200,126
+"548","Data Scientist","3.4","McLean, VA","Cedar Rapids, IA","1997","Company - Private","Enterprise Software & Network Solutions","Information Technology",66000,112000,89000,10000000,25000000,17500000,201,500,351
+"549","Data Engineer (Analytics, SQL, Python, AWS)","4","Hartford, CT","Hartford, CT","1853","Company - Public","Insurance Carriers","Insurance",66000,112000,89000,10000000000,NA,10000000000,10000,NA,10000
+"550","Data Scientist 3 (718)","3.3","Emeryville, CA","Emeryville, CA","2003","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",128000,201000,164500,100000000,500000000,300000000,201,500,351
+"551","Data Scientist","4.3","Austin, TX","Austin, TX","1999","Company - Private","Computer Hardware & Software","Information Technology",128000,201000,164500,25000000,50000000,37500000,51,200,126
+"552","Senior Data Scientist","3.9","San Francisco, CA","San Francisco, CA","2009","Company - Private","Internet","Information Technology",128000,201000,164500,NA,NA,NA,501,1000,751
+"553","Senior Data Analyst - Finance & Platform Analytics","3.6","San Francisco, CA","San Francisco, CA","2011","Subsidiary or Business Segment","Internet","Information Technology",128000,201000,164500,NA,NA,NA,1001,5000,3001
+"554","Software Engineer - Machine Learning & Data Science (Applied Intelligence Services Team)","4.7","Portland, OR","San Francisco, CA","2008","Company - Public","Computer Hardware & Software","Information Technology",128000,201000,164500,100000000,500000000,300000000,1001,5000,3001
+"555","IT Partner Digital Health Technology and Data Science","3.6","Cambridge, MA","Cambridge, MA","1978","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",128000,201000,164500,10000000000,NA,10000000000,5001,10000,7501
+"556","Data Scientist","","San Francisco, CA","","","","","",128000,201000,164500,NA,NA,NA,NA,NA,NA
+"557","Senior Machine Learning Scientist - Bay Area, CA","3.3","Redwood City, CA","Chicago, IL","2015","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",128000,201000,164500,NA,NA,NA,501,1000,751
+"558","Data Scientist","3.3","San Diego, CA","San Diego, CA","1972","Company - Private","Insurance Carriers","Insurance",128000,201000,164500,500000000000000000,1000000000,250000000500000000,501,1000,751
+"559","Clinical Data Analyst","3.8","New York, NY","Rome, NY","1996","Nonprofit Organization","Consulting","Business Services",128000,201000,164500,25000000,50000000,37500000,51,200,126
+"560","Data Scientist","4.5","Chantilly, VA","McLean, VA","2004","Company - Private","Consulting","Business Services",128000,201000,164500,NA,NA,NA,501,1000,751
+"561","Data Engineer","4.5","Falls Church, VA","Falls Church, VA","2005","Company - Private","Federal Agencies","Government",128000,201000,164500,25000000,50000000,37500000,51,200,126
+"562","Data Scientist Technical Specialist","3.4","Chantilly, VA","Herndon, VA","2017","Company - Private","Aerospace & Defense","Aerospace & Defense",128000,201000,164500,1000000000,2000000000,1500000000,1001,5000,3001
+"563","Senior Data Scientist","3.1","Chicago, IL","Milan, IL","1974","Company - Private","Staffing & Outsourcing","Business Services",128000,201000,164500,500000000000000000,1000000000,250000000500000000,1001,5000,3001
+"564","Data Science Manager","4","San Francisco, CA","San Rafael, CA","1982","Company - Public","Computer Hardware & Software","Information Technology",128000,201000,164500,2000000000,5000000000,3500000000,5001,10000,7501
+"565","Computer Vision / Deep Learning Scientist","3.3","Chicago, IL","Chicago, IL","2015","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",128000,201000,164500,NA,NA,NA,501,1000,751
+"566","Big Data Engineer","4.1","Raleigh, NC","Raleigh, NC","1976","Company - Private","Industrial Manufacturing","Manufacturing",128000,201000,164500,100000000,500000000,300000000,1001,5000,3001
+"567","Data Architect","4.2","Orlando, FL","Orlando, FL","1996","Company - Private","Investment Banking & Asset Management","Finance",128000,201000,164500,100000000,500000000,300000000,51,200,126
+"568","Machine Learning Engineer","3.9","New York, NY","New York, NY","","Company - Private","IT Services","Information Technology",128000,201000,164500,NA,NA,NA,1,50,26
+"569","Data Scientist","","Philadelphia, PA","Marbella, Spain","","Company - Public","","",128000,201000,164500,NA,NA,NA,NA,NA,NA
+"570","Aviation AI/ML Data Scientist","3.3","McLean, VA","Bedford, MA","1958","Nonprofit Organization","Federal Agencies","Government",128000,201000,164500,1000000000,2000000000,1500000000,5001,10000,7501
+"571","Data Scientist","3.9","United States","Mc Lean, VA","1911","Company - Private","Food & Beverage Manufacturing","Manufacturing",138000,158000,148000,10000000000,NA,10000000000,10000,NA,10000
+"572","Data Scientist / Applied Mathematician","4.5","Santa Cruz, CA","Santa Cruz, CA","2003","Company - Private","Computer Hardware & Software","Information Technology",138000,158000,148000,10000000,25000000,17500000,51,200,126
+"573","Machine Learning Engineer, Sr.","4.2","Simi Valley, CA","Simi Valley, CA","1971","Company - Public","Aerospace & Defense","Aerospace & Defense",138000,158000,148000,100000000,500000000,300000000,501,1000,751
+"574","Data Scientist (TS/SCI w/ Poly)","3.5","Herndon, VA","Westminster, CO","","Company - Public","Aerospace & Defense","Aerospace & Defense",138000,158000,148000,2000000000,5000000000,3500000000,5001,10000,7501
+"575","Weapons and Sensors Engineer/Scientist","4","Huntsville, AL","Huntsville, AL","1974","Company - Private","Aerospace & Defense","Aerospace & Defense",138000,158000,148000,100000000,500000000,300000000,1001,5000,3001
+"576","Applied Computer Scientist","4.5","Woburn, MA","Woburn, MA","2010","Company - Private","Aerospace & Defense","Aerospace & Defense",138000,158000,148000,100000000,500000000,300000000,201,500,351
+"577","Senior Data Analyst","4.5","Herndon, VA","Mc Lean, VA","2012","Company - Private","Enterprise Software & Network Solutions","Information Technology",138000,158000,148000,100000000,500000000,300000000,501,1000,751
+"578","Information Systems Engineering Specialist (Engineering Scientist)","3.8","Austin, TX","Austin, TX","","College / University","Colleges & Universities","Education",138000,158000,148000,NA,NA,NA,501,1000,751
+"579","Cloud Data Engineer (Azure)","3.9","Merrifield, VA","Vienna, VA","1933","Other Organization","Banks & Credit Unions","Finance",138000,158000,148000,NA,NA,NA,10000,NA,10000
+"580","Scientist/Research Associate-Metabolic Engineering","2","New Bedford, MA","Bedford, MA","","Company - Private","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",138000,158000,148000,NA,NA,NA,51,200,126
+"581","Vice President, Biometrics and Clinical Data Management","4.8","South San Francisco, CA","South San Francisco, CA","2013","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",138000,158000,148000,NA,NA,NA,51,200,126
+"582","Enterprise Data Analyst (Enterprise Portfolio Management Office)","3.9","Merrifield, VA","Vienna, VA","1933","Other Organization","Banks & Credit Unions","Finance",138000,158000,148000,NA,NA,NA,10000,NA,10000
+"583","Senior Scientist - Toxicologist - Product Integrity (Stewardship)","3.3","Winston-Salem, NC","Winston-Salem, NC","1875","Company - Private","Consumer Products Manufacturing","Manufacturing",138000,158000,148000,10000000000,NA,10000000000,5001,10000,7501
+"584","Lead Data Scientist – Network Analysis and Control","3.3","Bedford, MA","Bedford, MA","1958","Nonprofit Organization","Federal Agencies","Government",138000,158000,148000,1000000000,2000000000,1500000000,5001,10000,7501
+"585","Senior Machine Learning Engineer","5","Raleigh, NC","Indianapolis, IN","2016","Company - Private","Enterprise Software & Network Solutions","Information Technology",138000,158000,148000,NA,NA,NA,51,200,126
+"586","Sr. Research Associate/ Scientist, NGS prep & Molecular Genomics","4.4","New Bedford, MA","Bedford, MA","","Company - Public","","",138000,158000,148000,NA,NA,NA,51,200,126
+"587","Data Engineer","3.4","Chicago, IL","Chicago, IL","1992","Company - Private","Advertising & Marketing","Business Services",138000,158000,148000,10000000,25000000,17500000,51,200,126
+"588","Developer III - Data Science","3.3","Rancho Cucamonga, CA","Rancho Cucamonga, CA","1996","Company - Public","Health Care Services & Hospitals","Health Care",138000,158000,148000,1000000000,2000000000,1500000000,1001,5000,3001
+"589","Senior Data Engineer","2.9","New York, NY","New York, NY","1998","Company - Private","Advertising & Marketing","Business Services",138000,158000,148000,NA,NA,NA,51,200,126
+"590","Hydrogen/Tritium Materials Scientist (Experienced)","3.8","Livermore, CA","Albuquerque, NM","1949","Government","Federal Agencies","Government",138000,158000,148000,2000000000,5000000000,3500000000,10000,NA,10000
+"591","Data Engineer","3.5","McLean, VA","Westminster, CO","","Company - Public","Aerospace & Defense","Aerospace & Defense",138000,158000,148000,2000000000,5000000000,3500000000,5001,10000,7501
+"592","Patient Safety- Associate Data Scientist","4","Gaithersburg, MD","Cambridge, United Kingdom","1913","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",80000,132000,106000,10000000000,NA,10000000000,10000,NA,10000
+"593","Senior Data Scientist","4","San Francisco, CA","San Rafael, CA","1982","Company - Public","Computer Hardware & Software","Information Technology",80000,132000,106000,2000000000,5000000000,3500000000,5001,10000,7501
+"594","Data Scientist","3.4","Southfield, MI","Saint Paul, MN","1998","Company - Private","Construction","Construction, Repair & Maintenance",80000,132000,106000,100000000,500000000,300000000,1001,5000,3001
+"595","Data Scientist","3.9","Collegeville, PA","Brentford, United Kingdom","1830","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",80000,132000,106000,10000000000,NA,10000000000,10000,NA,10000
+"596","Data Scientist","3.8","Washington, DC","Langley, VA","1947","Government","Federal Agencies","Government",80000,132000,106000,NA,NA,NA,NA,NA,NA
+"597","Data Scientist","4.5","Chicago, IL","Chicago, IL","2008","Company - Private","Consulting","Business Services",80000,132000,106000,50000000,100000000,75000000,201,500,351
+"598","Data Scientist","4.3","Minneapolis, MN","Minneapolis, MN","2009","Company - Private","Advertising & Marketing","Business Services",80000,132000,106000,10000000,25000000,17500000,51,200,126
+"599","Data Scientist","3.6","Gahanna, OH","New York, NY","","Company - Private","","",80000,132000,106000,NA,NA,NA,1,50,26
+"600","Data Scientist","2.9","Nashville, TN","Nashville, TN","2005","Company - Private","Health Care Services & Hospitals","Health Care",80000,132000,106000,NA,NA,NA,10000,NA,10000
+"601","Data Scientist","2.9","United States","Reston, VA","1985","Company - Private","IT Services","Information Technology",80000,132000,106000,100000000,500000000,300000000,201,500,351
+"602","Data Scientist","3.2","California","Los Angeles, CA","2004","Company - Private","Internet","Information Technology",80000,132000,106000,25000000,50000000,37500000,51,200,126
+"603","Decision Scientist","4.5","Laurel, MD","Laurel, MD","1942","Nonprofit Organization","Aerospace & Defense","Aerospace & Defense",80000,132000,106000,1000000000,2000000000,1500000000,5001,10000,7501
+"604","Data Scientist - TS/SCI FSP or CI Required","5","Annapolis Junction, MD","Woodbine, MD","2011","Company - Private","IT Services","Information Technology",80000,132000,106000,1000000,5000000,3000000,1,50,26
+"605","Data Scientist","3.5","San Clemente, CA","Aliso Viejo, CA","2010","Company - Private","Health Care Services & Hospitals","Health Care",80000,132000,106000,1000000,5000000,3000000,1,50,26
+"606","Data Scientist","4","New York, NY","Plainsboro, NJ","","Company - Private","Accounting","Accounting & Legal",80000,132000,106000,NA,NA,NA,1,50,26
+"607","Data Scientist","4.4","Washington, DC","Reston, VA","1997","Subsidiary or Business Segment","Enterprise Software & Network Solutions","Information Technology",80000,132000,106000,100000000,500000000,300000000,51,200,126
+"608","Data Scientist","4.2","Atlanta, GA","Aliso Viejo, CA","1999","Company - Private","IT Services","Information Technology",80000,132000,106000,1000000000,2000000000,1500000000,10000,NA,10000
+"609","Data Scientist","3.2","Plano, TX","Plano, TX","","Company - Private","Consulting","Business Services",80000,132000,106000,1000000,5000000,3000000,1,50,26
+"610","Data Scientist","3.4","Fairfax, VA","Fairfax, VA","1985","Company - Private","Aerospace & Defense","Aerospace & Defense",80000,132000,106000,25000000,50000000,37500000,51,200,126
+"611","Data Scientist","4.7","Washington, DC","Fairmont, WV","","Company - Private","","",80000,132000,106000,1000000,5000000,3000000,1,50,26
+"612","(Sr.) Data Scientist -","3.6","Utah","South Jordan, UT","1997","Company - Private","Banks & Credit Unions","Finance",87000,141000,114000,NA,NA,NA,201,500,351
+"613","Senior Data Scientist","4.2","Alexandria, VA","Herndon, VA","1968","Company - Public","Research & Development","Business Services",87000,141000,114000,1000000000,2000000000,1500000000,5001,10000,7501
+"614","Data Scientist","","Omaha, NE","","","","","",87000,141000,114000,NA,NA,NA,NA,NA,NA
+"615","Data Scientist","3.2","Wellesley, MA","Bethesda, MD","1853","Company - Private","Insurance Carriers","Insurance",87000,141000,114000,10000000000,NA,10000000000,10000,NA,10000
+"616","Data Scientist","","Washington, VA","McLean, VA","","Company - Private","","",87000,141000,114000,NA,NA,NA,NA,NA,NA
+"617","Data Scientist","2.8","Fort Worth, TX","Albertville, AL","1983","Subsidiary or Business Segment","Rail","Transportation & Logistics",87000,141000,114000,2000000000,5000000000,3500000000,1001,5000,3001
+"618","Data Scientist","4.2","Atlanta, GA","Aliso Viejo, CA","1999","Company - Private","IT Services","Information Technology",87000,141000,114000,1000000000,2000000000,1500000000,10000,NA,10000
+"619","Data Scientist","4.5","Alexandria, VA","Fairfax, VA","2009","Company - Private","Aerospace & Defense","Aerospace & Defense",87000,141000,114000,NA,NA,NA,51,200,126
+"620","Data Scientist","3","Bellevue, WA","Bellevue, WA","2006","Company - Private","Consulting","Business Services",87000,141000,114000,10000000,25000000,17500000,51,200,126
+"621","Data Scientist","3.3","United States","San Diego, CA","1951","Company - Public","Aerospace & Defense","Aerospace & Defense",87000,141000,114000,1000000000,2000000000,1500000000,5001,10000,7501
+"622","Data Scientist","4","Thousand Oaks, CA","Westlake Village, CA","","Company - Private","","",87000,141000,114000,NA,NA,NA,1,50,26
+"623","Data Engineer","3.5","Orange, CA","Orange, CA","2013","Company - Private","Health Care Services & Hospitals","Health Care",87000,141000,114000,NA,NA,NA,501,1000,751
+"624","Data Scientist","3.5","Baltimore, MD","New York, NY","1998","Company - Private","Consulting","Business Services",87000,141000,114000,50000000,100000000,75000000,1,50,26
+"625","Data Scientist","3.6","Herndon, VA","Littleton, CO","1990","Company - Private","Computer Hardware & Software","Information Technology",87000,141000,114000,10000000,25000000,17500000,51,200,126
+"626","Data Scientist","3","Alexandria, VA","Alexandria, VA","2012","Company - Private","Enterprise Software & Network Solutions","Information Technology",87000,141000,114000,NA,NA,NA,51,200,126
+"627","Data Scientist/Data Analytics Practitioner","4","Bridgeport, WV","Reston, VA","1996","Nonprofit Organization","Consulting","Business Services",87000,141000,114000,100000000,500000000,300000000,1001,5000,3001
+"628","Data Scientist","4.6","The Woodlands, TX","Houston, TX","1988","Company - Private","Staffing & Outsourcing","Business Services",87000,141000,114000,10000000,25000000,17500000,1,50,26
+"629","Data Scientist","4.3","Oakville, CA","Oakville, Canada","2000","Company - Private","Computer Hardware & Software","Information Technology",87000,141000,114000,100000000,500000000,300000000,1001,5000,3001
+"630","Data Scientist","4.7","Chicago, IL","Itasca, IL","1994","Company - Private","Staffing & Outsourcing","Business Services",87000,141000,114000,10000000,25000000,17500000,51,200,126
+"631","Data Scientist","3.7","Arlington, VA","Vienna, VA","2004","Company - Private","IT Services","Information Technology",87000,141000,114000,NA,NA,NA,201,500,351
+"632","Data Scientist, Kinship - NYC/Portland","3.9","New York, NY","Mc Lean, VA","1911","Company - Private","Food & Beverage Manufacturing","Manufacturing",92000,155000,123500,10000000000,NA,10000000000,10000,NA,10000
+"633","Data Scientist","4.9","New Jersey","Holmdel, NJ","2013","Company - Private","Enterprise Software & Network Solutions","Information Technology",92000,155000,123500,NA,NA,NA,1,50,26
+"634","Data Scientist","3","Seattle, WA","Fremont, CA","","Company - Private","Consulting","Business Services",92000,155000,123500,5000000,10000000,7500000,51,200,126
+"635","Data Scientist","2.5","Naperville, IL","Naperville, IL","1954","Company - Private","Wholesale","Business Services",92000,155000,123500,NA,NA,NA,5001,10000,7501
+"636","Data Scientist","3.5","San Francisco, CA","San Francisco, CA","1998","Company - Private","Consulting","Business Services",92000,155000,123500,25000000,50000000,37500000,51,200,126
+"637","Data Scientist - TS/SCI Required","5","Baltimore, MD","Woodbine, MD","2011","Company - Private","IT Services","Information Technology",92000,155000,123500,1000000,5000000,3000000,1,50,26
+"638","Data Scientist","","Chantilly, VA","","","Unknown","","",92000,155000,123500,NA,NA,NA,1,50,26
+"639","Senior Data Scientist","3.5","Herndon, VA","Westminster, CO","","Company - Public","Aerospace & Defense","Aerospace & Defense",92000,155000,123500,2000000000,5000000000,3500000000,5001,10000,7501
+"640","Data Scientist","3","Bellevue, WA","San Bruno, CA","1999","Company - Private","Enterprise Software & Network Solutions","Information Technology",92000,155000,123500,NA,NA,NA,51,200,126
+"641","Data Scientist(s)/Machine Learning Engineer","5","New York, NY","Coconut Creek, FL","1987","Company - Private","Staffing & Outsourcing","Business Services",92000,155000,123500,NA,NA,NA,1,50,26
+"642","Data Scientist","4.7","Chicago, IL","Naperville, IL","","Company - Private","IT Services","Information Technology",92000,155000,123500,NA,NA,NA,51,200,126
+"643","Data Engineer","3.3","Kansas City, MO","Kansas City, MO","1992","Company - Private","Insurance Carriers","Insurance",92000,155000,123500,100000000,500000000,300000000,201,500,351
+"644","Data Scientist","3.3","Houston, TX","Houston, TX","1974","Company - Private","Insurance Carriers","Insurance",92000,155000,123500,NA,NA,NA,1001,5000,3001
+"645","Data Scientist","3.5","Chantilly, VA","Arlington, VA","1962","Company - Public","Aerospace & Defense","Aerospace & Defense",92000,155000,123500,2000000000,5000000000,3500000000,10000,NA,10000
+"646","AI/ML - Machine Learning Scientist, Siri Understanding","4.1","Santa Clara, CA","Cupertino, CA","1976","Company - Public","Computer Hardware & Software","Information Technology",92000,155000,123500,10000000000,NA,10000000000,10000,NA,10000
+"647","Data Scientist","3.5","Herndon, VA","Westminster, CO","","Company - Public","Aerospace & Defense","Aerospace & Defense",92000,155000,123500,2000000000,5000000000,3500000000,5001,10000,7501
+"648","ENGINEER - COMPUTER SCIENTIST - RESEARCH COMPUTER SCIENTIST - SIGNAL PROCESSING - SAN ANTONIO OR","3.9","Oklahoma City, OK","San Antonio, TX","1947","Nonprofit Organization","Research & Development","Business Services",92000,155000,123500,500000000000000000,1000000000,250000000500000000,1001,5000,3001
+"649","Data Scientist","4.7","Thousand Oaks, CA","Danville, CA","2008","Company - Private","Consulting","Business Services",92000,155000,123500,NA,NA,NA,51,200,126
+"650","Data Science Software Engineer","4.8","Boston, MA","Boston, MA","2012","Company - Private","Computer Hardware & Software","Information Technology",92000,155000,123500,NA,NA,NA,201,500,351
+"651","Scientist / Group Lead, Cancer Biology","","Cambridge, MA","","","","","",92000,155000,123500,NA,NA,NA,NA,NA,NA
+"652","AI Ops Data Scientist","4","Gaithersburg, MD","Cambridge, United Kingdom","1913","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",92000,155000,123500,10000000000,NA,10000000000,10000,NA,10000
+"653","Senior Data Scientist","3.8","Denver, CO","Denver, CO","2009","Company - Private","Advertising & Marketing","Business Services",105000,167000,136000,10000000,25000000,17500000,51,200,126
+"654","Sr. ML/Data Scientist - AI/NLP/Chatbot","3.8","Cupertino, CA","Sunnyvale, CA","1996","Company - Public","Telecommunications Services","Telecommunications",105000,167000,136000,2000000000,5000000000,3500000000,5001,10000,7501
+"655","Data Scientist","2.7","Lexington Park, MD","Chantilly, VA","2010","Company - Public","Aerospace & Defense","Aerospace & Defense",105000,167000,136000,NA,NA,NA,51,200,126
+"656","Data Scientist","4","Washington, DC","Columbus, OH","","Company - Private","Health, Beauty, & Fitness","Consumer Services",105000,167000,136000,5000000,10000000,7500000,51,200,126
+"657","Data Scientist","","Fort Belvoir, VA","","","","","",105000,167000,136000,NA,NA,NA,NA,NA,NA
+"658","Data Scientist","","Naperville, IL","","","","","",105000,167000,136000,NA,NA,NA,NA,NA,NA
+"659","Data Scientist","3.8","Washington, DC","Arlington, VA","2010","Company - Public","IT Services","Information Technology",105000,167000,136000,10000000,25000000,17500000,51,200,126
+"660","Data Scientist","3.2","Adelphi, MD","Chantilly, VA","2018","Company - Public","Aerospace & Defense","Aerospace & Defense",105000,167000,136000,NA,NA,NA,10000,NA,10000
+"661","Data Scientist","","Redmond, WA","","","","","",105000,167000,136000,NA,NA,NA,NA,NA,NA
+"662","Data Scientist","3.6","West Chester, PA","West Chester, PA","","Company - Public","Other Retail Stores","Retail",105000,167000,136000,NA,NA,NA,10000,NA,10000
+"663","Data Scientist","4.4","Edison, NJ","Wilmington, MA","","Company - Private","","",105000,167000,136000,NA,NA,NA,51,200,126
+"664","Data Scientist","4.1","Durham, NC","Utica, MI","2004","Company - Private","Staffing & Outsourcing","Business Services",105000,167000,136000,NA,NA,NA,501,1000,751
+"665","Data Scientist","","Quantico, VA","Baltimore, MD","","Company - Private","","",105000,167000,136000,NA,NA,NA,1,50,26
+"666","Data Scientist","3.8","Vienna, VA","Vienna, VA","2005","Company - Private","IT Services","Information Technology",105000,167000,136000,50000000,100000000,75000000,201,500,351
+"667","Data Scientist","4","Boston, MA","Cambridge, MA","2010","Company - Public","Biotech & Pharmaceuticals","Biotech & Pharmaceuticals",105000,167000,136000,100000000,500000000,300000000,1001,5000,3001
+"668","Data Scientist","3.6","Fort Lee, NJ","Fort Lee, NJ","1989","Company - Private","Advertising & Marketing","Business Services",105000,167000,136000,NA,NA,NA,1001,5000,3001
+"669","Data Scientist","","San Francisco, CA","","","","","",105000,167000,136000,NA,NA,NA,NA,NA,NA
+"670","Data Scientist","","Irwindale, CA","","","","","",105000,167000,136000,NA,NA,NA,NA,NA,NA
+"671","Data Scientist","5","San Francisco, CA","Santa Clara, CA","","Company - Private","Advertising & Marketing","Business Services",105000,167000,136000,1000000,5000000,3000000,1,50,26
+"672","Data Scientist","2.7","New York, NY","Carle Place, NY","1976","Company - Public","Wholesale","Business Services",105000,167000,136000,1000000000,2000000000,1500000000,1001,5000,3001

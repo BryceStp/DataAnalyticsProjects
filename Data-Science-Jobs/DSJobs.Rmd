@@ -1,0 +1,333 @@
+
+```{r Setup}
+# Install packages and read in data
+#install.packages("tidyverse")
+library(tidyverse)
+library(ggplot2)
+data <- read.csv("Uncleaned_DS_jobs.csv")
+# Prevents Scientific Notation
+options(scipen = 100)
+
+view(data)
+summary(data)
+```
+
+```{r EDA}
+# First we are going to start of by doing a little EDA (some of these graphs are more helpful than others)
+ggplot(data, aes(x = Salary.Estimate)) + geom_bar(stat = "count",
+                                                  color = 'black',
+                                                  fill = 'blue') + theme(axis.text.x = element_text(
+                                                    lineheight = 0.5,
+                                                    angle = 90,
+                                                    vjust = 0.5,
+                                                    hjust = 1
+                                                  ))
+```
+
+```{r EDA}
+# Lots of values at 0 (they weren't provided)
+ggplot(data, aes(x = Founded)) + geom_bar(stat = "count",
+                                          color = 'black',
+                                          fill = 'blue')
+```
+```{r EDA}
+# Lots of negative reviews (-1's), which is likely an error
+ggplot(data, aes(x = Rating)) + geom_bar(stat = "count",
+                                         color = 'black',
+                                         fill = 'blue')
+```
+```{r EDA}
+# City isn't very helpful to see visually (too many unique cities)
+data[c('City', 'State')] <- str_split_fixed(data$Location, ', ', 2)
+#ggplot(data, aes(x=City)) + geom_bar(stat="count", color='black', fill='blue')+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+ggplot(data, aes(x = State)) + geom_bar(stat = "count",
+                                        color = 'black',
+                                        fill = 'blue') + theme(axis.text.x = element_text(
+                                          angle = 90,
+                                          vjust = 0.5,
+                                          hjust = 1
+                                        ))
+```
+```{r EDA}
+ggplot(data, aes(x = Size)) + geom_bar(stat = "count",
+                                       color = 'black',
+                                       fill = 'blue') + theme(axis.text.x = element_text(
+                                         angle = 90,
+                                         vjust = 0.5,
+                                         hjust = 1
+                                       ))
+```
+```{r EDA}
+ggplot(data, aes(x = Type.of.ownership)) + geom_bar(stat = "count",
+                                                    color = 'black',
+                                                    fill = 'blue') + theme(axis.text.x = element_text(
+                                                      angle = 90,
+                                                      vjust = 0.5,
+                                                      hjust = 1
+                                                    ))
+```
+```{r EDA}
+# Lots of negative values in all of these plots (definitely just placeholder values)
+ggplot(data, aes(x = Industry)) + geom_bar(stat = "count",
+                                           color = 'black',
+                                           fill = 'blue') + theme(axis.text.x = element_text(
+                                             angle = 90,
+                                             vjust = 0.5,
+                                             hjust = 1
+                                           ))
+```
+```{r EDA}
+# More negative values here and some unknown
+ggplot(data, aes(x = Sector)) + geom_bar(stat = "count",
+                                         color = 'black',
+                                         fill = 'blue') + theme(axis.text.x = element_text(
+                                           angle = 90,
+                                           vjust = 0.5,
+                                           hjust = 1
+                                         ))
+```
+
+```{r Cleaning}
+# Remove -1's from all columns (can't have negative values for any of these)
+data[] <- lapply(data, gsub, pattern = "-1", replacement = NA, fixed = TRUE)
+
+#view(data)
+```
+
+```{r Cleaning Salary Estimate}
+# We are converting the salary estimates to numeric values
+# List of things to remove from column
+vec1 <- c("\\(Employer" = "","K" = "000","\\$" = "")
+# Split data
+data[c('Salary', 'Remove')] <-
+  str_split_fixed(data$Salary.Estimate, ' ', 2)
+# Replace unwanted string with nothing
+data$Salary <- str_replace_all(data$Salary, vec1)
+# Split into min and max salaries
+data[c('MinSalary', 'MaxSalary')] <-
+  as.numeric(str_split_fixed(data$Salary, '-', 2))
+# Find Average Salary
+data$AvgSalary <- rowMeans(data[20:21], na.rm = TRUE)
+
+
+#view(data)
+#summary(data)
+```
+
+```{r Cleaning Revenue}
+# Now we will do the same with Revenue and a few other columns
+vec2 <- c("Unknown / Non-Applicable" = NA,"\\$" = "","\\+" = "","\\(USD\\)" = "")
+data$Revenue <- str_replace_all(data$Revenue, vec2)
+data[c('MinRevenue', 'MaxRevenue')] <-
+  str_split_fixed(data$Revenue, 'to', 2)
+# Check and replace only in MinRevenue for billion/million
+vec3 <- c(" billion" = "000000000", " million" = "000000")
+data$MinRevenue <-
+  as.numeric(str_replace_all(data$MinRevenue, vec3))
+# Check MaxRevenue for million/billion and MinRevenue < 1000 and then replace
+data <- data %>%
+  mutate(MinRevenue = ifelse(
+    grepl('million', data$MaxRevenue),
+    MinRevenue * 1000000,
+    MinRevenue
+  ))
+data <- data %>%
+  mutate(MinRevenue = ifelse(
+    grepl('billion', data$MaxRevenue),
+    MinRevenue * 1000000000,
+    MinRevenue
+  ))
+# Check and replace only in MaxRevenue for billion/million
+data$MaxRevenue <-
+  as.numeric(str_replace_all(data$MaxRevenue, vec3))
+data$AvgRevenue <- rowMeans(data[23:24], na.rm = TRUE)
+
+#view(data)
+#summary(data)
+```
+
+```{r Cleaning Company Employee Count}
+# Cleaning Company Employee Count
+vec3 <- c("employees" = "", "\\+" = "")
+data$Size <- str_replace_all(data$Size, vec3)
+data[c('MinEmployeeCount', 'MaxEmployeeCount')] <-
+  as.numeric(str_split_fixed(data$Size, 'to', 2))
+data$AvgEmployeeCount <- ceiling(rowMeans(data[26:27], na.rm = TRUE))
+
+
+#view(data)
+#summary(data)
+```
+```{r Cleaning Job Description (Scrape Skills and Store as Dummy Variables)}
+Skills <-  paste(c(' R ', ' R,', ',R,',' C ', ' C,', ',C,', 'SQL',  'Python', 'C#',  'JavaScript', 
+    'Scala','SAS', 'MATLAB', 'C++', 'Perl','Go', 'TypeScript','Bash','HTML','CSS','PHP',
+    'Rust','Kotlin','Ruby','Assembly','Swift','VBA','Groovy','Julia','APL','Crystal','Visual Basic', 'Mongo','Java',
+    'Airflow', 'Alteryx', 'ASP.NET', 'Atlassian', 'Excel', 'Power BI', 'Tableau', 'Word', 
+    'Unix', 'Vue', 'jQuery', 'Seaborn', 'MicroStrategy', 'SPSS', 'Visio', 
+    'AWS', 'Hadoop', 'SSIS', 'Linux', 'SAP', 'PowerPoint', 'SharePoint', 'Redshift', 
+    'Snowflake', 'Qlik', 'Cognos', 'Pandas', 'Spark', 'Outlook'))
+
+# Since we are looking for individual letters (R and C) we are going to be safe and do these separately from the other skills
+data$R <-
+  ifelse(sapply(data$Job.Description, function(x)
+    Skills[1:3][str_detect(x, Skills[1:3])])  %in% Skills[1:3],1,0)
+
+data$C <-
+  ifelse(sapply(data$Job.Description, function(x)
+    Skills[4:6][str_detect(x, Skills[4:6])])  %in% Skills[4:6],1,0)
+
+# Loop through all values to create dummy variables (Note that this doesn't cover every skill that might pop up)
+for (i in 7:63) {
+  new <-
+    ifelse(sapply(data$Job.Description, function(x)
+      Skills[i][str_detect(x, Skills[i])])  %in% Skills[i],1,0)
+  data[, ncol(data) + 1] <- new
+  colnames(data)[ncol(data)] <- paste0(Skills[i])
+}
+
+#view(data)
+
+```
+
+```{
+r Cleaning
+}
+# Delete unwanted columns
+
+data <- data[-c(1, 3, 4, 19)]
+
+# Convert Rating to Numeric
+data$Rating <- as.numeric(data$Rating)
+```
+
+```{r Cleaning}
+# Convert all empty values to NA
+data[data == ""] <- NA
+# Check for NA values
+sum(is.na(data))
+# Function to replace all numeric na values with the median
+for (i in which(sapply(data, is.numeric))) {
+  data[is.na(data[, i]), i] <- median(data[, i], na.rm = TRUE)
+}
+
+view(data)
+```
+
+```{r Create CSV} 
+write.csv(data, "Cleaned_Data.csv", row.names = TRUE)
+```
+
+```{r Visualizations}
+par(mfrow = c(3, 1))
+ggplot(data, aes(x = AvgSalary)) + geom_histogram(bins = 10,
+                                                  color = 'black',
+                                                  fill = 'blue')
+ggplot(data, aes(x = MaxSalary)) + geom_histogram(bins = 10,
+                                                  color = 'black',
+                                                  fill = 'green')
+ggplot(data, aes(x = MinSalary)) + geom_histogram(bins = 10,
+                                                  color = 'black',
+                                                  fill = 'red')
+```
+
+```{r Visualizations}
+par(mfrow = c(3, 1))
+ggplot(data, aes(x = AvgEmployeeCount)) + geom_histogram(bins = 6,
+                                                         color = 'black',
+                                                         fill = 'blue')
+ggplot(data, aes(x = MaxEmployeeCount)) + geom_histogram(bins = 6,
+                                                         color = 'black',
+                                                         fill = 'green')
+ggplot(data, aes(x = MinEmployeeCount)) + geom_histogram(bins = 6,
+                                                         color = 'black',
+                                                         fill = 'red')
+```
+
+```{r Visualizations}
+ggplot(data, aes(x = Rating)) + geom_histogram(bins = 10,
+                                               color = 'black',
+                                               fill = 'blue')
+```
+```{r Visualizations}
+par(mfrow = c(3, 1))
+ggplot(data, aes(x = AvgRevenue)) + geom_histogram(bins = 10,
+                                                   color = 'black',
+                                                   fill = 'blue')
+ggplot(data, aes(x = MinRevenue)) + geom_histogram(bins = 10,
+                                                   color = 'black',
+                                                   fill = 'red')
+ggplot(data, aes(x = MaxRevenue)) + geom_histogram(bins = 10,
+                                                   color = 'black',
+                                                   fill = 'green')
+```
+
+```{r Visualizations}
+par(mfrow = c(3, 1))
+ggplot(data, aes(y = AvgSalary)) + geom_boxplot(color = 'black',
+                                                fill = 'blue',
+                                                notch = FALSE)
+ggplot(data, aes(y = MinSalary)) + geom_boxplot(color = 'black',
+                                                fill = 'red',
+                                                notch = FALSE)
+ggplot(data, aes(y = MaxSalary)) + geom_boxplot(color = 'black',
+                                                fill = 'green',
+                                                notch = FALSE)
+```
+
+```{r Visualizations}
+# Lets also look at some of these graphs again now that we cleaned out the data set
+par(mfrow = c(3, 2))
+ggplot(data, aes(x = State)) + geom_bar(stat = "count",
+                                        color = 'black',
+                                        fill = 'blue') + theme(axis.text.x = element_text(
+                                          angle = 90,
+                                          vjust = 0.5,
+                                          hjust = 1
+                                        ))
+ggplot(data, aes(x = Type.of.ownership)) + geom_bar(stat = "count",
+                                                    color = 'black',
+                                                    fill = 'blue') + theme(axis.text.x = element_text(
+                                                      angle = 90,
+                                                      vjust = 0.5,
+                                                      hjust = 1
+                                                    ))
+ggplot(data, aes(x = Sector)) + geom_bar(stat = "count",
+                                         color = 'black',
+                                         fill = 'blue') + theme(axis.text.x = element_text(
+                                           angle = 90,
+                                           vjust = 0.5,
+                                           hjust = 1
+                                         ))
+ggplot(data, aes(x = Sector)) + geom_bar(stat = "count",
+                                         color = 'black',
+                                         fill = 'blue') + theme(axis.text.x = element_text(
+                                           angle = 90,
+                                           vjust = 0.5,
+                                           hjust = 1
+                                         ))
+ggplot(data, aes(x = Industry)) + geom_bar(stat = "count",
+                                           color = 'black',
+                                           fill = 'blue') + theme(axis.text.x = element_text(
+                                             angle = 90,
+                                             vjust = 0.5,
+                                             hjust = 1
+                                           ))
+ggplot(data, aes(x = Founded)) + geom_bar(stat = "count",
+                                          color = 'black',
+                                          fill = 'blue') + theme(axis.text.x = element_text(
+                                            angle = 90,
+                                            vjust = 0.5,
+                                            hjust = 1
+                                          ))
+ggplot(data, aes(x = Rating)) + geom_bar(stat = "count",
+                                         color = 'black',
+                                         fill = 'blue')
+```
+
+
+
+
+
+
+
+

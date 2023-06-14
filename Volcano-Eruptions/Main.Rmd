@@ -1,0 +1,164 @@
+```{r setup, include=FALSE}
+suppressMessages(library(knitr))
+suppressMessages(library(tidyverse))
+suppressMessages(library(tidymodels))
+suppressMessages(library(themis))
+suppressMessages(library(vip))
+suppressMessages(library(janitor))
+knitr::opts_chunk$set(echo = TRUE)
+setwd(getwd())
+```
+
+## Exploratory Data Analysis
+
+```{r EDA 1}
+# Note that the data is already cleaned
+
+volcano_raw <-
+  readr::read_csv(
+    "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-12/volcano.csv"
+  )
+
+volcano_raw %>%
+  count(primary_volcano_type, sort = TRUE)
+
+volcano_raw %>% View()
+```
+
+# Pull out unwanted categories / variables
+
+```{r EDA 2}
+VDF <- volcano_raw %>% mutate(
+  volcano_type = case_when(
+    str_detect(primary_volcano_type, "Stratovolcano") ~  "Stratovolcano",
+    str_detect(primary_volcano_type, "Shield") ~ "Shield",
+    TRUE ~ "Other"
+  ),
+  volcano_number,
+  latitude,
+  longitude,
+  elevation,
+  tectonic_settings,
+  major_rock_1,
+  .keep = "none"
+) %>% mutate_if(is.character, factor)
+
+# Check out categories (will need to reduce unique values, too many to predict with our limited data)
+VDF %>% count(tectonic_settings)
+VDF %>% count(major_rock_1)
+```
+
+```{r EDA 3}
+WMap <- map_data("world")
+
+ggplot() + geom_map(
+  data = WMap,
+  map = WMap,
+  aes(long, lat, map_id = region),
+  color = "white",
+  fill = "gray50",
+  alpha = 0.2
+) + geom_point(data = VDF,
+               aes(longitude, latitude, color = volcano_type),
+               alpha = 0.8)
+```
+
+## Model Building
+
+```{r Modeling 1 (preprocessing)}
+# We balance the data and  collapse down some of the less used 
+# unique categories in tectonic_settings and major_rock_1
+
+Vrec <-
+  recipe(volcano_type ~ ., data = VDF) %>%
+  update_role(volcano_number, new_role = "Id") %>%
+  step_other(tectonic_settings) %>%
+  step_other(major_rock_1) %>%
+  step_dummy(tectonic_settings, major_rock_1) %>%
+  step_zv(all_predictors()) %>%
+  step_normalize(all_predictors()) %>%
+  step_smote(volcano_type)
+
+Vprep <- prep(Vrec)
+juice(Vprep)
+```
+
+```{r Modeling 2}
+# Building the actual model
+RFM <- rand_forest(trees = 1000) %>% 
+  set_mode("classification") %>%
+  set_engine("ranger")
+
+VWF <- workflow() %>%
+  add_recipe(Vrec) %>%
+  add_model(RFM)
+
+VWF
+
+```
+
+```{r Modeling 3}
+# Bootstrapping for later
+Vboot <- bootstraps(VDF)
+
+Vres <- fit_resamples(VWF,
+                      resamples = Vboot,
+                      control = control_resamples(save_pred = TRUE, verbose = TRUE))
+```
+
+## Results
+
+```{r Results 1}
+Vres %>%
+  collect_metrics()
+
+Vres %>%
+  collect_predictions() %>%
+  conf_mat(volcano_type, .pred_class)
+
+Vres %>%
+  collect_predictions() %>%
+  group_by(id) %>%
+  ppv(volcano_type, .pred_class)
+```
+
+```{r Results 2}
+Vres %>%
+  collect_predictions() %>%
+  group_by(id) %>%
+  ppv(volcano_type, .pred_class) %>%
+  ggplot(aes(.estimate)) + geom_histogram(bins= 10)
+```
+```{r Results 3}
+# A little pre processing for the next step
+Vprep2 <- juice(Vprep) %>%
+  select(-volcano_number) %>%
+  janitor::clean_names()
+
+# importance of variables in the model
+RFM %>%
+  set_engine("ranger", importance = "permutation") %>%
+  fit(volcano_type ~ ., data = Vprep2) %>%
+  vip(geom = "point")
+```
+```{r Results 4}
+Vpred <- Vres %>%
+  collect_predictions() %>%
+  mutate(correct = volcano_type == .pred_class) %>%
+  left_join(VDF %>% mutate(.row = row_number()))
+
+ggplot() + geom_map(
+  data = WMap,
+  map = WMap,
+  aes(long, lat, map_id = region),
+  color = "white",
+  fill = "gray",
+  alpha = 0.2
+) + stat_summary_2d(
+  data = Vpred,
+  aes(longitude, latitude, z = as.integer(correct)),
+  fun = "mean",
+  alpha = 0.7
+) + scale_fill_gradient(high = "green3", labels = scales::percent) + labs(fill = "Correct Classification \n Percentage")
+```
+

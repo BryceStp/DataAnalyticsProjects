@@ -1,0 +1,134 @@
+# Credit Card Fraud Once again, except we are using a different data set and taking a different approach.
+# https://www.kaggle.com/mlg-ulb/creditcardfraud
+# Data is too big for github
+
+```{r Library}
+library(keras)
+library(tidyverse)
+library(tidymodels)
+```
+
+```{r Data}
+df <- read_csv("creditcard.csv", show_col_types = FALSE)
+summary(df)
+```
+
+```{r Count Number of Fraudulent Cases}
+df_Class <-
+  df %>% mutate(Class = if_else(Class == 1, "Fraudulent", "Trustworthy") %>% as.factor())
+
+#summary(df_Class)
+```
+
+```{r Train and Test Sets}
+set.seed(0)
+
+df_split <- initial_split(df_Class, strata = Class)
+
+train_data <- training(df_split)
+
+test_data <- testing(df_split)
+
+#Statistical Normalization for Neural Network
+df_Scale <-
+  recipe(Class ~ ., data = train_data) %>% step_range(all_predictors())
+
+train_data <- df_Scale %>% prep() %>% bake(train_data)
+
+test_data <- df_Scale %>% prep() %>% bake(test_data)
+
+#summary(train_data)
+```
+
+```{r Fraudulent and Trustworthy Training Data}
+df_fraud <-
+  train_data %>% filter(Class == "Fraudulent") %>% select(-Class) %>% as.matrix()
+
+df_trust <-
+  train_data %>% filter(Class == "Trustworthy") %>% select(-Class) %>% as.matrix()
+```
+
+```{r AutoEncoder}
+AutoEncoder <- keras_model_sequential()
+
+AutoEncoder %>%
+  layer_dense(
+    units = 15,
+    activation = 'relu',
+    input_shape = ncol(df_trust)
+  ) %>%
+  layer_dense(units = 5, activation = 'relu') %>% 
+  layer_dense(units = 15, activation = 'relu') %>%
+  layer_dense(units = ncol(df_trust))
+
+AutoEncoder %>% compile(loss = "mean_squared_error", optimizer ="adam")
+```
+
+```{r AutoEncoder}
+AutoEncoder_hist <-
+  AutoEncoder %>% fit(
+    x = df_trust,
+    y = df_trust,
+    epochs = 100,
+    batch_size = 32,
+    validation_split = .8,
+    options = callback_early_stopping(patience = 10)
+  )
+```
+
+```{r}
+pred_trust <- predict(AutoEncoder, df_trust)
+pred_fraud <- predict(AutoEncoder, df_fraud)
+
+#head(pred_trust)
+
+summary(tibble(total_sq_err_trust = rowSums((pred_trust - df_trust)^2)))
+summary(tibble(total_sq_err_fraud = rowSums((pred_fraud - df_fraud)^2)))
+
+
+```
+
+```{r}
+model_data <-
+  tibble(error = rowSums((
+    predict(AutoEncoder, train_data %>% select(-Class) %>% as.matrix()) - train_data %>% select(-Class) %>% as.matrix()
+  ) ^ 2)) %>%
+  bind_cols(train_data %>% select(Class))
+
+model_data %>% group_by(Class) %>% summarise(mean = mean(error))
+
+anom_model <- logistic_reg(penalty = 0, mixture = 0) %>%
+  fit(Class ~ error, data = model_data)
+
+#anom_model
+
+predict(anom_model, model_data) %>%
+  bind_cols(model_data %>% select(Class)) %>%
+  conf_mat(truth = Class, estimate = .pred_class)
+
+baseline_model <- logistic_reg(penalty = 0, mixture = 0) %>%
+  fit(Class ~ ., data = train_data)
+
+predict(baseline_model, train_data) %>%
+  bind_cols(train_data %>% select(Class)) %>%
+  conf_mat(truth = Class, estimate = .pred_class)
+```
+
+```{r}
+eval_set <-
+  tibble(error = rowSums((
+    predict(AutoEncoder, test_data %>% select(-Class) %>% as.matrix()) - test_data %>% select(-Class) %>% as.matrix()
+  ) ^ 2)) %>%
+  bind_cols(test_data %>% select(Class))
+
+predict(anom_model, eval_set) %>%
+  bind_cols(eval_set %>% select(Class)) %>%
+  conf_mat(truth = Class, estimate = .pred_class)
+
+predict(baseline_model, test_data) %>%
+  bind_cols(test_data %>% select(Class)) %>%
+  conf_mat(truth = Class, estimate = .pred_class)
+```
+
+
+

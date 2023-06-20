@@ -1,0 +1,162 @@
+---
+title: "2023-01-10"
+output: html_document
+date: "2023-06-14"
+---
+# Today's link: https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-01-10/readme.md
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(tidymodels))
+suppressMessages(library(themis))
+suppressMessages(library(vip))
+suppressMessages(library(sf))
+```
+
+```{r EDA}
+# Read in the Data
+
+feederwatch <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-10/PFW_2021_public.csv'
+  )
+
+site_data <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-10/PFW_count_site_data_public_2021.csv'
+  )
+
+# pre-processing: We are only going to use valid observations regardless of being reviewed
+
+BDF <-
+  merge(
+    x = site_data,
+    y = feederwatch,
+    by.x = c("loc_id", "proj_period_id"),
+    by.y = c("loc_id", "PROJ_PERIOD_ID")
+  ) %>%
+  filter(valid == 1)
+
+BDFTemp <- BDF %>%
+  select(-c(loc_id, proj_period_id),
+         how_many,
+         squirrels,
+         humans,
+         cats,
+         dogs,
+         nearby_feeders) %>%
+  filter(!is.na(nearby_feeders)) %>%
+  filter(!is.na(squirrels)) %>%
+  mutate(
+    nearby_feeders = ifelse(nearby_feeders, "nearby_feeders", "no nearby_feeders")
+  )
+```
+
+```{r EDA}
+BDFTemp %>%
+  group_by(nearby_feeders) %>%
+  summarise(how_many = mean(how_many, na.rm = TRUE))
+
+BDFTemp %>%
+  group_by(squirrels) %>%
+  summarise(how_many = mean(how_many, na.rm = TRUE))
+
+BDFTemp %>%
+  count(species_code)
+  
+```
+# It seems that squirrels have some impact on the presence of birds, but this could be due to a data imbalance. This could also be the case for nearby_feeders. It might be the case that neither have a particularly strong impact on bird counts.
+
+```{r EDA}
+world <- map_data("world")
+
+ggplot() +
+  geom_map(
+    data = world,
+    map = world,
+    aes(long, lat, map_id = region),
+    color = "black",
+    fill = "lightgray"
+  )  +
+  xlab("Longitude") + ylab("Latitude") +
+  coord_sf(xlim = c(-160,-60),  ylim = c(20, 65)) +
+  geom_point(data = BDFTemp,
+             aes(longitude, latitude, color = nearby_feeders),
+             alpha = 0.8)
+
+ggplot() +
+  geom_map(
+    data = world,
+    map = world,
+    aes(long, lat, map_id = region),
+    color = "black",
+    fill = "lightgray"
+  )  +
+  xlab("Longitude") + ylab("Latitude") +
+  coord_sf(xlim = c(-160,-60),  ylim = c(20, 65)) +
+  geom_point(data = BDFTemp,
+             aes(longitude, latitude, color = squirrels),
+             alpha = 0.8) 
+```
+
+```{r EDA}
+BDF2 <- feederwatch %>% mutate(
+  species_code = case_when(
+    str_detect(species_code, "blujay") ~ "Blue Jay",
+    str_detect(species_code, "amecro") ~ "American Crow",
+    str_detect(species_code, "amerob") ~ "American Robin",
+    str_detect(species_code, "bkcchi") ~ "Black-capped Chickade",
+    str_detect(species_code, "dowwoo") ~ "Downy Woodpecker"
+  ),
+  latitude,
+  longitude,
+  how_many,
+  Month,
+  Day,
+  Year,
+   .keep = "none"
+  ) %>% 
+  mutate_if(is.character, factor) %>%
+  drop_na(species_code)
+
+```
+
+```{r EDA}
+ggplot() +
+  geom_map(
+    data = world,
+    map = world,
+    aes(long, lat, map_id = region),
+    color = "black",
+    fill = "lightgray"
+  )  +
+  xlab("Longitude") + ylab("Latitude") +
+  coord_sf(xlim = c(-160,-60),  ylim = c(20, 65)) +
+  geom_point(data = BDF2,
+             aes(longitude, latitude, color = species_code),
+             alpha = 0.8) 
+```
+
+```{r}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

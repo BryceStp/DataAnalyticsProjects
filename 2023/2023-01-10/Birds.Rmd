@@ -14,7 +14,7 @@ suppressMessages(library(vip))
 suppressMessages(library(sf))
 ```
 
-```{r EDA}
+```{r EDA 1}
 # Read in the Data
 
 feederwatch <-
@@ -27,6 +27,8 @@ site_data <-
     'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-10/PFW_count_site_data_public_2021.csv'
   )
 
+```
+```{r EDA}
 # pre-processing: We are only going to use valid observations regardless of being reviewed
 
 BDF <-
@@ -34,9 +36,10 @@ BDF <-
     x = site_data,
     y = feederwatch,
     by.x = c("loc_id", "proj_period_id"),
-    by.y = c("loc_id", "PROJ_PERIOD_ID")
+    by.y = c("loc_id", "PROJ_PERIOD_ID"),
+    all = TRUE
   ) %>%
-  filter(valid == 1)
+  filter(valid == TRUE)
 
 BDFTemp <- BDF %>%
   select(-c(loc_id, proj_period_id),
@@ -53,7 +56,7 @@ BDFTemp <- BDF %>%
   )
 ```
 
-```{r EDA}
+```{r EDA 2}
 BDFTemp %>%
   group_by(nearby_feeders) %>%
   summarise(how_many = mean(how_many, na.rm = TRUE))
@@ -68,7 +71,7 @@ BDFTemp %>%
 ```
 # It seems that squirrels have some impact on the presence of birds, but this could be due to a data imbalance. This could also be the case for nearby_feeders. It might be the case that neither have a particularly strong impact on bird counts.
 
-```{r EDA}
+```{r EDA 3}
 world <- map_data("world")
 
 ggplot() +
@@ -100,7 +103,7 @@ ggplot() +
              alpha = 0.8) 
 ```
 
-```{r EDA}
+```{r EDA 4}
 BDF2 <- feederwatch %>% mutate(
   species_code = case_when(
     str_detect(species_code, "blujay") ~ "Blue Jay",

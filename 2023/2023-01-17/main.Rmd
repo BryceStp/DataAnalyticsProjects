@@ -1,8 +1,10 @@
 ---
 title: "main"
 output: html_document
-date: "2023-06-17"
+date: "2023-06-30"
 ---
+
+# Today's link: https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-01-24
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -11,43 +13,33 @@ suppressMessages(library(tidymodels))
 library(reshape2)
 ```
 
-# This is a very straight forward dataset. I think we are just going to do a little EDA and a simple linear model.
-
 ```{r EDA}
-artists <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-17/artists.csv', show_col_types = FALSE)
-
+artists <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-17/artists.csv',
+    show_col_types = FALSE
+  )
 show(artists)
-
 artists %>% count(artist_nationality, artist_gender)
-
 artists %>% count(artist_race)
-
 artists %>% count(year)
-
 # Convert to actual NA's
-artists[artists == "N/A"] <- NA 
-artists <- artists %>% drop_na()
+artists[artists == "N/A"] <- NA
 ```
 
 ```{r EDA}
+artists <- artists %>% drop_na()
 artists %>%
   drop_na() %>%
   ggplot(aes(year, fill = artist_race)) +
   geom_bar()
-
-```
-
-```{r EDA}
 artists %>%
   drop_na() %>%
   ggplot(aes(year, fill = artist_gender)) +
   geom_bar()
-```
-
-```{r EDA}
 artists %>%
   drop_na() %>%
-  ggplot(aes(x = space_ratio_per_page_total, fill = artist_gender)) + 
+  ggplot(aes(x = space_ratio_per_page_total, fill = artist_gender)) +
   geom_histogram(bins = 15) +
   facet_wrap(vars(artist_gender), scales = "free_y", ncol = 1) +
   scale_x_log10() +
@@ -56,57 +48,43 @@ artists %>%
 
 ```{r Modeling}
 linearModel <- lm(space_ratio_per_page_total ~ artist_gender + year,
-                   data = artists)
+                  data = artists)
 summary(linearModel)
-```
-# despite our model not being particularly good, we would fail to reject our null hypothesis (i.e. men being alloted more area in books and that said area is expanding).
-```{r Modeling}
 set.seed(0)
 boots <- bootstraps(artists, times = 1000, apparent = TRUE)
 boots
-```
 
-```{r Modeling}
 bootModels <-
   boots %>%
-  mutate(
-    model = map(
-      splits,
-      ~ lm(space_ratio_per_page_total ~ artist_gender + year,
-           data = analysis(.x))
-    ),
-    coef_info = map(model, tidy))
+  mutate(model = map(
+    splits,
+    ~ lm(space_ratio_per_page_total ~ artist_gender + year,
+         data = analysis(.x))
+  ),
+  coef_info = map(model, tidy))
+
 ```
 
 ```{r Modeling}
-bootCoefs <- 
-  bootModels %>% 
+bootCoefs <-
+  bootModels %>%
   unnest(coef_info)
-```
-
-```{r}
 percentile_intervals <- int_pctl(bootModels, coef_info)
-
 ggplot(bootCoefs, aes(estimate)) +
   geom_histogram(bins = 30) +
-  facet_wrap( ~ term, scales = "free") +
+  facet_wrap(~ term, scales = "free") +
   geom_vline(aes(xintercept = .lower), data = percentile_intervals, col = "blue") +
   geom_vline(aes(xintercept = .upper), data = percentile_intervals, col = "blue")
 ```
+
 ```{r Modeling}
 bootModels %>%
   sample_n(150) %>%
-  mutate(augmented = map(model,augment)) %>%
+  mutate(augmented = map(model, augment)) %>%
   unnest(augmented) %>%
-  ggplot(aes(year, .fitted, color = artist_gender, group = id)) + geom_line(alpha =.2, show.legend = FALSE) +
+  ggplot(aes(year, .fitted, color = artist_gender, group = id)) + geom_line(alpha =
+                                                                              .2, show.legend = FALSE) +
   geom_line(alpha = 0.1, show.legend = FALSE) +
   facet_wrap(vars(artist_gender))
 ```
-# In hindsight I should have transformed the data or tried a different model to get something more accurate.
-
-
-
-
-
-
 

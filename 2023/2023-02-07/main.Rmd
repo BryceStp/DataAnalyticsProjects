@@ -1,0 +1,90 @@
+---
+title: "main"
+output: html_document
+date: "2023-06-27"
+---
+# Link For today: https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-02-07
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(tidymodels))
+suppressMessages(library(gganimate))
+suppressMessages(library(themis))
+suppressMessages(library(vip))
+suppressMessages(library(sf))
+
+```
+
+```{r EDA}
+stockPrices <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-07/big_tech_stock_prices.csv'
+  )
+bigCompanies <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-07/big_tech_companies.csv'
+  )
+
+view(stockPrices)
+view(bigCompanies)
+
+SDF <- merge(x = bigCompanies, y = stockPrices)
+```
+
+```{r EDA}
+# Quick look at some name brand / staple companies
+
+  SDF %>%
+  filter(stock_symbol == "AAPL" |
+           stock_symbol == "AMZN" | stock_symbol == "GOOGL") %>%
+  ggplot(aes(date, close, group = stock_symbol, color = factor(stock_symbol))) +
+  geom_line() +
+  scale_color_viridis_d() +
+  labs(x = "Date", y = "Close Price") +
+  theme(legend.position = "top") + 
+  geom_point() + 
+  transition_reveal(date)
+
+```
+
+```{r EDA}
+SDF %>%
+  filter(stock_symbol == "AAPL",
+         date >= as.Date("2020-01-01"),
+         date <= as.Date("2020-04-30")) %>%
+  mutate(eval = ifelse(open < close, "up", "down")) %>%
+  ggplot(aes(date, close)) +
+  geom_segment(aes(
+    x = date,
+    y = high,
+    xend = date,
+    yend = low,
+    color = eval
+  )) +
+  geom_segment(
+               aes(
+                 x = date,
+                 y = open,
+                 xend = date,
+                 yend = close,
+                 color = eval
+               ),
+               linewidth = 2) +
+  labs(x = "Date", y = "Close Price") 
+
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+

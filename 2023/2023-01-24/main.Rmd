@@ -73,8 +73,3 @@ episodes %>%
   ggplot(mapping = aes(air_date, viewers)) +
   geom_line(stat = "identity")
 ```
-
-```{r}
-
-```
-

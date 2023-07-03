@@ -140,3 +140,26 @@ ggplot() +
              aes(longitude, latitude, color = species_code),
              alpha = 0.8) 
 ```
+
+```{r}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

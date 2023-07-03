@@ -1,0 +1,88 @@
+---
+title: "main"
+output: html_document
+date: "2023-07-02"
+---
+
+# Link For today: https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-02-14
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(gganimate))
+```
+
+```{r EDA}
+ADF <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-14/age_gaps.csv'
+  )
+
+view(ADF)
+
+```
+
+```{r EDA}
+ADF %>%
+  mutate(MovChar = 
+           case_when(
+             str_detect(movie_name, "Harold and Maude") ~ "Harold and Maude",
+             str_detect(movie_name, "Venus") ~ "Venus",
+             str_detect(movie_name, "The Quiet American") ~ "The Quiet American",
+             str_detect(movie_name, "The Big Lebowski") ~ "The Big Lebowski",
+             str_detect(movie_name, "Poison Ivy") ~ "Poison Ivy",
+             str_detect(movie_name, "Beginners") ~ "Beginners",
+             str_detect(movie_name, "Whatever Works") ~ "Whatever Works",
+             str_detect(movie_name, "Entrapment") ~ "Entrapment",
+             str_detect(movie_name, "Husbands and Wives") ~ "Husbands and Wives",
+           )) %>%
+  drop_na() %>%
+  ggplot(mapping = aes(y = MovChar, x = age_difference, fill = factor(MovChar))) +
+  geom_bar(stat = "identity")
+```
+
+```{r EDA}
+ADF %>% 
+  ggplot(mapping = aes(x = release_year,
+                             y = age_difference)) +
+  geom_point(color = alpha("purple", 0.5)) +
+  #geom_line(color = "yellow")+
+  geom_smooth(color = "black")
+```
+
+```{r EDA}
+p <- ADF %>%
+  mutate(AgeChar = case_when(
+    (character_1_gender == "woman") ~ "Older Woman",
+    (character_1_gender == "man") ~ "Older Man"
+  )) %>%
+  ggplot(aes(
+    release_year,
+    age_difference,
+    group = AgeChar,
+    color = factor(AgeChar)
+  )) +
+  geom_line() +
+  scale_color_viridis_d() +
+  labs(x = "Release Year", y = "Age Difference") +
+  theme(legend.position = "top") +
+  geom_point() +
+  scale_y_continuous(labels = scales::comma) +
+  geom_segment(aes(xend = 2021, yend = age_difference),
+               linetype = 2,
+               color = 'grey') +
+  geom_text(
+    aes(x = 2021, label = sprintf("%5.0f", age_difference)),
+    hjust = 0,
+    show.legend = F,
+    fontface = 'bold',
+    color = 'black'
+  ) +
+  transition_reveal(release_year) +
+  view_follow(fixed_x = TRUE, fixed_y = TRUE)
+
+animate(p, fps = 2)
+```
+
+
+

@@ -1,0 +1,82 @@
+---
+title: "main"
+output: html_document
+date: "2023-07-11"
+---
+
+#Today's Link: https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-03-07
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(gganimate))
+suppressMessages(library(plotly))
+suppressMessages(library(glue))
+
+```
+
+```{r EDA}
+numbats <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-03-07/numbats.csv')
+
+numbats <- numbats %>%
+  select(-c("year", "month", "day", "hour")) %>%
+  mutate(Year = lubridate::year(eventDate)) %>%
+  mutate(Hour = lubridate::hour(eventDate)) %>%
+  mutate(Month = lubridate::month(eventDate))
+```
+
+
+```{r EDA}
+world <- map_data("world")
+
+g <- numbats %>%
+  drop_na(Year, dryandra) %>%
+  ggplot() +
+  geom_map(
+    data = world,
+    map = world,
+    aes(long, lat, map_id = region),
+    color = "black",
+    fill = "lightgray"
+  )  +
+  xlab("Longitude") + ylab("Latitude") +
+  coord_sf(xlim = c(115, 151),  ylim = c(-40,-20)) +
+  geom_point(aes(decimalLongitude, decimalLatitude, color = dryandra, group = seq_along(Year)),
+             alpha = 0.8) +
+  transition_reveal(Year) +
+  labs(title = 'Year: {frame_along}') 
+
+animate(g, fps = 2)
+```
+
+```{r EDA}
+par(mfrow = c(2,2))
+
+numbats %>%
+  drop_na(Hour, dryandra) %>%
+  ggplot(mapping = aes(x = Hour, fill = dryandra)) +
+  geom_histogram()+
+  stat_bin(bins = 24)
+
+numbats %>%
+  drop_na(Month, dryandra) %>%
+  ggplot(mapping = aes(x = Month, fill = dryandra)) +
+  geom_histogram() +
+  stat_bin(bins = 12)
+```
+
+```{r EDA}
+g <- numbats %>%
+  drop_na(Year) %>%
+  ggplot(mapping = aes(x = Year, y = dataResourceName, color = dataResourceName, text = glue("{ eventDate }: { scientificName } \n dryandra: { dryandra }, prcp: { prcp }, tmax: { tmax }, tmin: { tmin } \n { dataResourceName }"))) +
+  geom_point() +
+  labs(y = "") +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        panel.grid.major.y = element_blank(),
+        panel.grid.minor.y = element_blank(),
+        legend.position = "none") 
+
+ggplotly(g, tooltip = "text")
+```
+

@@ -14,6 +14,8 @@ library(reshape2)
 ```
 
 ```{r EDA}
+# Load in the data
+
 artists <-
   readr::read_csv(
     'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-17/artists.csv',
@@ -28,15 +30,20 @@ artists[artists == "N/A"] <- NA
 ```
 
 ```{r EDA}
+# Build a few quick visualizations
+
 artists <- artists %>% drop_na()
+
 artists %>%
   drop_na() %>%
   ggplot(aes(year, fill = artist_race)) +
   geom_bar()
+
 artists %>%
   drop_na() %>%
   ggplot(aes(year, fill = artist_gender)) +
   geom_bar()
+
 artists %>%
   drop_na() %>%
   ggplot(aes(x = space_ratio_per_page_total, fill = artist_gender)) +
@@ -47,12 +54,21 @@ artists %>%
 ```
 
 ```{r Modeling}
+# We are going to use a standard linear model
+
 linearModel <- lm(space_ratio_per_page_total ~ artist_gender + year,
                   data = artists)
+
 summary(linearModel)
+
 set.seed(0)
+
+# Now its time to do some bootstrapping
+
 boots <- bootstraps(artists, times = 1000, apparent = TRUE)
 boots
+
+# Now we load in the bootstrap data into new linear models
 
 bootModels <-
   boots %>%
@@ -66,18 +82,23 @@ bootModels <-
 ```
 
 ```{r Modeling}
+# lets make some visualizations (looks like rough normal distributions, which is good)
+
 bootCoefs <-
   bootModels %>%
   unnest(coef_info)
+
 percentile_intervals <- int_pctl(bootModels, coef_info)
 ggplot(bootCoefs, aes(estimate)) +
   geom_histogram(bins = 30) +
-  facet_wrap(~ term, scales = "free") +
+  facet_wrap( ~ term, scales = "free") +
   geom_vline(aes(xintercept = .lower), data = percentile_intervals, col = "blue") +
   geom_vline(aes(xintercept = .upper), data = percentile_intervals, col = "blue")
 ```
 
 ```{r Modeling}
+# Lets check out the fit over time 
+
 bootModels %>%
   sample_n(150) %>%
   mutate(augmented = map(model, augment)) %>%

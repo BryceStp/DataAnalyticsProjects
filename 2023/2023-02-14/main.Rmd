@@ -13,6 +13,8 @@ suppressMessages(library(gganimate))
 ```
 
 ```{r EDA}
+# Load in the data
+
 ADF <-
   readr::read_csv(
     'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-14/age_gaps.csv'
@@ -23,34 +25,46 @@ view(ADF)
 ```
 
 ```{r EDA}
+# Check out the age gap in a few movies
+
 ADF %>%
-  mutate(MovChar = 
-           case_when(
-             str_detect(movie_name, "Harold and Maude") ~ "Harold and Maude",
-             str_detect(movie_name, "Venus") ~ "Venus",
-             str_detect(movie_name, "The Quiet American") ~ "The Quiet American",
-             str_detect(movie_name, "The Big Lebowski") ~ "The Big Lebowski",
-             str_detect(movie_name, "Poison Ivy") ~ "Poison Ivy",
-             str_detect(movie_name, "Beginners") ~ "Beginners",
-             str_detect(movie_name, "Whatever Works") ~ "Whatever Works",
-             str_detect(movie_name, "Entrapment") ~ "Entrapment",
-             str_detect(movie_name, "Husbands and Wives") ~ "Husbands and Wives",
-           )) %>%
+  mutate(
+    MovChar =
+      case_when(
+        str_detect(movie_name, "Harold and Maude") ~ "Harold and Maude",
+        str_detect(movie_name, "Venus") ~ "Venus",
+        str_detect(movie_name, "The Quiet American") ~ "The Quiet American",
+        str_detect(movie_name, "The Big Lebowski") ~ "The Big Lebowski",
+        str_detect(movie_name, "Poison Ivy") ~ "Poison Ivy",
+        str_detect(movie_name, "Beginners") ~ "Beginners",
+        str_detect(movie_name, "Whatever Works") ~ "Whatever Works",
+        str_detect(movie_name, "Entrapment") ~ "Entrapment",
+        str_detect(movie_name, "Husbands and Wives") ~ "Husbands and Wives",
+      )
+  ) %>%
   drop_na() %>%
-  ggplot(mapping = aes(y = MovChar, x = age_difference, fill = factor(MovChar))) +
+  ggplot(mapping = aes(
+    y = MovChar,
+    x = age_difference,
+    fill = factor(MovChar)
+  )) +
   geom_bar(stat = "identity")
 ```
 
 ```{r EDA}
-ADF %>% 
+# Age difference over the years
+
+ADF %>%
   ggplot(mapping = aes(x = release_year,
-                             y = age_difference)) +
+                       y = age_difference)) +
   geom_point(color = alpha("purple", 0.5)) +
   #geom_line(color = "yellow")+
   geom_smooth(color = "black")
 ```
 
 ```{r EDA}
+# animated age difference over time, grouped into "older woman" and "older man"
+
 p <- ADF %>%
   mutate(AgeChar = case_when(
     (character_1_gender == "woman") ~ "Older Woman",

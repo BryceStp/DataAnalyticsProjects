@@ -15,6 +15,7 @@ suppressMessages(library(tidylo))
 ```
 
 ```{r EDA}
+# Load in the Data
 bob_ross <- read_csv(
   "https://raw.githubusercontent.com/jwilber/Bob_Ross_Paintings/master/data/bob_ross_paintings.csv",
 ) 
@@ -22,21 +23,24 @@ bob_ross <- read_csv(
 view(bob_ross)
 ```
 ```{r EDA}
+# We are breaking up the title into individual words
 BrokenTitle <- bob_ross %>%
   select(painting_title) %>%
   mutate(NewTitle = tolower(painting_title)) %>%
   mutate(NewTitle = strsplit(NewTitle, split = " ")) %>%
-  unnest(NewTitle) 
+  unnest(NewTitle)
 
+# removing words we don't want to use
 stopWords <-
   c("a", "in", "of", "at", "the", "by", "an", "on", "to", "c", "o", "and")
-BrokenTitle <- subset(BrokenTitle,!(NewTitle %in% stopWords)) 
+BrokenTitle <- subset(BrokenTitle, !(NewTitle %in% stopWords)) 
 
 ```
 
 ```{r EDA}
+# Now we clean up the colors and color_hex
 remove <- c("\\[", "\\]", "'", "\\\\n", "\\\\r")
-  
+
 colorSelect <- bob_ross %>%
   select(colors, color_hex) %>%
   mutate(
@@ -55,21 +59,29 @@ view(colorSelect)
 ```
 
 ```{r EDA}
-presentColors <- bob_ross %>% 
-  gather(color, present, -c(1:10)) %>%
+# We only care about if the colors are in the paintings or not
+
+presentColors <- bob_ross %>%
+  gather(color, present,-c(1:10)) %>%
   filter(present == 1) %>%
   mutate(color = str_to_title(str_replace(color, "_", " ")))
 
-bob_ross <- merge(x = presentColors, y = colorSelect, by.y = "colors", by.x = "color") %>%
-  select(-c(2,4,8:12))
+bob_ross <-
+  merge(x = presentColors,
+        y = colorSelect,
+        by.y = "colors",
+        by.x = "color") %>%
+  select(-c(2, 4, 8:12))
 
 view(bob_ross)
 ```
 
 ```{r EDA}
+# Looking at total count of colors used
+
 bob_ross %>%
   count(color, color_hex.y, sort = TRUE) %>%
-  mutate( color = fct_reorder(color, n)) %>%
+  mutate(color = fct_reorder(color, n)) %>%
   ggplot(aes(color, n, fill = I(color_hex.y))) +
   geom_col() +
   coord_flip()
@@ -77,7 +89,9 @@ bob_ross %>%
 ```
 
 ```{r EDA}
- bob_ross %>%
+# Percentage of titanium white used over seasons
+
+bob_ross %>%
   add_count(season, name = "totalColors") %>%
   count(season, color, totalColors,  sort = TRUE) %>%
   mutate(percentage = n / totalColors) %>%
@@ -88,17 +102,20 @@ bob_ross %>%
 ```
 
 ```{r EDA}
+# Going to look into common words in title, so we need to merge before that
 bob_ross <-
   merge(x = bob_ross, y = BrokenTitle, by = "painting_title")
 
 ```
 
 ```{r EDA}
+# Usage of a few words in titles over seasons by paint color
 bob_ross %>%
   group_by(NewTitle, season, color) %>%
-  filter(NewTitle == "mountain" | NewTitle == "winter" | NewTitle == "day") %>%
+  filter(NewTitle == "mountain" |
+           NewTitle == "winter" | NewTitle == "day") %>%
   ggplot(aes(season, fill = I(color_hex.y))) +
   geom_bar(stat = "count") +
-  facet_wrap(~ NewTitle)
+  facet_wrap( ~ NewTitle)
 ```
 

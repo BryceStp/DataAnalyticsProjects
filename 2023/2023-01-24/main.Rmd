@@ -3,7 +3,9 @@ title: "main"
 output: html_document
 date: "2023-06-19"
 ---
+
 # Today's Link: https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-01-24
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 suppressMessages(library(tidyverse))
@@ -12,6 +14,8 @@ suppressMessages(library(tidylo))
 ```
 
 ```{r EDA}
+# Load in the data
+
 survivalists <-
   readr::read_csv(
     'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-24/survivalists.csv'
@@ -32,6 +36,7 @@ episodes <-
 ```
 
 ```{r EDA}
+# Most selected items
 ggplot(data = loadouts, mapping = aes(item, fill = item)) +
   geom_histogram(stat = "count") + coord_flip()
 
@@ -44,12 +49,17 @@ loadouts %>%
   labs(y = NULL) +
   theme(text = element_text(size = 6), element_line(size = 1))
 
+# Age counts grouped by gender
+
 ggplot(data = survivalists, mapping = aes(age, fill = gender)) +
   geom_histogram(stat = "count")
 ```
+
 #I was originally going to try a predictive model for words in quotes, but it looks like there isn't enough data for meaningful results
 
-```{r}
+```{r EDA}
+# Log odds of individual words from quotes
+
 quotes <-
   episodes %>%
   unnest_tokens(word, quote)
@@ -68,6 +78,8 @@ quotes %>%
 ```
 
 ```{r EDA}
+# Number of viewers by air date
+
 episodes %>%
   drop_na() %>%
   ggplot(mapping = aes(air_date, viewers)) +

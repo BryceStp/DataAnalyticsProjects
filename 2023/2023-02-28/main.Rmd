@@ -13,10 +13,11 @@ suppressMessages(library(plotly))
 ```
 
 ```{r EDA}
+# Load in the data
 afrisenti <-
   readr::read_csv(
     'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-28/afrisenti.csv'
-  ) %>% 
+  ) %>%
   select(language_iso_code, label, tweet)
 
 languages <-
@@ -39,46 +40,55 @@ country_regions <-
     'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-28/country_regions.csv'
   )
 
-
+# Merge everything together
 ADF <- merge(x = afrisenti, y = languages, on = "language_iso_code")
 
-ADF <- merge(x = ADF, y = language_scripts, on = "language_iso_code")
+ADF <-
+  merge(x = ADF, y = language_scripts, on = "language_iso_code")
 
-ADF <- merge(x = ADF, y = language_countries, on = "language_iso_code")
+ADF <-
+  merge(x = ADF, y = language_countries, on = "language_iso_code")
 
-ADF <- merge(x = ADF, y = country_regions, on = "country" )
+ADF <- merge(x = ADF, y = country_regions, on = "country")
 ```
+
 ```{r EDA}
+# Making an interactive plot to further explore how region and label interact
+
 g <- ADF %>%
-  group_by(region,label) %>%
+  group_by(region, label) %>%
   summarise(count = n()) %>%
   ungroup() %>%
-  mutate(region = fct_reorder(region, -count)) %>%
+  mutate(region = fct_reorder(region,-count)) %>%
   ggplot(mapping = aes(x = region , y = count, fill = region)) +
   geom_col() +
   ylab("Number of Tweets") +
   xlab(" ") +
   theme(axis.text.x = element_blank(),
         axis.ticks.x = element_blank()) +
-  facet_wrap( ~ label)
+  facet_wrap(~ label)
 
 ggplotly(g)
 ```
 
 ```{r EDA}
+# Clean up the tweets a little before looking at them further
+
 text <- ADF %>%
   select(tweet) %>%
   mutate(newTweet = tolower(tweet)) %>%
   mutate(newTweet = strsplit(newTweet, split = " ")) %>%
   unnest(newTweet)
 
-text <- subset(text, !(newTweet %in% c(" ", "@user", "", "/n", "rt", "'")))
+text <-
+  subset(text,!(newTweet %in% c(" ", "@user", "", "/n", "rt", "'")))
 ```
 
 ```{r EDA}
+# We are going to sample the data, since 3 million pieces of data is too much to process
 set.seed(0)
 
-g2 <- text[sample(nrow(text),50000),] %>%
+g2 <- text[sample(nrow(text), 50000), ] %>%
   group_by(newTweet) %>%
   filter(n() > 100) %>%
   mutate(newTweet = fct_infreq(newTweet)) %>%

@@ -15,9 +15,11 @@ suppressMessages(library(leaflet))
 ```
 
 ```{r EDA}
+# Load in the data
+
 cats_uk <- readr::read_csv(
   'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-31/cats_uk.csv'
-) 
+)
 
 cats_uk_reference <- readr::read_csv(
   'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-31/cats_uk_reference.csv'
@@ -27,11 +29,13 @@ view(cats_uk)
 view(cats_uk_reference)
 
 # I also want a year column to try and make an animation based on month
-Catsdf <- merge(x = cats_uk, y = cats_uk_reference) %>% mutate(Month = lubridate::month(timestamp))
+Catsdf <-
+  merge(x = cats_uk, y = cats_uk_reference) %>% mutate(Month = lubridate::month(timestamp))
 
 view(Catsdf)
 
 ```
+
 ```{r EDA}
 Catsdf %>%
   group_by(animal_id) %>%
@@ -47,9 +51,8 @@ Catsdf %>%
 Abba <- Catsdf %>%
   filter(tag_id == "Abba-Tag") %>%
   mutate(start = min(timestamp)) %>%
-  mutate(time_out = (lubridate::minute(timestamp) - lubridate::minute(start))/60)
-
-
+  mutate(time_out = (lubridate::minute(timestamp) - lubridate::minute(start)) /
+           60)
 ```
 
 ```{r EDA}
@@ -70,7 +73,7 @@ ggplot() +
     fill = "lightgray"
   )  +
   xlab("location_long") + ylab("location_lat") +
-  coord_sf(xlim = c(-4.208613,-5.758853),
+  coord_sf(xlim = c(-4.208613, -5.758853),
            ylim = c(50.88223, 50.10353)) +
   geom_point(
     data = Catsdf,
@@ -89,7 +92,7 @@ ggplot() +
     fill = "lightgray"
   )  +
   xlab("location_long") + ylab("location_lat") +
-  coord_sf(xlim = c(-4.9240,-4.9200),
+  coord_sf(xlim = c(-4.9240, -4.9200),
            ylim = c(50.5065, 50.509)) +
   geom_point(
     data = Catsdf,
@@ -97,32 +100,35 @@ ggplot() +
     alpha = 0.8,
     show.legend = FALSE
   )
-
 ```
 
 
 
 ```{r EDA}
+# Take a look at where Abba goes
+
 cat_map <- leaflet(Abba) %>%
   addTiles() %>%
-  addPolylines(lng = ~location_long, lat = ~location_lat, opacity = 0.5) %>%
-  addCircles(lng = ~location_long, lat = ~location_lat)
+  addPolylines(
+    lng = ~ location_long,
+    lat = ~ location_lat,
+    opacity = 0.5
+  ) %>%
+  addCircles(lng = ~ location_long, lat = ~ location_lat)
 
 cat_map
 ```
 
 ```{r EDA}
-p <- ggplot(Catsdf,
-            aes(
-              x = age_years,
-              y = prey_p_month,
-              size = n_cats,
-              colour = animal_sex
-            )) +
+ggplot(Catsdf,
+       aes(
+         x = age_years,
+         y = prey_p_month,
+         size = n_cats,
+         colour = animal_sex
+       )) +
   geom_point(show.legend = TRUE, alpha = 0.7) +
-  scale_color_viridis_d() + 
+  scale_color_viridis_d() +
   transition_time(Month) +
   labs(title = 'Month: {frame_time}')
-
-p
 ```

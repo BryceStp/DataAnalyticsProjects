@@ -16,8 +16,14 @@ suppressMessages(library(glue))
 ```
 
 ```{r EDA}
-numbats <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-03-07/numbats.csv')
+# Loading in the data
 
+numbats <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-03-07/numbats.csv'
+  )
+
+# I am going to lubridate in my own year, hour, month
 numbats <- numbats %>%
   select(-c("year", "month", "day", "hour")) %>%
   mutate(Year = lubridate::year(eventDate)) %>%
@@ -27,6 +33,7 @@ numbats <- numbats %>%
 
 
 ```{r EDA}
+# Since we have longitude, latitude, and the date we can make a short animation
 world <- map_data("world")
 
 g <- numbats %>%
@@ -41,21 +48,27 @@ g <- numbats %>%
   )  +
   xlab("Longitude") + ylab("Latitude") +
   coord_sf(xlim = c(115, 151),  ylim = c(-40,-20)) +
-  geom_point(aes(decimalLongitude, decimalLatitude, color = dryandra, group = seq_along(Year)),
-             alpha = 0.8) +
+  geom_point(aes(
+    decimalLongitude,
+    decimalLatitude,
+    color = dryandra,
+    group = seq_along(Year)
+  ),
+  alpha = 0.8) +
   transition_reveal(Year) +
-  labs(title = 'Year: {frame_along}') 
+  labs(title = 'Year: {frame_along}')
 
 animate(g, fps = 2)
 ```
 
 ```{r EDA}
-par(mfrow = c(2,2))
+# Is month/hour going to show anything unusual in dryandra
+par(mfrow = c(2, 1))
 
 numbats %>%
   drop_na(Hour, dryandra) %>%
   ggplot(mapping = aes(x = Hour, fill = dryandra)) +
-  geom_histogram()+
+  geom_histogram() +
   stat_bin(bins = 24)
 
 numbats %>%
@@ -66,16 +79,26 @@ numbats %>%
 ```
 
 ```{r EDA}
+# Interactive plotly graph, showing all the data thus far through out the years
 g <- numbats %>%
   drop_na(Year) %>%
-  ggplot(mapping = aes(x = Year, y = dataResourceName, color = dataResourceName, text = glue("{ eventDate }: { scientificName } \n dryandra: { dryandra }, prcp: { prcp }, tmax: { tmax }, tmin: { tmin } \n { dataResourceName }"))) +
+  ggplot(mapping = aes(
+    x = Year,
+    y = dataResourceName,
+    color = dataResourceName,
+    text = glue(
+      "{ eventDate }: { scientificName } \n dryandra: { dryandra }, prcp: { prcp }, tmax: { tmax }, tmin: { tmin } \n { dataResourceName }"
+    )
+  )) +
   geom_point() +
   labs(y = "") +
-  theme(axis.text.y = element_blank(),
-        axis.ticks.y = element_blank(),
-        panel.grid.major.y = element_blank(),
-        panel.grid.minor.y = element_blank(),
-        legend.position = "none") 
+  theme(
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    legend.position = "none"
+  )
 
 ggplotly(g, tooltip = "text")
 ```

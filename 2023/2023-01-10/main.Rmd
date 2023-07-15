@@ -9,9 +9,8 @@ date: "2023-06-14"
 knitr::opts_chunk$set(echo = TRUE)
 suppressMessages(library(tidyverse))
 suppressMessages(library(tidymodels))
-suppressMessages(library(themis))
-suppressMessages(library(vip))
-suppressMessages(library(sf))
+suppressMessages(library(gganimate))
+
 ```
 
 ```{r EDA 1}
@@ -72,6 +71,8 @@ BDFTemp %>%
 # It seems that squirrels have some impact on the presence of birds, but this could be due to a data imbalance. This could also be the case for nearby_feeders. It might be the case that neither have a particularly strong impact on bird counts.
 
 ```{r EDA 3}
+# Take a look at where birds are in relation to squirrels and bird feeders
+
 world <- map_data("world")
 
 ggplot() +
@@ -88,6 +89,9 @@ ggplot() +
              aes(longitude, latitude, color = nearby_feeders),
              alpha = 0.8)
 
+```
+
+```{r EDA}
 ggplot() +
   geom_map(
     data = world,
@@ -100,10 +104,14 @@ ggplot() +
   coord_sf(xlim = c(-160,-60),  ylim = c(20, 65)) +
   geom_point(data = BDFTemp,
              aes(longitude, latitude, color = squirrels),
-             alpha = 0.8) 
+             alpha = 0.8)
 ```
 
+
+
 ```{r EDA 4}
+# Narrow down what birds we want to see on the map (I just picked my favorites)
+
 BDF2 <- feederwatch %>% mutate(
   species_code = case_when(
     str_detect(species_code, "blujay") ~ "Blue Jay",
@@ -125,7 +133,9 @@ BDF2 <- feederwatch %>% mutate(
 
 ```
 
-```{r EDA}
+```{r EDA 5}
+# Locations of our selected birds
+
 ggplot() +
   geom_map(
     data = world,
@@ -138,24 +148,7 @@ ggplot() +
   coord_sf(xlim = c(-160,-60),  ylim = c(20, 65)) +
   geom_point(data = BDF2,
              aes(longitude, latitude, color = species_code),
-             alpha = 0.8) 
+             alpha = 0.8) +
+  transition_time(Year) +
+  labs(title = "Current Year: {frame_time}")
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

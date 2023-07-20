@@ -8,6 +8,116 @@ date: "2023-07-19"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(plotly))
 
 ```
 
+```{r EDA}
+#Load in the data and clean it up a little bit
+
+eggproduction  <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-04-11/egg-production.csv'
+  ) %>%
+  mutate(Date = lubridate::ymd(observed_month)) %>%
+  select(-c("observed_month"))
+
+cagefreepercentages <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-04-11/cage-free-percentages.csv'
+  ) %>%
+  mutate(Date = lubridate::ymd(observed_month)) %>%
+  select(-c("observed_month"))
+
+view(eggproduction)
+view(cagefreepercentages)
+```
+
+```{r EDA}
+# Lets try out some different visualizations for the hens and eggs
+
+eggs <- eggproduction %>%
+  pivot_longer(n_hens:n_eggs, names_to = "type", values_to = "count") %>%
+  ggplot(mapping = aes(y = count, x = Date, fill = prod_process)) +
+  geom_col() +
+  theme(axis.text.x = element_text(angle = 60),
+        legend.position = "none") +
+  facet_wrap( ~ prod_process)
+
+hens <- eggproduction %>%
+  pivot_longer(n_hens:n_eggs, names_to = "type", values_to = "count") %>%
+  ggplot(mapping = aes(y = count, x = Date, fill = prod_type)) +
+  geom_col() +
+  theme(axis.text.x = element_text(angle = 60),
+        legend.position = "none") +
+  facet_wrap( ~ prod_type)
+
+subplot(eggs,
+        hens,
+        shareY = TRUE,
+        nrows = 2,
+        margin = 0.1) 
+```
+
+```{r EDA}
+# Note that we filter out a portion of the data to make it more visually palatable
+
+eggLine <- eggproduction %>%
+  pivot_longer(n_hens:n_eggs, names_to = "type", values_to = "count") %>%
+  filter(count < 5.0e+09) %>%
+  ggplot(mapping = aes(x = Date, y = count, color = type)) +
+  geom_line(mapping = aes(linetype = prod_process)) +
+  facet_wrap(~ prod_type)
+
+# Filtered out portion of data and I added a trend line for fun
+
+eggLineAll <- eggproduction %>%
+  pivot_longer(n_hens:n_eggs, names_to = "type", values_to = "count") %>%
+  filter(count > 5.0e+09) %>%
+  ggplot(mapping = aes(x = Date, y = count)) +
+  geom_line(color = "#F8766D") +
+  geom_smooth(color = "gray") +
+  facet_wrap(~ prod_type)
+
+
+subplot(eggLineAll,
+        eggLine,
+        nrows = 2,
+        margin = 0.1) 
+```
+
+```{r EDA}
+# Lets take a look at the egg percentages
+
+g <- cagefreepercentages %>%
+  select(Date, percent_hens) %>%
+  mutate(Date = lubridate::year(Date)) %>%
+  group_by(Date) %>%
+  mutate(maxPer = max(percent_hens)) %>%
+  ungroup() %>%
+  mutate(maxPer = case_when(percent_hens == maxPer ~ maxPer, TRUE ~ NA_real_)) %>%
+  filter(!is.na(maxPer)) %>%
+  select(-percent_hens) %>%
+  ggplot(aes(x = Date, y = maxPer)) +
+  geom_segment(aes(
+    x = Date,
+    xend = Date,
+    y = 0,
+    yend = maxPer
+  ), color = "skyblue") +
+  geom_point(color = "blue",
+             size = 4,
+             alpha = 0.6) +
+  theme_light() +
+  coord_flip() +
+  theme(
+    panel.grid.major.y = element_blank(),
+    panel.border = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+
+ggplotly(g)
+```
+
+ 

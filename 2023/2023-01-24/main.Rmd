@@ -1,0 +1,87 @@
+---
+title: "main"
+output: html_document
+date: "2023-06-19"
+---
+
+# Today's Link: https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-01-24
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(tidytext))
+suppressMessages(library(tidylo))
+```
+
+```{r EDA}
+# Load in the data
+
+survivalists <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-24/survivalists.csv'
+  ) %>% replace_na(list(reason_tapped_out = "Winner"))
+
+loadouts <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-24/loadouts.csv'
+  )
+
+episodes <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-24/episodes.csv'
+  )
+
+# There isn't really any useful information in seasons
+#seasons <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-24/seasons.csv')
+```
+
+```{r EDA}
+# Most selected items
+ggplot(data = loadouts, mapping = aes(item, fill = item)) +
+  geom_histogram(stat = "count") + coord_flip()
+
+loadouts %>%
+  count(season, item, sort = TRUE) %>%
+  group_by(season) %>%
+  ggplot(aes(n, item, fill = season)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(vars(season), scales = "free") +
+  labs(y = NULL) +
+  theme(text = element_text(size = 6), element_line(size = 1))
+
+# Age counts grouped by gender
+
+ggplot(data = survivalists, mapping = aes(age, fill = gender)) +
+  geom_histogram(stat = "count")
+```
+
+#I was originally going to try a predictive model for words in quotes, but it looks like there isn't enough data for meaningful results
+
+```{r EDA}
+# Log odds of individual words from quotes
+
+quotes <-
+  episodes %>%
+  unnest_tokens(word, quote)
+quotes %>%
+  count(season, word, sort = TRUE) %>%
+  bind_log_odds(season, word, n) %>%
+  filter(n > 3) %>%
+  group_by(season) %>%
+  slice_max(log_odds_weighted, n = 10) %>%
+  mutate(word = reorder_within(word, log_odds_weighted, season)) %>%
+  ggplot(aes(log_odds_weighted, word, fill = season)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(vars(season), scales = "free") +
+  scale_y_reordered() +
+  labs(y = NULL)
+```
+
+```{r EDA}
+# Number of viewers by air date
+
+episodes %>%
+  drop_na() %>%
+  ggplot(mapping = aes(air_date, viewers)) +
+  geom_line(stat = "identity")
+```

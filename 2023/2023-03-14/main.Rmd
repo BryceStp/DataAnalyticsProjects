@@ -1,0 +1,101 @@
+---
+title: "main"
+output: html_document
+date: "2023-07-12"
+---
+
+#Today's Link: https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-03-14
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(gganimate))
+```
+
+```{r EDA}
+# Load in the data
+
+drugs <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-03-14/drugs.csv'
+  ) %>%
+  select(
+    -c(
+      "product_number",
+      "atc_code",
+      "url",
+      "marketing_authorisation_holder_company_name",
+      "pharmacotherapeutic_group",
+      "patient_safety"
+    )
+  )
+
+View(drugs)
+```
+```{r EDA}
+# Breaking up therapeutic_area into individual therapeutic areas
+
+TherAreas <- drugs %>%
+  select(therapeutic_area) %>%
+  filter(!is.na(therapeutic_area)) %>%
+  mutate(areas = tolower(therapeutic_area)) %>%
+  mutate(areas = strsplit(areas, split = "; ")) %>%
+  unnest(areas)
+
+plotDataArea <-
+  merge(x = drugs, y = TherAreas, on = "therapeutic_areas") %>%
+  select(-therapeutic_area) %>%
+  mutate(marketing_authorisation_year = lubridate::year(marketing_authorisation_date))
+
+plotDataVet <-
+  drugs %>% mutate(marketing_authorisation_year = lubridate::year(marketing_authorisation_date)) %>%
+  filter(category == "veterinary") %>%
+  drop_na(marketing_authorisation_date) %>%
+  group_by(marketing_authorisation_year) %>%
+  summarise(count = n())
+```
+
+```{r EDA}
+# lets take a look at some of the highest reoccurring therapeutic areas
+
+plotDataArea %>%
+  drop_na(marketing_authorisation_date) %>%
+  filter(category == "human") %>%
+  group_by(areas) %>%
+  summarise(count = n()) %>%
+  filter(count > 200) %>%
+  mutate(areas = fct_reorder(areas, desc(count))) %>%
+  ggplot(mapping = aes(x = areas, y = count, fill = areas)) +
+  geom_col() +
+  coord_flip() +
+  theme(legend.position = "none") +
+  labs(x = "Therapeutic Area", y = "Count")
+
+```
+
+```{r EDA}
+# looking at how many drugs were given out to those with the orphan designation
+
+g <- plotDataArea %>%
+  filter(category == "human") %>%
+  drop_na(marketing_authorisation_date) %>%
+  mutate(marketing_authorisation_year = lubridate::year(marketing_authorisation_date)) %>%
+  ggplot(mapping = aes(x = marketing_authorisation_year, fill = orphan_medicine)) +
+  geom_bar() +
+  transition_reveal(marketing_authorisation_year) +
+  labs(title = 'Year: {frame_along}')
+
+animate(g, fps = 2)
+```
+
+```{r EDA}
+# Now lets take a look at authorized veterinary drug usage
+
+plotDataVet  %>%
+  ggplot(aes(x = marketing_authorisation_year, y = count)) +
+  geom_point() +
+  transition_time(marketing_authorisation_year) +
+  shadow_mark(past = T,
+              future = F,
+              alpha = 0.3) 
+```

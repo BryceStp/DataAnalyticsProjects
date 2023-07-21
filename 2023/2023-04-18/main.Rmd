@@ -1,0 +1,77 @@
+---
+title: "main"
+output: html_document
+date: "2023-07-20"
+---
+
+# Today's Link: https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-04-18/readme.md
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(skimr))
+suppressMessages(library(plotly))
+suppressMessages(library(gganimate))
+```
+
+```{r EDA}
+founder_crops <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-04-18/founder_crops.csv'
+  )
+
+skim(founder_crops)
+```
+
+```{r EDA}
+# lets look at the median proportion of founder crops (we use median since there are some impactful outliers)
+
+v <- founder_crops %>%
+  filter(!is.na(category)) %>%
+  group_by(category, site_name) %>%
+  summarize(prop = median(prop)) %>%
+  plot_ly(
+    y = ~prop,
+    type = 'violin',
+    box = list(
+      visible = T
+    ),
+    meanline = list(
+      visible = T
+    ),
+    x = ~category,
+    color = ~category
+  ) 
+v
+```
+
+```{r EDA}
+# Lets make use of the latitude and longitudes to make a map
+
+world <- map_data("world")
+
+g <- ggplot() +
+  geom_map(
+    data = world,
+    map = world,
+    mapping = aes(x = long, y = lat, map_id = region),
+    color = "black",
+    fill = "lightgrey"
+  ) +
+  geom_point(data = founder_crops,
+             mapping = aes(x = longitude, y = latitude, color = family)) +
+  coord_sf(xlim = c(27,50),  ylim = c(28, 43)) +
+  theme(legend.position = "none") +
+  xlab("Longitude") + 
+  ylab("Latitude") +
+  transition_reveal(age_start) +
+  labs(title = 'Year: {frame_along}')
+
+animate(g, fps = 5)
+```
+
+```{r Modeling}
+                                                                                                                       
+
+```
+

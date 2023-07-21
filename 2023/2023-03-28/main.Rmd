@@ -1,0 +1,90 @@
+---
+title: "main"
+output: html_document
+date: "2023-07-16"
+---
+
+#Today's Link: https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-03-28
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(plotly))
+suppressMessages(library(glue))
+
+```
+
+```{r EDA}
+# Load in the data and merge it together for later
+transitions <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-03-28/transitions.csv'
+  ) %>%
+  mutate(begin = as_datetime(begin), end = as_datetime(end))
+
+timezones <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-03-28/timezones.csv'
+  ) %>%
+  select(-c("comments"))
+timezone_countries <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-03-28/timezone_countries.csv'
+  )
+countries <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-03-28/countries.csv'
+  )
+
+CDF <-
+  merge(x = countries, y = timezone_countries, on = "country_code")
+
+CDF <- merge(x = CDF, y = timezones, on = "zone")
+
+CDF <- merge(x = CDF, y = transitions, on = "zone")
+
+view(CDF)
+```
+```{r EDA}
+# Lets take a look at how many time zones are in each country
+
+g <- CDF %>%
+  count(place_name) %>%
+  mutate(place_name = fct_reorder(place_name, n)) %>%
+  filter(n > 1)
+
+ggplot(data = g,
+       mapping = aes(x = place_name, y = n, fill = place_name)) +
+  geom_col() +
+  coord_flip() +
+  theme(legend.position = "none")
+
+```
+
+
+```{r EDA}
+# Now lets take a look at which countries use day light savings
+
+world <- map_data("world")
+
+g <- CDF %>%
+  ggplot() +
+  geom_point(aes(longitude,
+                 latitude,
+                 color = dst,
+                 text = glue("{ place_name }, { zone }")),
+             alpha = 0.8) +
+  theme(legend.position = "none") + 
+  geom_map(
+    data = world,
+    map = world,
+    aes(long, lat, map_id = region),
+    color = "black",
+    fill = "lightgray"
+  )  +
+  xlab("Longitude") + ylab("Latitude") 
+
+ggplotly(g, tooltip = "text")
+```
+
+

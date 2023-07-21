@@ -1,0 +1,146 @@
+---
+title: "main"
+output: html_document
+date: "2023-06-27"
+---
+# Link For today: https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-02-07
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(tidymodels))
+suppressMessages(library(gganimate))
+suppressMessages(library(aTSA))
+suppressMessages(library(forecast))
+```
+
+```{r EDA}
+# Load in the data
+
+stockPrices <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-07/big_tech_stock_prices.csv'
+  )
+bigCompanies <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-02-07/big_tech_companies.csv'
+  )
+
+view(stockPrices)
+view(bigCompanies)
+
+SDF <- merge(x = bigCompanies, y = stockPrices)
+```
+
+```{r EDA}
+# Quick look at some name brand / staple companies
+
+SDF %>%
+  filter(stock_symbol == "AAPL" |
+           stock_symbol == "AMZN" | stock_symbol == "GOOGL") %>%
+  ggplot(aes(date, close, group = stock_symbol, color = factor(stock_symbol))) +
+  geom_line() +
+  scale_color_viridis_d() +
+  labs(x = "Date", y = "Close Price") +
+  theme(legend.position = "top") +
+  geom_point() +
+  transition_reveal(date)
+```
+
+```{r EDA}
+# check out the close prices
+
+SDF %>%
+  filter(stock_symbol == "AAPL",
+         date >= as.Date("2020-01-01"),
+         date <= as.Date("2020-04-30")) %>%
+  mutate(eval = ifelse(open < close, "up", "down")) %>%
+  ggplot(aes(date, close)) +
+  geom_segment(aes(
+    x = date,
+    y = high,
+    xend = date,
+    yend = low,
+    color = eval
+  )) +
+  geom_segment(aes(
+    x = date,
+    y = open,
+    xend = date,
+    yend = close,
+    color = eval
+  ),
+  linewidth = 2) +
+  labs(x = "Date", y = "Close Price") 
+```
+
+```{r Modeling}
+# Lets try and forecast AAPL, since we were already looking at it
+
+SDFAAPL <- SDF %>%
+  filter(stock_symbol == "AAPL")
+
+logs <-
+  diff(log(SDFAAPL[, 6]), lag = 1)
+
+plot(SDF$date[1:3271], logs[1:3271], main = 'log returns plot')
+```
+
+```{r Modeling}
+# adf testing
+
+print(adf.test(logs))
+
+auto.arima(logs, seasonal = FALSE)
+```
+
+```{r Modeling}
+# Make test and train sets and drop the training set into arima
+
+set.seed(0)
+
+sample_size = floor(0.80 * length(logs))
+
+train_indices <- sample(seq_len(length(logs)), size = sample_size)
+
+train <- logs[train_indices]
+test <- logs[-train_indices]
+
+par(mfrow = c(1, 2))
+
+Acf(train, main = "ACF for Differenced Series")
+Pacf(train, main = "PACF for Differenced Series")
+auto.arima(train, seasonal = FALSE)
+```
+
+```{r Modeling}
+# Fit the data
+
+fit1 <- auto.arima(train, seasonal = FALSE)
+tsdisplay(residuals(fit1), lag.max = 40, main = "Log Model")
+
+fit2 <- auto.arima(SDFAAPL$close, seasonal = FALSE)
+tsdisplay(residuals(fit2), lag.max = 40, main = "Original data Model (non-Log returns)")
+```
+
+```{r Modeling}
+# Finally we get to see the some visualizations of the forecasts
+
+fcast1 <- forecast(fit1, h = 100)
+
+plot(fcast1)
+
+fcast2 <- forecast(fit2, h = 100)
+
+plot(fcast2)
+```
+```{r Accuracy}
+# Check out the accuracy
+
+accuracy(fcast1)
+accuracy(fcast2)
+
+fcast1
+fcast2
+```
+

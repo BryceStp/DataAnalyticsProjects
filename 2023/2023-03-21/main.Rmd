@@ -1,0 +1,99 @@
+---
+title: "main"
+output: html_document
+date: "2023-07-15"
+---
+
+#Today's Link: https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-03-21/readme.md
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(plotly))
+suppressMessages(library(glue))
+suppressMessages(library(gganimate))
+```
+
+```{r EDA}
+# Load in the data and remove a few columns I don't plan on using
+
+languages <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-03-21/languages.csv'
+  ) %>%
+  select(
+    -c(
+      "central_package_repository_count",
+      "origin_community",
+      "description",
+      "title",
+      "reference"
+    )
+  )
+
+languages <-
+  languages[, !grepl("github|wikipedia", colnames(languages))]
+
+view(languages)
+```
+
+```{r EDA}
+# lets take a look at line comment tokens
+
+languages %>%
+  select(line_comment_token, pldb_id, language_rank) %>%
+  filter(!is.na(line_comment_token), line_comment_token %in% c(";", "//", "*", "%", "#", "!", "--", "'")) %>%
+  ggplot(mapping = aes(x = line_comment_token, fill = pldb_id)) +
+  geom_histogram(stat = "count") +
+  theme(legend.position = "none") +
+  coord_flip()
+```
+
+```{r EDA}
+# Most assigned typing by pldb 
+
+languages %>%
+  select(type) %>%
+  group_by(type) %>%
+  summarise(count = n())
+
+languages %>%
+  select(pldb_id, type) %>%
+  head(30) %>%
+  ggplot(mapping = aes(x = type, fill = pldb_id)) +
+  geom_histogram(stat = "count") +
+  coord_flip() 
+
+languages %>%
+  select(pldb_id, type) %>%
+  filter(type != "pl") %>%
+  ggplot(mapping = aes(x = type, fill = pldb_id)) +
+  geom_histogram(stat = "count") +
+  theme(legend.position = "none") +
+  coord_flip() 
+
+```
+
+```{r EDA}
+# When the top 350 languages showed up
+# Note that we do not actually know how the language ranks were generated 
+
+g <- languages %>%
+  select(pldb_id, appeared, language_rank) %>%
+  filter(language_rank < 350) %>%
+  ggplot(mapping = aes(y = pldb_id, x = appeared, color = pldb_id, text = glue("{ appeared }: { pldb_id }, Rank: { language_rank } "))) +
+  labs(y = "", x = "Date Language Appeared") +
+  theme(
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    legend.position = "none"
+  ) +
+  geom_point()
+
+ggplotly(g, tooltip = "text")
+```
+
+
+

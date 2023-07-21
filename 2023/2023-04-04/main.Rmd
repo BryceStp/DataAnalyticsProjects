@@ -1,0 +1,91 @@
+---
+title: "main"
+output: html_document
+date: "2023-07-18"
+---
+
+#Today's Link: https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-04-04
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(plotly))
+suppressMessages(library(patchwork))
+
+```
+
+```{r EDA}
+# Load in data
+
+soccer <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-04-04/soccer21-22.csv'
+  ) %>%
+  mutate(Date = lubridate::dmy(Date), Day = lubridate::day(Date), Month = lubridate::month(Date), Year = lubridate ::year(Date))
+
+view(soccer)
+```
+
+```{r EDA}
+# Lets take a look at how many home goals each team made
+
+soccer %>%
+  select(HomeTeam, FTHG) %>%
+  group_by(HomeTeam) %>%
+  arrange(FTHG)
+
+soccer %>%
+  select(HomeTeam, FTAG) %>%
+  group_by(HomeTeam) %>%
+  arrange(FTAG)
+
+soccer %>%
+  select(Month, HomeTeam, FTHG) %>%
+  ggplot(mapping = aes(
+    x = Month,
+    y = FTHG,
+    fill = HomeTeam,
+    width = 1,
+    fill = level
+  )) +
+  geom_bar(stat = "identity", position = "identity") +
+  theme(axis.text.x = element_text(angle = 90),
+        legend.position = "none") +
+  facet_wrap( ~ HomeTeam)
+
+```
+
+```{r EDA}
+#Now lets compare the Home Team Fouls to the Away Team Fouls
+
+HomeFouls <- soccer %>%
+  select(HomeTeam, HF) %>%
+  ggplot(mapping = aes(x = HomeTeam, y = HF, fill = HomeTeam)) +
+  geom_bar(stat = "identity") + 
+  coord_flip() +
+  scale_y_reverse() +
+  ggtitle("Home Fouls") +
+  theme(
+        axis.ticks.x = element_blank(),
+        axis.title.x = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.title.y = element_blank(),
+        axis.text.y = element_blank())
+
+AwayFouls <- soccer %>%
+  select(AwayTeam, AF) %>%
+  ggplot(mapping = aes(x = AwayTeam, y = AF, fill = AwayTeam)) +
+  geom_bar(stat = "identity") + 
+  ggtitle("Away Fouls") +
+  coord_flip() +
+  theme(
+        axis.ticks.x = element_blank(),
+        axis.title.x = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.title.y = element_blank())
+
+Final <- subplot(HomeFouls, AwayFouls, shareY = TRUE) %>%
+  layout(title = "Home Fouls vs Away Fouls", showlegend = TRUE)
+
+Final
+```

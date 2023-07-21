@@ -1,0 +1,111 @@
+---
+title: "main"
+output: html_document
+date: "2023-06-30"
+---
+
+# Today's link: https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-01-24
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(tidymodels))
+library(reshape2)
+```
+
+```{r EDA}
+# Load in the data
+
+artists <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-01-17/artists.csv',
+    show_col_types = FALSE
+  )
+show(artists)
+artists %>% count(artist_nationality, artist_gender)
+artists %>% count(artist_race)
+artists %>% count(year)
+# Convert to actual NA's
+artists[artists == "N/A"] <- NA
+```
+
+```{r EDA}
+# Build a few quick visualizations
+
+artists <- artists %>% drop_na()
+
+artists %>%
+  drop_na() %>%
+  ggplot(aes(year, fill = artist_race)) +
+  geom_bar()
+
+artists %>%
+  drop_na() %>%
+  ggplot(aes(year, fill = artist_gender)) +
+  geom_bar()
+
+artists %>%
+  drop_na() %>%
+  ggplot(aes(x = space_ratio_per_page_total, fill = artist_gender)) +
+  geom_histogram(bins = 15) +
+  facet_wrap(vars(artist_gender), scales = "free_y", ncol = 1) +
+  scale_x_log10() +
+  labs(fill = NULL)
+```
+
+```{r Modeling}
+# We are going to use a standard linear model
+
+linearModel <- lm(space_ratio_per_page_total ~ artist_gender + year,
+                  data = artists)
+
+summary(linearModel)
+
+set.seed(0)
+
+# Now its time to do some bootstrapping
+
+boots <- bootstraps(artists, times = 1000, apparent = TRUE)
+boots
+
+# Now we load in the bootstrap data into new linear models
+
+bootModels <-
+  boots %>%
+  mutate(model = map(
+    splits,
+    ~ lm(space_ratio_per_page_total ~ artist_gender + year,
+         data = analysis(.x))
+  ),
+  coef_info = map(model, tidy))
+
+```
+
+```{r Modeling}
+# lets make some visualizations (looks like rough normal distributions, which is good)
+
+bootCoefs <-
+  bootModels %>%
+  unnest(coef_info)
+
+percentile_intervals <- int_pctl(bootModels, coef_info)
+ggplot(bootCoefs, aes(estimate)) +
+  geom_histogram(bins = 30) +
+  facet_wrap( ~ term, scales = "free") +
+  geom_vline(aes(xintercept = .lower), data = percentile_intervals, col = "blue") +
+  geom_vline(aes(xintercept = .upper), data = percentile_intervals, col = "blue")
+```
+
+```{r Modeling}
+# Lets check out the fit over time 
+
+bootModels %>%
+  sample_n(150) %>%
+  mutate(augmented = map(model, augment)) %>%
+  unnest(augmented) %>%
+  ggplot(aes(year, .fitted, color = artist_gender, group = id)) + geom_line(alpha =
+                                                                              .2, show.legend = FALSE) +
+  geom_line(alpha = 0.1, show.legend = FALSE) +
+  facet_wrap(vars(artist_gender))
+```
+

@@ -12,6 +12,7 @@ suppressMessages(library(tidyverse))
 suppressMessages(library(skimr))
 suppressMessages(library(plotly))
 suppressMessages(library(gganimate))
+suppressMessages(library(tidymodels))
 ```
 
 ```{r EDA}
@@ -71,7 +72,50 @@ animate(g, fps = 5)
 ```
 
 ```{r Modeling}
-                                                                                                                       
+# lets see if we can build a decent model to predict category (were just gonna do a simple model)
+set.seed(0)
 
+founder_crops_spl <- founder_crops %>%
+  filter(!is.na(category)) %>%
+  initial_split()
+
+train <- training(founder_crops_spl)
+test <- testing(founder_crops_spl)
+
+train_fold5 <- train %>%
+  vfold_cv(5)
+
+#If we just use family we can get a really good roc_auc score, but I want to see if we can use other predictors
+#If we get rid of all the steps and just use family it comes out to about ~0.9
+
+tune <- recipe(category ~  prop + n + age_end, train) %>%
+  step_impute_median(all_numeric_predictors()) %>%
+  step_ns(age_end, deg_free = tune()) %>%
+  step_other(all_nominal_predictors(), threshold = 0.1) %>%
+  workflow(multinom_reg()) %>%
+  tune_grid(
+    train_fold5,
+    metrics = metric_set(roc_auc),
+    grid = crossing(
+      deg_free = seq(1, 7, 2)
+    )
+  )
+
+tune %>%
+  autoplot()
+```
+```{r Modeling}
+#Lets try one more model for fun
+
+set.seed(0)
+
+Forest <- recipe(category ~  family + taxon, train) %>%
+  step_other(all_nominal_predictors(), threshold = 0.1) %>%
+  workflow(rand_forest(mode = "classification")) %>%
+  fit_resamples(train_fold5,
+                metrics = metric_set(roc_auc)) %>%
+  collect_metrics()
+
+Forest
 ```
 

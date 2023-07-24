@@ -10,8 +10,6 @@ date: "2023-07-18"
 knitr::opts_chunk$set(echo = TRUE)
 suppressMessages(library(tidyverse))
 suppressMessages(library(plotly))
-suppressMessages(library(patchwork))
-
 ```
 
 ```{r EDA}

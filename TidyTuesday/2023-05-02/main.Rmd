@@ -1,0 +1,87 @@
+---
+title: "2023-05-02"
+output: html_document
+date: "2023-07-23"
+---
+
+#Today's Link: https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-05-02/readme.md
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(skimr))
+suppressMessages(library(tidymodels))
+suppressMessages(library(plotly))
+suppressMessages(library(glue))
+
+```
+
+```{r}
+#Load in the data and skim it
+
+#plots <-
+#  readr::read_csv(
+#    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-02/plots.csv'
+#  )
+
+species <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-02/species.csv'
+  ) %>%
+  select(-c("scientificname", "taxa", "rodent"))
+
+surveys <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-02/surveys.csv'
+  ) %>%
+  select(-c("day", "censusdate", 17:22))
+
+#skim(plots)
+
+skim(species)
+
+skim(surveys)
+```
+
+```{r EDA}
+#I noticed that NA is supposed to be White-throated woodrat and not a missing value (in the species columns)
+
+surveys <- surveys %>%
+  mutate(species = ifelse(is.na(species), "NA", species))
+
+species <- species %>%
+  mutate(species = ifelse(is.na(species), "NA", species))
+
+RDF <- surveys %>%
+  left_join(species, by = "species")
+  
+```
+
+```{r EDA}
+#Lets take a quick look at meanhfl vs meanwgt
+G <- species %>%
+  ggplot(mapping = aes( x = meanhfl, y = meanwgt, text = glue("{ commonname }: { meanwgt }, { meanhfl }"))) +
+  geom_point(mapping = aes(color = meanhfl, size = meanwgt), alpha = 0.5)
+
+ggplotly(G, tooltip = "text")
+```
+
+```{r EDA}
+#Lets make a visualization of how many of each species was observed
+
+P1 <- RDF %>%
+  select(commonname, month, sex) %>%
+  add_count(commonname, month) %>%
+  ggplot(mapping = aes(
+    x = month,
+    y = n,
+    color = sex,
+    fill = sex,
+    text = glue("{commonname}: {month}, {sex}")
+  )) +
+  geom_col(alpha = 0.7) +
+  facet_wrap(~ commonname)
+
+ggplotly(P1, tooltip = "text")
+```
+

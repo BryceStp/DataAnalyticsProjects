@@ -1,0 +1,74 @@
+---
+title: "main"
+output: html_document
+date: "2023-07-22"
+---
+
+---
+title: "main"
+output: html_document
+date: "2023-07-21"
+---
+
+#Today's Link: https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-04-25/readme.md
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(skimr))
+suppressMessages(library(gganimate))
+suppressMessages(library(plotly))
+suppressMessages(library(glue))
+
+```
+
+```{r EDA}
+#Load in the data 
+
+winners <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-04-25/winners.csv'
+  )
+london_marathon <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-04-25/london_marathon.csv'
+  )
+
+skim(winners)
+skim(london_marathon)
+
+```
+
+```{r EDA}
+#Lets take a look at times winners managed to achieve across categories
+
+g <-  winners %>%
+  ggplot(mapping = aes(
+    x = Year,
+    y = Time,
+    color = Category,
+    fill = Category,
+    text = glue("{ Athlete }: { Nationality }, { Time }")
+  )) +
+  geom_col(alpha = 0.5) +
+  theme(legend.position = "none") +
+  geom_rug(sides = "t", length = unit(0.3, "cm")) +
+  facet_wrap( ~ Category)
+
+ggplotly(g, tooltip = "text")
+```
+
+```{r EDA}
+# Lets take a look at the number of applicants for each year
+
+g2 <- london_marathon %>%
+  select(Year, Applicants, Finishers) %>%
+  drop_na() %>%
+  ggplot(mapping = aes(x = Year, y = Applicants, size = Finishers)) +
+  geom_point(alpha = 0.7, aes(group = seq_along(Year))) +
+  transition_reveal(Year) +
+  labs(title = "Year: {frame_along}")
+
+animate(g2, fps = 5)
+```
+

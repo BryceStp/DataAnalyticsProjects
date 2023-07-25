@@ -1,0 +1,144 @@
+---
+title: "main"
+output: html_document
+date: "2023-07-24"
+---
+
+#Today's link: https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-05-09/readme.md
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(skimr))
+suppressMessages(library(plotly))
+suppressMessages(library(glue))
+suppressMessages(library(tidymodels))
+```
+
+```{r EDA}
+#Load in the data and skim
+
+childcare_costs <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-09/childcare_costs.csv'
+  )
+
+counties <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-09/counties.csv'
+  )
+
+
+skim(childcare_costs)
+
+skim(counties)
+```
+
+```{r EDA}
+#Lets check out childcare costs against median home income and the male labor force
+
+G <- childcare_costs %>%
+  filter(!is.na(mcsa)) %>%
+  ggplot(mapping = aes(mhi_2018, mcsa, color = mlfpr_20to64)) +
+  geom_point(alpha = 0.5)
+
+G
+```
+
+```{r EDA}
+#Perhaps we will see a more pronounced effect on childcare cost when we factor in race
+
+childcare_costs %>%
+  select(mcsa, mhi_2018, starts_with("one_race")) %>%
+  pivot_longer(starts_with("one_race")) %>%
+  filter(!is.na(mcsa)) %>%
+  ggplot(mapping = aes(value, mcsa, color = mhi_2018)) +
+  geom_point() +
+  facet_wrap(~name)
+
+```
+
+```{r EDA}
+#Lets do a quick visualization to see if the median price charged for Center-Based Care has changed over the years or by state
+
+G2 <- childcare_costs %>%
+  left_join(counties, by = "county_fips_code") %>%
+  select(study_year, mcsa, state_name) %>%
+  filter(!is.na(mcsa)) %>%
+  ggplot(mapping = aes(
+    x = study_year,
+    y = mcsa,
+    color = state_name,
+    fill = state_name,
+    text = glue("{state_name}: {study_year}, {mcsa}")
+  )) +
+  geom_point(alpha = 0.6) +
+  theme(legend.position = "none",
+        axis.text.y = element_text(angle = 10),
+        axis.text.x = element_text(angle = 20)) +
+  ylab("Median Price Charged for Center-Based Care") +
+  coord_flip() +
+  facet_wrap(~state_name)
+
+test <- ggplotly(G2, tooltip = "text")
+
+#fix performance issues (too much data for plotly)
+
+toWebGL(test)
+```
+
+```{r Modeling}
+#We are initially going to keep every variable (not including na values)
+set.seed(0)
+
+split <- childcare_costs %>%
+  na.omit() %>%
+  initial_split(strata = mcsa)
+
+trainSplit <- training(split)  
+testSplit <- testing(split)
+
+set.seed(1)
+validSplit <- validation_split(trainSplit)
+validSplit
+
+```
+
+```{r Modeling}
+#The plan is to let xgboost handle all the high correlation
+
+xgb <-
+  boost_tree(
+    trees = 500,
+    min_n = tune(),
+    mtry = tune(),
+    stop_iter = tune(),
+    learn_rate = 0.01
+  ) %>%
+  set_engine("xgboost", validation = 0.2) %>%
+  set_mode("regression")
+
+wf <- workflow(mcsa ~ ., xgb)
+
+#Tune parameters
+
+set.seed(2)
+doParallel::registerDoParallel()
+tune <- tune_grid(wf, validSplit)
+tune
+```
+```{r Results}
+#install.packages('ggfortify')
+
+G3 <- autoplot(tune)
+ggplotly(G3)
+
+select_best(tune, "rmse")
+
+finalFit <- wf %>%
+  finalize_workflow(select_best(tune, "rmse")) %>%
+  last_fit(split)
+
+collect_metrics(finalFit)
+```
+

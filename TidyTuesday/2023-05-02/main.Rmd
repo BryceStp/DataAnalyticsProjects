@@ -16,7 +16,7 @@ suppressMessages(library(glue))
 
 ```
 
-```{r}
+```{r EDA}
 #Load in the data and skim it
 
 #plots <-
@@ -45,6 +45,7 @@ skim(surveys)
 
 ```{r EDA}
 #I noticed that NA is supposed to be White-throated woodrat and not a missing value (in the species columns)
+#Note that: it is not necessarily the case that ALL NA values reference White-throated woodrat, but we can either make this assumption or remove all NA values (including every recording of the White-throated woodrat)
 
 surveys <- surveys %>%
   mutate(species = ifelse(is.na(species), "NA", species))

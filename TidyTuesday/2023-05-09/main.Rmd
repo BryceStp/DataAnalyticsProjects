@@ -109,14 +109,13 @@ validSplit
 
 xgb <-
   boost_tree(
+    mode = "regression"
     trees = 500,
     min_n = tune(),
     mtry = tune(),
     stop_iter = tune(),
     learn_rate = 0.01
-  ) %>%
-  set_engine("xgboost", validation = 0.2) %>%
-  set_mode("regression")
+  ) 
 
 wf <- workflow(mcsa ~ ., xgb)
 

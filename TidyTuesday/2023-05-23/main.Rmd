@@ -1,0 +1,22 @@
+---
+title: "main"
+output: html_document
+date: "2023-07-26"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(skimr))
+```
+
+```{r EDA}
+#Load in the data
+squirrel_data <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-23/squirrel_data.csv'
+  )
+
+skim(squirrel_data)
+```
+

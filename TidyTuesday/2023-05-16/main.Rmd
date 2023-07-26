@@ -1,0 +1,155 @@
+---
+title: "main"
+output: html_document
+date: "2023-07-25"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(skimr))
+suppressMessages(library(gganimate))
+suppressMessages(library(plotly))
+suppressMessages(library(glue))
+suppressMessages(library(tidymodels))
+```
+
+```{r EDA}
+#Load in the data
+
+tornados <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-16/tornados.csv'
+  )
+
+skim(tornados)
+```
+
+```{r EDA}
+#Lets check out how frequent certain magnitudes are and if they are estimated
+
+G <- tornados %>%
+  filter(!is.na(mag)) %>%
+  ggplot(mapping = aes(
+    x = mag,
+    fill = fc,
+    color = fc,
+    text = glue("Magnitude: { mag }, Estimated: { fc }")
+  )) +
+  geom_bar(position = "dodge", alpha = 0.5) +
+  theme(legend.position = "none")
+
+ggplotly(G, tooltip = "text")
+```
+
+```{r EDA}
+#Lets try a plotly violin plot on fatalities and magnitude
+
+G2 <- tornados %>%
+  filter(!is.na(mag)) %>%
+  plot_ly(
+    y = ~ fat,
+    split = ~ mag,
+    type = 'violin',
+    box = list(visible = TRUE),
+    meanline = list(visible = TRUE)
+  ) %>%
+  layout(
+    xaxis = list(title = "Magnitude vs. Fatalities"),
+    yaxis = list(title = "Fatalities")
+  )
+
+G2
+```
+
+```{r EDA}
+#Lets take a look at where these tornadoes are occuring the most and during what times of year
+
+#I wanted to get a better idea of where the really bad tornados hit so I filtered out anything below a magnitude 3
+
+world <- map_data("world")
+
+PlotData <- tornados %>%
+  select(slat, slon, mag, mo, st) %>%
+  filter(!is.na(mag), mag > 3)
+
+G3 <- ggplot() +
+  geom_map(
+    data = world,
+    map = world,
+    mapping = aes(x = long, y = lat, map_id = region),
+    color = "black",
+    fill = "lightgray"
+  )  +
+  xlab("location_long") + ylab("location_lat") +
+  coord_sf(xlim = c(-130,-65),
+           ylim = c(25, 52)) +
+  geom_point(
+    data = PlotData,
+    mapping = aes(
+      y = slat,
+      x = slon,
+      color = st,
+      fill = st,
+      size = mag
+    ),
+    alpha = 0.5,
+    show.legend = FALSE
+  ) +
+  transition_time(mo) +
+  labs(title = 'Month: {frame_time}')
+
+animate(G3, fps = 2)
+
+```
+
+```{r Modeling}
+#Make the splits: train & test
+
+set.seed(0)
+
+splits <-
+  tornados %>% filter(!is.na(mag)) %>% initial_split(strata = mag)
+
+train <- training(splits)
+test <- testing(splits)
+
+val_set <-
+  tornados %>% filter(!is.na(mag)) %>% validation_split(strata = mag, prop = 0.80)
+
+rec <- recipe(mag ~ date + fat + inj + wid + len, data = train) %>%
+  step_date(date,
+            features = c("month", "year"),
+            keep_original_cols = FALSE) %>%
+  step_dummy(all_nominal_predictors())
+
+rec
+
+prep(rec) %>% bake(new_data = NULL) %>% view()
+```
+
+```{r Modeling}
+#Tune the model
+set.seed(1)
+
+xgb <- boost_tree(mode = "regression", mtry = tune(), min_n = tune(), learn_rate = 0.01) 
+
+wf <- workflow(rec, xgb)  
+
+doParallel::registerDoParallel()
+tune <- tune_grid(wf, val_set)
+tune
+```
+```{r Results} 
+#Despite not including state (which I figured would have a substantial impact), we still managed a best RMSE of about 0.8
+
+G4 <- autoplot(tune)
+
+ggplotly(G4)
+
+collect_metrics(tune)
+
+finalFit <- wf %>%
+  finalize_workflow(select_best(tune, "rmse")) %>%
+  last_fit(splits)
+```

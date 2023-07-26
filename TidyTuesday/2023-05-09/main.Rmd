@@ -133,7 +133,7 @@ tune
 G3 <- autoplot(tune)
 ggplotly(G3)
 
-select_best(tune, "rmse")
+collect_metrics(tune)
 
 finalFit <- wf %>%
   finalize_workflow(select_best(tune, "rmse")) %>%

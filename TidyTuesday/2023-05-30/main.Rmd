@@ -1,0 +1,82 @@
+---
+title: "main"
+output: html_document
+date: "2023-07-27"
+---
+
+#Today's Link: https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-05-30/readme.md
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(skimr))
+suppressMessages(library(plotly))
+suppressMessages(library(glue))
+```
+
+```{r EDA}
+#Load in the data
+
+centenarians <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-30/centenarians.csv'
+  )
+
+skim(centenarians)
+
+```
+
+```{r EDA}
+#Lets explore a visualization of age against gender
+g <- centenarians %>%
+  ggplot(mapping = aes(x = gender, y = age)) +
+  geom_violin(alpha = 0.8) +
+  geom_jitter(
+    alpha = 0.7,
+    mapping = aes(
+      color = gender,
+      fill = gender,
+      size = rank,
+      text = glue("{ name }: { age }, { rank }")
+    )
+  )
+
+ggplotly(g, tooltip = "text")
+```
+
+```{r EDA}
+#Lets see check out how many centenarians come out of each country
+g2 <- centenarians %>%
+  add_count(place_of_death_or_residence) %>%
+  distinct(place_of_death_or_residence, n) %>%
+  mutate(place_of_death_or_residence = fct_reorder(place_of_death_or_residence, n)) %>%
+  ggplot(
+    mapping = aes(
+      x = place_of_death_or_residence,
+      y = n,
+      color = place_of_death_or_residence,
+      fill = place_of_death_or_residence,
+      text = glue("{n}")
+    )
+  ) +
+  theme(legend.position = "none") +
+  coord_flip() +
+  geom_col() 
+  
+ggplotly(g2, tooltip = "text")
+
+```
+
+```{r EDA}
+#lets look at when centenarians are born 
+g3 <- centenarians %>%
+  mutate(Year = lubridate::year(birth_date)) %>%
+  ggplot(mapping = aes(x = Year, color = gender, fill = gender)) +
+  geom_bar(alpha = 0.7) +
+  coord_flip() +
+  facet_wrap(~gender) +
+  theme(legend.position = "none")
+
+ggplotly(g3)
+```
+

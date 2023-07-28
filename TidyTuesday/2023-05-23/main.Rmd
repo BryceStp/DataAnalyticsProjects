@@ -4,6 +4,8 @@ output: html_document
 date: "2023-07-26"
 ---
 
+#Today's Link: https://github.com/rfordatascience/tidytuesday/tree/master/data/2023/2023-05-23
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 suppressMessages(library(tidyverse))
@@ -15,8 +17,89 @@ suppressMessages(library(skimr))
 squirrel_data <-
   readr::read_csv(
     'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-05-23/squirrel_data.csv'
-  )
+  ) 
 
 skim(squirrel_data)
 ```
+
+```{r EDA}
+#Lets make a map
+
+ny_county <- map_data("county", "new york")
+
+plotData <- squirrel_data %>%
+  group_by(Hectare) %>%
+  summarize(
+    meanLong = mean(X),
+    meanLat = mean(Y),
+    pct_gray = mean(`Primary Fur Color` == "Gray", na.rm = TRUE),
+    count = n()
+  ) %>%
+  filter(count > 10)
+
+G1 <- ggplot() +
+  geom_map(
+    data = ny_county,
+    map = ny_county,
+    mapping = aes(x = long, y = lat, map_id = region),
+    color = "black",
+    fill = "lightgray"
+  ) +
+  xlab("location_long") +
+  ylab("location_lat") +
+  geom_point(
+    data = plotData,
+    mapping = aes(
+      x = meanLong,
+      y = meanLat,
+      size = count,
+      color = pct_gray
+    ),
+    alpha = 0.6
+  ) +
+  coord_sf(xlim = c(-73.984, -73.95),
+           ylim = c(40.765, 40.80)) +
+  scale_color_gradient(low = 'green', high = 'red')
+
+G1
+```
+```{r EDA}
+#Lets see if location corresponds to if a squirrel will run away
+squirrel_data %>%
+  count(`Runs from`)
+
+plotData2 <- squirrel_data %>%
+  add_count(Hectare) %>%
+  group_by(Hectare, n) %>%
+  summarize_at(vars(X, Y, `Runs from`, Indifferent), mean) %>%
+  ungroup() %>%
+  filter(n > 10)
+
+ggplot() +
+ geom_map(
+    data = ny_county,
+    map = ny_county,
+    mapping = aes(x = long, y = lat, map_id = region),
+    color = "black",
+    fill = "lightgray"
+  ) +
+  xlab("location_long") +
+  ylab("location_lat") +
+  geom_point(
+    data = plotData2,
+    mapping = aes(
+      x = X,
+      y = Y,
+      size = n,
+      color = `Runs from`
+    ),
+    alpha = 0.6
+  ) +
+  coord_sf(xlim = c(-73.984,-73.95),
+           ylim = c(40.765, 40.80)) +
+  scale_color_gradient(low = 'green', high = 'red')
+
+```
+
+
 

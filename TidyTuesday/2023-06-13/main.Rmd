@@ -1,0 +1,162 @@
+---
+title: "2023-06-13"
+output: html_document
+date: "2023-07-30"
+---
+
+#Today's Link: https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-06-13/readme.md
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(skimr))
+suppressMessages(library(plotly))
+suppressMessages(library(tidymodels))
+```
+
+```{r EDA}
+#Load in the data
+
+safi_data <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-13/safi_data.csv'
+  ) %>% select(-key_ID)
+
+skim(safi_data)
+
+```
+
+```{r EDA}
+#Lets seperate out the columns with multiple items in them
+New_safi_data <- safi_data %>%
+  mutate(New_items_owned = strsplit(items_owned, split = ";")) %>%
+  mutate(New_months_lack_food = strsplit(months_lack_food, split = ";")) %>%
+  unnest(New_items_owned) %>%
+  unnest(New_months_lack_food) %>%
+  select(-c("months_lack_food", "items_owned"))
+
+skim(New_safi_data)
+```
+
+```{r EDA}
+#During what months did the most people lack food
+G1 <- New_safi_data %>%
+  distinct(New_months_lack_food, village, instanceID) %>%
+  ggplot(mapping = aes(x = fct_infreq(New_months_lack_food), fill = village)) +
+  coord_flip() +
+  theme(legend.position = "none") +
+  geom_bar(alpha = 0.7)
+
+
+#How many of each item was/is owned by unique individuals
+G2 <- New_safi_data %>%
+  distinct(New_items_owned, village, instanceID) %>%
+  ggplot(mapping = aes(x = fct_infreq(New_items_owned), fill = village)) +
+  coord_flip() +
+  theme(legend.position = "none") +
+  geom_bar(alpha = 0.7)
+
+#How many members per room?
+G3 <- New_safi_data %>%
+  distinct(no_membrs, rooms, village, instanceID) %>%
+  ggplot(mapping = aes(x = rooms, y = no_membrs, fill = village)) +
+  theme(legend.position = "none") +
+  geom_col(alpha = 0.7)
+
+#Does the number of years lving in a village impact how many household members there are
+G4 <- New_safi_data %>%
+  distinct(no_membrs, liv_count, village, instanceID) %>%
+  ggplot(mapping = aes(x = liv_count, y = no_membrs, fill = village)) +
+  theme(legend.position = "none") +
+  geom_col(alpha = 0.7)
+
+subplot(G1, G2, G3, G4, margin = 0.1, nrows = 2)
+
+```
+
+```{r Modeling}
+#Lets try some simple modeling and start by making some splits
+set.seed(0)
+
+split <- safi_data %>%
+  mutate(New_months_lack_food = strsplit(months_lack_food, split = ";")) %>%
+  unnest(New_months_lack_food) %>%
+  fastDummies::dummy_cols() %>%
+  select(
+    -c(
+      "New_months_lack_food",
+      "months_lack_food",
+      "items_owned",
+      "instanceID",
+      "interview_date",
+      "memb_assoc",
+      "affect_conflicts",
+      "respondent_wall_type"
+    )
+  ) %>%
+  initial_split(strata = years_liv) 
+
+ 
+
+train <- training(split)
+test <- testing(split)
+
+```
+
+```{r Modeling}
+#Fit to random forest
+RFspec <- rand_forest(engine = "ranger", mode = "regression")
+
+RFfit <- RFspec %>%
+  fit(years_liv ~ ., data = train)
+```
+
+```{r Results}
+
+ResultsTrain <- RFfit %>%
+              predict(new_data = train) %>%
+              mutate(true = train$years_liv,
+                     model = "rf")
+
+ResultsTest <- RFfit %>%
+              predict(new_data = test) %>%
+              mutate(true = test$years_liv,
+                     model = "rf")
+```
+
+```{r Results}
+#They are both pretty bad, because we have not done any feature engineering and we haphazardly selected models
+ResultsTrain %>%
+  rmse(truth = true, estimate = .pred)
+
+ResultsTest %>%
+  rmse(truth = true, estimate = .pred)
+
+```
+
+```{r Results}
+ResultsTest %>%
+  mutate(train = "testing") %>%
+  bind_rows(ResultsTrain %>%
+              mutate(train = "training")) %>%
+  ggplot(mapping = aes(true, .pred, color = model)) +
+  geom_abline() +
+  geom_point() +
+  facet_wrap( ~ train)
+
+```
+
+```{r Modeling}
+set.seed(0)
+
+folds <- vfold_cv(train, strata = no_membrs)
+
+RFres <- fit_resamples(RFspec,
+                       no_membrs ~ .,
+                       folds,
+                       control = control_resamples(save_pred = TRUE))
+
+RFres %>%
+  collect_metrics()
+```
+

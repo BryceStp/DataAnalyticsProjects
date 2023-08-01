@@ -1,0 +1,86 @@
+---
+title: "main"
+output: html_document
+date: "2023-07-28"
+---
+
+#Today's Link: https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-06-06/readme.md
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(skimr))
+suppressMessages(library(plotly))
+suppressMessages(library(glue))
+
+```
+
+```{r EDA}
+#Load in the data
+owid_energy <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-06/owid-energy.csv'
+  ) %>% select(-iso_code)
+
+skim(owid_energy)
+```
+
+```{r EDA}
+#There are a lot of NAs, so lets check out the row counts of NAs
+Row_na <- owid_energy %>%
+mutate(row_key = row_number()) %>%
+gather(key = "key", value = "value", -row_key) %>%
+filter(value %>% is.na()) %>%
+count(row_key, sort = TRUE)
+
+Row_na
+```
+
+```{r EDA}
+#Energy per capita
+G <- owid_energy %>%
+  select(year, energy_per_capita, country, population) %>%
+  filter(!is.na(energy_per_capita)) %>%
+  filter(
+    country == "Canada" |
+      country == "Germany" |
+      country == "Brazil" |
+      country == "China" |
+      country == "India" |
+      country == "Mexico" |
+      country == "United Kingdom" | country == "United States"
+  ) %>%
+  ggplot(mapping = aes(x = year, y = energy_per_capita, color = country)) +
+  geom_line() +
+  geom_point()
+
+ggplotly(G)
+```
+
+```{r EDA}
+G2 <- owid_energy %>%
+  select(country, gas_consumption, year) %>%
+  drop_na(gas_consumption) %>%
+  filter(
+    country == "Canada" |
+      country == "Germany" |
+      country == "Brazil" |
+      country == "China" |
+      country == "India" |
+      country == "Mexico" |
+      country == "United Kingdom" | country == "United States"
+  ) %>%
+  ggplot(mapping = aes(y = gas_consumption, x = year, fill = country, color = country)) +
+  geom_col(alpha = 0.8) +
+  theme(legend.position = "none") +
+  facet_wrap(~country)
+
+ggplotly(G2)
+```
+
+
+
+
+
+
+

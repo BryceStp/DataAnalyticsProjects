@@ -125,7 +125,7 @@ ResultsTest <- RFfit %>%
 ```
 
 ```{r Results}
-#They are both pretty bad, because we have not done any feature engineering and we haphazardly selected models
+#The model isn't great
 ResultsTrain %>%
   rmse(truth = true, estimate = .pred)
 
@@ -147,6 +147,7 @@ ResultsTest %>%
 ```
 
 ```{r Modeling}
+#Lets try again
 set.seed(0)
 
 folds <- vfold_cv(train, strata = no_membrs)

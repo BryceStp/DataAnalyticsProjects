@@ -33,10 +33,12 @@ places <-
 
 skim(ufo_sightings)
 ```
+
+
 ```{r EDA}
 #Lets clean the data up a little bit
 
-#Since there are only 85 observations outside of the US we are just going to remove them
+#Lets also focus on the US, since our data is already very US heavy
 #We also have enough data that we can filter out the missing observations in day_part
 
 ufo_sightings <- ufo_sightings %>%
@@ -46,7 +48,7 @@ ufo_sightings <- ufo_sightings %>%
     "summary",
     "has_images"
   )) %>%
-  filter(!is.na(state),!is.na(day_part), !is.na(shape))
+  filter(!is.na(state),!is.na(day_part), !is.na(shape), country_code == "US") 
 
 ```
 

@@ -1,0 +1,126 @@
+---
+title: "main"
+output: html_document
+date: "2023-08-01"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(skimr))
+suppressMessages(library(tidymodels))
+```
+
+```{r EDA}
+#Load in the data 
+
+ufo_sightings <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-20/ufo_sightings.csv'
+  )
+
+places <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-20/places.csv'
+  )
+
+#I don't think I have a use for this
+
+#day_parts_map <-
+#  readr::read_csv(
+#    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-20/day_parts_map.csv'
+#  )
+
+skim(ufo_sightings)
+```
+```{r EDA}
+#Lets clean the data up a little bit
+
+#Since there are only 85 observations outside of the US we are just going to remove them
+#We also have enough data that we can filter out the missing observations in day_part
+
+ufo_sightings <- ufo_sightings %>%
+  select(-c(
+    "posted_date",
+    "reported_duration",
+    "summary",
+    "has_images"
+  )) %>%
+  filter(!is.na(state),!is.na(day_part), !is.na(shape))
+
+```
+
+```{r EDA}
+#Lets also join ufo_sightings with places and do a little extra cleaning
+
+ufo_sightings <- ufo_sightings %>%
+  left_join(places) %>%
+  mutate(reported_year = lubridate::year(reported_date_time_utc)) %>%
+  mutate(reported_month = lubridate::month(reported_date_time_utc)) %>%
+  filter(!is.na(elevation_m)) %>%
+  select(
+    -c(
+      "alternate_city_names",
+      "reported_date_time",
+      "reported_date_time_utc",
+      "country_code",
+      "country"
+    )
+  )
+
+skim(ufo_sightings)
+```
+
+
+```{r EDA}
+#When are most of these sightings taking place?
+G1 <- ufo_sightings %>%
+  add_count(day_part) %>%
+  distinct(day_part, .keep_all = TRUE) %>%
+  mutate(day_part = fct_reorder(day_part, n)) %>%
+  ggplot(mapping = aes(x = day_part, y = n,  color = day_part, fill = day_part)) +
+  coord_flip() +
+  geom_col(alpha = 0.7)
+
+G2 <- ufo_sightings %>%
+  add_count(shape) %>%
+  distinct(shape, .keep_all = TRUE) %>%
+  mutate(shape = fct_reorder(shape, n)) %>%
+  ggplot(mapping = aes(x = shape, y = n,  color = shape, fill = shape)) +
+  coord_flip() +
+  theme(legend.position = "none") +
+  geom_col(alpha = 0.7)
+
+plotly::subplot(G1, G2, margin = 0.1)
+```
+
+```{r EDA}
+#Lets see where the most sightings occur in the USA with a density plot
+world <- map_data("world")
+
+G3 <- ggplot() +
+  geom_map(
+    data = world,
+    map = world,
+    mapping = aes(x = long, y = lat, map_id = region),
+    color = "black",
+    fill = "lightgray"
+  ) +
+  xlab("location_long") +
+  ylab("location_lat") +
+  ggpointdensity::geom_pointdensity(
+    data = ufo_sightings,
+    mapping = aes(
+      x = longitude,
+      y = latitude,
+      alpha = 0.7
+    ),
+    alpha = 0.6
+  ) +
+  coord_sf(xlim = c(-130, -70),
+           ylim = c(20, 50))
+
+G3
+
+```
+

@@ -134,6 +134,7 @@ fcast2 <- forecast(fit2, h = 100)
 
 plot(fcast2)
 ```
+
 ```{r Accuracy}
 # Check out the accuracy
 

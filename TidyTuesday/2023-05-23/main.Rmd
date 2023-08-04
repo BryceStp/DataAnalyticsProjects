@@ -63,6 +63,7 @@ G1 <- ggplot() +
 
 G1
 ```
+
 ```{r EDA}
 #Lets see if location corresponds to if a squirrel will run away
 squirrel_data %>%

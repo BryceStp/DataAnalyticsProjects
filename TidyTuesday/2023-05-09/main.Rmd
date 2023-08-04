@@ -109,7 +109,7 @@ validSplit
 
 xgb <-
   boost_tree(
-    mode = "regression"
+    mode = "regression",
     trees = 500,
     min_n = tune(),
     mtry = tune(),

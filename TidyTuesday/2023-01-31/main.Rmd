@@ -120,6 +120,8 @@ cat_map
 ```
 
 ```{r EDA}
+#This doesn't really show anything conclusive
+
 ggplot(Catsdf,
        aes(
          x = age_years,

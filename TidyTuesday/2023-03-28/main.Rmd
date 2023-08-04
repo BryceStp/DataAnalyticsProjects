@@ -9,9 +9,7 @@ date: "2023-07-16"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 suppressMessages(library(tidyverse))
-suppressMessages(library(plotly))
-suppressMessages(library(glue))
-
+suppressMessages(library(skimr))
 ```
 
 ```{r EDA}
@@ -41,20 +39,20 @@ CDF <-
 
 CDF <- merge(x = CDF, y = timezones, on = "zone")
 
-CDF <- merge(x = CDF, y = transitions, on = "zone")
+CDF <- merge(x = CDF, y = transitions, on = "zone") %>%
+  drop_na() 
 
-view(CDF)
+skim(CDF)
 ```
+
 ```{r EDA}
 # Lets take a look at how many time zones are in each country
 
-g <- CDF %>%
+CDF %>%
   count(place_name) %>%
   mutate(place_name = fct_reorder(place_name, n)) %>%
-  filter(n > 1)
-
-ggplot(data = g,
-       mapping = aes(x = place_name, y = n, fill = place_name)) +
+  filter(n > 500) %>%
+  ggplot(mapping = aes(x = place_name, y = n, fill = place_name)) +
   geom_col() +
   coord_flip() +
   theme(legend.position = "none")
@@ -67,24 +65,51 @@ ggplot(data = g,
 
 world <- map_data("world")
 
-g <- CDF %>%
+G <-
   ggplot() +
-  geom_point(aes(longitude,
-                 latitude,
-                 color = dst,
-                 text = glue("{ place_name }, { zone }")),
-             alpha = 0.8) +
-  theme(legend.position = "none") + 
   geom_map(
     data = world,
     map = world,
-    aes(long, lat, map_id = region),
+    mapping = aes(x = long, y = lat, map_id = region),
     color = "black",
     fill = "lightgray"
-  )  +
-  xlab("Longitude") + ylab("Latitude") 
+  ) +
+  xlab("location_long") +
+  ylab("location_lat") +
+  geom_point(
+    data = CDF,
+    mapping = aes(x = longitude,
+                  y = latitude,
+                  color = dst),
+    alpha = 0.7
+  ) 
 
-ggplotly(g, tooltip = "text")
+G
+```
+```{r EDA}
+#timezone offset from UTC
+G2 <-
+  ggplot() +
+  geom_map(
+    data = world,
+    map = world,
+    mapping = aes(x = long, y = lat, map_id = region),
+    color = "black",
+    fill = "lightgray"
+  ) +
+  xlab("location_long") +
+  ylab("location_lat") +
+  geom_point(
+    data = CDF,
+    mapping = aes(x = longitude,
+                  y = latitude,
+                  color = offset),
+    alpha = 0.7
+  ) +
+  scale_color_gradientn(colors = rainbow(10))
+
+
+G2
 ```
 
 

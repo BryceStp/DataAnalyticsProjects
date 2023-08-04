@@ -10,7 +10,7 @@ date: "2023-08-03"
 knitr::opts_chunk$set(echo = TRUE)
 suppressMessages(library(tidyverse))
 suppressMessages(library(skimr))
-
+suppressMessages(library(gganimate))
 ```
 
 ```{r EDA}
@@ -19,6 +19,7 @@ us_place_names <-
   readr::read_csv(
     'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-27/us_place_names.csv'
   )
+
 us_place_history <-
   readr::read_csv(
     'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-06-27/us_place_history.csv'
@@ -29,14 +30,70 @@ skim(us_place_history)
 ```
 
 ```{r EDA}
+#Most frequent states?
+G1 <- us_place_names %>%
+  add_count(state_name) %>%
+  ggplot(mapping = aes(
+    x = fct_infreq(state_name),
+    y = n,
+    color = state_name
+  )) +
+  coord_flip() +
+  theme(legend.position = "none") +
+  labs(x = "State", y = "Count") +
+  geom_col()
 
+G1
 ```
 
 ```{r EDA}
+#Most frequent year?
+G2 <- us_place_names %>%
+  mutate(year = lubridate::year(date_created)) %>%
+  filter(!is.na(year)) %>%
+  add_count(year) %>%
+  ggplot(mapping = aes(
+    x = year,
+    y = n,
+    color = year,
+    size = n
+  )) +
+  theme(legend.position = "none") +
+  labs(x = "State", y = "Count") +
+  geom_point(alpha = 0.7)
 
+G2
 ```
 
 ```{r EDA}
+#Lets take a look at the densities on a map
+world <- map_data("world")
 
+plot_data <- us_place_names %>%
+  mutate(year = lubridate::year(date_created)) %>%
+  filter(!is.na(prim_lat_dec), !is.na(prim_long_dec), !is.na(year))
+
+G3 <-
+  ggplot() +
+  geom_map(
+    data = world,
+    map = world,
+    mapping = aes(y = lat, x = long, map_id = region),
+    color = "black",
+    fill = "gray"
+  ) +
+  ggpointdensity::geom_pointdensity(
+    data = plot_data,
+    mapping = aes(x = prim_long_dec,
+                  y = prim_lat_dec,
+                  alpha = 0.7),
+    alpha = 0.6
+  ) +
+  coord_sf(xlim = c(-130, -70),
+           ylim = c(0, 60)) +
+  transition_time(year) +
+  labs(title = 'Year: {frame_time}')
+
+animate(G3, fps = 2)
 ```
 

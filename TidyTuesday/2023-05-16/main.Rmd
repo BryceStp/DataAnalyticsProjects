@@ -142,6 +142,7 @@ doParallel::registerDoParallel()
 tune <- tune_grid(wf, val_set)
 tune
 ```
+
 ```{r Results} 
 #Despite not including state (which I figured would have a substantial impact), we still managed a best RMSE of about 0.8
 

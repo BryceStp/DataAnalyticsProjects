@@ -83,6 +83,6 @@ P1 <- RDF %>%
   geom_col(alpha = 0.7) +
   facet_wrap(~ commonname)
 
-ggplotly(P1, tooltip = "text")
+toWebGL(ggplotly(P1, tooltip = "text"))
 ```
 

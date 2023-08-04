@@ -130,6 +130,7 @@ Vres %>%
   ppv(volcano_type, .pred_class) %>%
   ggplot(aes(.estimate)) + geom_histogram(bins= 10)
 ```
+
 ```{r Results 3}
 # A little pre processing for the next step
 Vprep2 <- juice(Vprep) %>%
@@ -142,6 +143,7 @@ RFM %>%
   fit(volcano_type ~ ., data = Vprep2) %>%
   vip(geom = "point")
 ```
+
 ```{r Results 4}
 Vpred <- Vres %>%
   collect_predictions() %>%

@@ -85,8 +85,7 @@ G3 <-
   ggpointdensity::geom_pointdensity(
     data = plot_data,
     mapping = aes(x = prim_long_dec,
-                  y = prim_lat_dec,
-                  alpha = 0.7),
+                  y = prim_lat_dec),
     alpha = 0.6
   ) +
   coord_sf(xlim = c(-130, -70),

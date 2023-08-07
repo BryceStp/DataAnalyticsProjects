@@ -1,0 +1,121 @@
+---
+title: "main"
+output: html_document
+date: "2023-08-04"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(skimr))
+suppressMessages(library(plotly))
+suppressMessages(library(tidymodels))
+suppressMessages(library(textrecipes))
+suppressMessages(library(poissonreg))
+```
+
+```{r EDA}
+#Load in the data
+historical_markers <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-04/historical_markers.csv'
+  )
+
+#no_markers <-
+#  readr::read_csv(
+#    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-04/no_markers.csv'
+#  )
+
+skim(historical_markers)
+#skim(no_markers)
+```
+
+```{r EDA}
+#Lets start out by taking a look at where all these markers are located
+state <- map_data("state")
+
+plot_data <- historical_markers %>%
+  filter(!is.na(year_erected))
+
+G1 <- ggplot() +
+  geom_map(
+    data = state,
+    map = state,
+    mapping = aes(y = lat, x = long, map_id = region),
+    color = "black",
+    fill = "gray"
+  ) +
+  ggpointdensity::geom_pointdensity(
+    data = plot_data,
+    mapping = aes(x = longitude_minus_w,
+                  y = latitude_minus_s),
+    alpha = 0.6
+  ) +
+  coord_sf(xlim = c(-130, -70),
+           ylim = c(20, 50)) +
+  scale_color_gradientn(colors = rainbow(5))
+
+G1
+```
+
+```{r EDA}
+#During what years were the most historical markers established?
+G2 <- historical_markers %>%
+  select(year_erected) %>%
+  filter(!is.na(year_erected)) %>%
+  mutate(year_erected = as.factor(year_erected)) %>%
+  add_count(year_erected) %>%
+  distinct(year_erected, n) %>%
+  mutate(year_erected = fct_reorder(year_erected, n)) %>%
+  filter(n > 500) %>%
+  ggplot(mapping = aes(x = year_erected, n, fill = year_erected, text = glue::glue("Count: {n}"))) +
+  theme(legend.position = "none") +
+  coord_flip() +
+  geom_col(alpha = 0.7)
+
+ggplotly(G2, tooltip = "text")
+```
+
+```{r EDA}
+#It might be worthwhile to due some text based modeling with titles 
+
+TitleCount <- historical_markers %>%
+  count(title, sort = TRUE) %>%
+  filter(n > 1)
+
+TitleCount %>%
+  ggplot(mapping = aes(x = n)) +
+  geom_histogram(bins = 10, fill = "blue", alpha = 0.7) +
+  scale_x_log10()
+```
+
+```{r Modeling}
+#split, test, train
+
+set.seed(0)
+split <- initial_split(TitleCount, strata = n)
+train <- training(split)
+test <- testing(split)
+
+#recipe for tokenizing
+rec <- recipe(n ~ title, data = train) %>%
+  step_tokenize_bpe(title, vocabulary_size = 100) %>%
+  step_tokenfilter(title, max_tokens = 50) %>%
+  step_tf(title)
+
+rec
+```
+
+```{r Modeling}
+#poisson fit
+
+wf <- workflow(rec, poisson_reg())
+fit <- fit(wf, train)
+```
+
+```{r Results}
+#Log loss results on the test set
+augment(fit, test) %>%
+  poisson_log_loss(n, .pred)
+```
+

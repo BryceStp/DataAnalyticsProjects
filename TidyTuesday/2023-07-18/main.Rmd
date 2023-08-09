@@ -1,0 +1,77 @@
+---
+title: "main"
+output: html_document
+date: "2023-08-07"
+---
+
+#Today's Link: https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-07-18/readme.md
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(skimr))
+suppressMessages(library(tidymodels))
+suppressMessages(library(plotly))
+```
+
+```{r EDA}
+detectors <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-07-18/detectors.csv'
+  )
+
+skim(detectors)
+```
+
+```{r EDA}
+#what is going on with native speakers (distribution is for "no" is very similair to NA)
+
+G1 <- detectors %>% 
+  ggplot(mapping = aes(x = .pred_AI, fill = native)) +
+  geom_histogram(bins = 30, position = "fill", alpha = 0.8)
+
+G2 <- detectors %>% 
+  ggplot(mapping = aes(x = .pred_AI, fill = native)) +
+  geom_histogram(bins = 30, alpha = 0.8) +
+  theme(legend.position = "none") +
+  facet_wrap(~native, scales = "free")
+
+subplot(G1, G2, nrows = 2, margin = 0.1)
+```
+
+```{r EDA}
+#Lets check out the accuracy of each detector
+#All are decent at picking out humans (But not good at identifying non-natives or AI), which lines up with the plot on native speakers
+
+G3 <- detectors %>%
+  mutate(correct = if_else(kind == .pred_class, TRUE, FALSE)) %>%
+  ggplot(mapping = aes(x = detector, fill = correct)) +
+  geom_bar(alpha = 0.7, position = "fill") +
+  theme(axis.text.x = element_text(angle = 40, vjust = 0.5))
+
+G4 <- detectors %>%
+  mutate(correct = if_else(kind == .pred_class, TRUE, FALSE)) %>%
+  ggplot(mapping = aes(x = detector, fill = correct)) +
+  geom_bar(alpha = 0.7, position = "fill") +
+  theme(axis.text.x = element_text(angle = 40, vjust = 0.5)) +
+  facet_wrap(~model)
+
+subplot(G3, G4, nrows = 2, margin = 0.2)
+```
+
+```{r EDA}
+#Lets check out the roc_auc scores
+detectors %>%
+  mutate(kind = as.factor(kind)) %>%
+  group_by(detector) %>%
+  roc_auc(kind, .pred_AI) 
+
+#log loss scores?
+detectors %>%
+  mutate(kind = as.factor(kind)) %>%
+  group_by(detector) %>%
+  mn_log_loss(kind, .pred_AI)
+```
+
+
+

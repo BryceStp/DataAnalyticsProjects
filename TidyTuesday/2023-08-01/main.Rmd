@@ -1,0 +1,120 @@
+---
+title: "main"
+output: html_document
+date: "2023-08-09"
+---
+
+#Today's Link: https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-08-01/readme.md
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(skimr))
+suppressMessages(library(tidyverse))
+suppressMessages(library(plotly))
+suppressMessages(library(wordcloud))
+suppressMessages(library(tm))
+```
+
+```{r EDA}
+#Load in the data
+
+states <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-08-01/states.csv'
+  ) 
+
+state_name_etymology <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-08-01/state_name_etymology.csv'
+  ) 
+
+skim(state_name_etymology)
+
+skim(states)
+```
+
+```{r EDA}
+#when was each state eventually given its name?
+plot_data <- state_name_etymology %>%
+  mutate(year = lubridate::year(date_named)) 
+
+G3 <-
+  ggplot() +
+  geom_point(
+    data = plot_data,
+    mapping = aes(x = state,
+                  y = year, 
+                  color = language,
+                  text = glue::glue("Year Named: {year}, Origin Language: {language}")),
+    alpha = 0.6
+  ) +
+  theme(legend.position = "none", axis.text.x = element_text(angle = 90, vjust = 0.6))
+
+ggplotly(G3, tooltip = "text")
+```
+
+```{r EDA}
+#Lets check out what language each state name is derived from
+
+mapdata <- fiftystater::fifty_states %>%
+  rename("state" = "id") %>%
+  mutate(state = str_to_title(state))
+
+mapdataEtym <- state_name_etymology %>% 
+  select(-c("meaning", "words_in_original")) %>%
+  distinct(state, .keep_all = TRUE) %>%
+  left_join(mapdata, state_name_etymology, by = "state")
+
+G1 <- mapdataEtym %>%
+  ggplot(mapping = aes(x = long, y = lat, group = group)) +
+  geom_polygon(mapping = aes(
+    fill = language,
+    text = glue::glue("{state}, Origin Language: {language}")
+  ),
+  color = "black") +
+  fiftystater::fifty_states_inset_boxes() +
+  theme(legend.position = "none")
+
+ggplotly(G1, tooltip = "text")
+```
+
+```{r EDA}
+#Populations by state
+
+mapdataState <- left_join(mapdata, states, by = "state")
+
+G2 <- mapdataState %>%
+  ggplot(mapping = aes(x = long, y = lat, group = group)) +
+  geom_polygon(
+    mapping = aes(
+      fill = population_2020,
+      text = glue::glue(
+        "{state}, Admission: {admission}, Population: {population_2020}"
+      )
+    ),
+    color = "black"
+  ) +
+  scale_fill_gradient(low = "white", high = "#CB454A") +
+  fiftystater::fifty_states_inset_boxes() 
+
+ggplotly(G2, tooltip = "text")
+```
+
+```{r EDA}
+#Lets try and make a word cloud
+
+set.seed(0)
+
+corpus <- Corpus(VectorSource(state_name_etymology$meaning)) %>%
+  tm_map(content_transformer(tolower)) %>%
+  tm_map(content_transformer(removePunctuation)) %>%
+  tm_map(content_transformer(removeWords), stopwords(kind = "en")) %>%
+  tm_map(content_transformer(stripWhitespace)) %>%
+  tm_map(content_transformer(stemDocument)) 
+
+tdm <- as.data.frame(as.matrix(TermDocumentMatrix(corpus)))
+Freq <- sort(rowSums(tdm))
+
+wordcloud(names(Freq), Freq, colors =  brewer.pal(n = 5, name = "Spectral"))
+```
+

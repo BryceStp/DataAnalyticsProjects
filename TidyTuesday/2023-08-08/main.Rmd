@@ -1,0 +1,101 @@
+---
+title: "main"
+output: html_document
+date: "2023-08-12"
+---
+
+#Today's Link: https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-08-08/readme.md
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(skimr))
+suppressMessages(library(plotly))
+```
+
+```{r EDA}
+episodes <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-08-08/episodes.csv'
+  ) %>%
+  drop_na()
+
+sauces <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-08-08/sauces.csv'
+  ) %>%
+  drop_na()
+
+seasons <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-08-08/seasons.csv'
+  ) %>%
+  mutate(original_release = as.POSIXct(original_release,format="%Y-%m-%d"),
+         last_release = as.POSIXct(last_release,format="%Y-%m-%d")) %>%
+  select(-c("note")) 
+
+skim(episodes)
+
+skim(sauces)
+
+skim(seasons)
+```
+
+```{r EDA}
+#Lets try and make use of seasons and see how long they(seasons) last
+
+G1 <- seasons %>%
+  mutate(days = time_length(seasons$last_release - seasons$original_release, unit = "day")) %>%
+  drop_na() %>%
+  ggplot(mapping = aes(
+    x = season,
+    y = days,
+    fill = season,
+    text = glue::glue("Season: {season}, Days: {days}, Episodes: {episodes}")
+  )) +
+  scale_fill_gradient(low = "orange", high = "red") +
+  geom_col(alpha = 0.7)
+
+ggplotly(G1, tooltip = "text")
+
+```
+
+```{r EDA}
+#Lets see when the most episodes are released
+
+G2 <- episodes %>%
+  mutate(
+    year = lubridate::year(original_release),
+    month = lubridate::month(original_release)
+  ) %>%
+  ggplot(mapping = aes(x = month, group = episode_overall, fill = episode_overall)) +
+  geom_bar(alpha = 0.7) +
+  facet_wrap(~ year) +
+  scale_fill_gradient(low = "orange", high = "red") +
+  theme(legend.position = "none")
+
+ggplotly(G2)
+```
+
+```{r EDA}
+#What are the hottest sauces
+G3 <- sauces %>%
+  distinct(sauce_name, .keep_all = TRUE) %>%
+  filter(scoville > 500000) %>%
+  ggplot(mapping = aes(
+    x = sauce_name,
+    y = scoville,
+    fill = scoville,
+    text = glue::glue("{sauce_name}, Scoville: {scoville}")
+  )) +
+  geom_bar(stat = "identity",
+           width = 1,
+           color = "white") +
+  scale_fill_gradient(low = "orange", high = "red") +
+  theme(axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.title.x = element_blank())
+
+ggplotly(G3, tooltip = "text")
+```
+

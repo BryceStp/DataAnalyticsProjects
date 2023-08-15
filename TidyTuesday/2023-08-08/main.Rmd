@@ -98,4 +98,3 @@ G3 <- sauces %>%
 
 ggplotly(G3, tooltip = "text")
 ```
-

@@ -1,0 +1,104 @@
+---
+title: "main"
+output: html_document
+date: "2023-08-15"
+---
+
+#Today's Link: https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-08-15/readme.md
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+suppressMessages(library(tidyverse))
+suppressMessages(library(tidymodels))
+suppressMessages(library(skimr))
+library(discrim)
+
+```
+
+```{r EDA}
+#Load in the data
+spam <-
+  readr::read_csv(
+    'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-08-15/spam.csv'
+  )
+
+skim(spam)
+```
+```{r EDA}
+#How many of the emails are indeed spam?
+#60-40 isnt a terrible split, resampling is not necessary
+
+spam %>%
+  count(yesno, sort = TRUE) %>%
+  mutate(Proportion = n / sum(n))
+
+#Is there any substantial correlation?
+
+round(cor(spam %>%
+            select(-yesno)), 2)
+```
+
+```{r EDA}
+#Are there noticeable differences between spam and non-spam emails?
+
+spam %>%
+  pivot_longer(dollar:make) %>%
+  mutate(value = if_else(value > 0, "More Then 0", "0")) %>%
+  ggplot(mapping = aes(value, fill = yesno)) +
+  geom_bar() +
+  facet_wrap(vars(name))
+
+```
+
+```{r Modeling}
+#split the data (mutate yesno or model breaks)
+set.seed(0)
+split <-
+  spam %>% 
+  mutate(yesno = as.factor(yesno)) %>%
+  initial_split(strata = yesno)
+
+train <- training(split)
+test <- testing(split)
+
+folds <- vfold_cv(train, strata = yesno)
+folds
+```
+
+```{r Modeling}
+#Build specs and workflow
+
+naive_spec <- naive_Bayes(smoothness = tune())
+knn_spec <- nearest_neighbor(neighbors = tune(), mode = "classification") 
+rf_spec <- rand_forest(min_n = tune(), mode = "classification") 
+
+models <-
+  workflow_set(
+    preproc = list(formula = yesno ~ .),
+    models = list(
+      naive_spec, 
+      knn_spec, 
+      rf_spec
+    )
+  )
+
+models
+```
+```{r Modeling}
+#How did each model perform?
+#naive bayes is good at recognizing not spam, but bad at recognizing spam.
+#the inverse is true for KNN, while random forest had the highest overall accuracy.
+
+set.seed(0)
+doParallel::registerDoParallel()
+
+res <-
+    models |> 
+    workflow_map(
+        "tune_grid",
+        resamples = folds,
+        metrics = metric_set(accuracy, sensitivity, specificity)
+    )
+autoplot(res)
+```
+

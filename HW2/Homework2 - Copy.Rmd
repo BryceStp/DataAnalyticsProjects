@@ -1,7 +1,6 @@
 ---
 title: 'STA 5936: Homework 2'
 date: 'Due January 23rd, 11:59pm'
-name: Bryce St.Pierre
 output:
   word_document: default
   html_document:
